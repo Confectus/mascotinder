@@ -43,10 +43,10 @@ public class ListPetsController extends HttpServlet {
 	private void getRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// 1. Get parameters
 		// 2. Talk with the model
-		System.out.println("LOGIN");
+		System.out.println("Controller!!!!!");
 		request.setAttribute("pets", DAOFactory.getFactory().getPetDAO().getPetsByOwnerEmail("andres.lozano@epn.edu.ec"));
 		// 3. Send data to the view
-		getServletContext().getRequestDispatcher("/jsp/listPets.jsp").forward(request, response);
+		getServletContext().getRequestDispatcher("/jsp/ListPets.jsp").forward(request, response);
 	}
 
 }
