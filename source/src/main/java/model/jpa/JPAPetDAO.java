@@ -17,12 +17,13 @@ public class JPAPetDAO extends JPAGenericDAO<Pet, Integer> implements PetDAO {
 	@Override
 	public List<Pet> getPetsByOwnerEmail(String ownerEmail) {
 		List<Pet> pets = null;
-		String sentenceJPQL = "SELECT p from pet p WHERE p.ownerEmail := param_owner_email";
-		Query query = this.em.createQuery(sentenceJPQL);
-		query.setParameter("param_owner_email", ownerEmail);
-		
+		String sentenceJPQL = "SELECT p from Pet p WHERE p.ownerEmail= :param_owner_email";
+		String sentence = "SELECT p from Pet p WHERE p.name= :param_name";
+		Query query = this.em.createQuery(sentence);
+		//query.setParameter("param_owner_email", ownerEmail);
+		query.setParameter("param_name", "Pelusa");
 		try {
-			pets = query.getResultList();
+			pets = (List<Pet>) query.getResultList();
 			
 		}catch(Exception e) {
 			e.printStackTrace();

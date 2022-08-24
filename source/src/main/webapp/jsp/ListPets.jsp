@@ -26,13 +26,13 @@
 				</tr>
 			</thead>	
 			
-			<c:forEach items="${pet}" var="pets">
+			<c:forEach items="${pets}" var="pets">
 				<tr>
-					<td>${pet.id}</td>
-					<td>${pet.name}</td>
-					<td>${pet.type}</td>
-					<td>${pet.specie}</td>
-					<td>${pet.age}</td>
+					<td>${pets.id}</td>
+					<td>${pets.name}</td>
+					<td>${pets.type}</td>
+					<td>${pets.specie}</td>
+					<td>${pets.age}</td>
 				</tr>
 			</c:forEach>
 		</table>
