@@ -26,16 +26,27 @@ public class ListPetsController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// 1. Get parameters
 		// 2. Talk with the model
-		request.setAttribute("pets", DAOFactory.getFactory().getPetDAO().getPetsByOwnerEmail("andres.lozano@epn.edu.ec"));
+		//request.setAttribute("pets", DAOFactory.getFactory().getPetDAO().getPetsByOwnerEmail("andres.lozano@epn.edu.ec"));
 		// 3. Send data to the view
-		request.getRequestDispatcher("/jsp/listPets.jsp").forward(request, response);
+		//request.getRequestDispatcher("/jsp/listPets.jsp").forward(request, response);
+		getRequest(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// 1. Get parameters
 		// 2. Talk with the model
 		// 3. Send data to the view
-		response.sendRedirect("ListPetsController");
+		//response.sendRedirect("ListPetsController");
+		getRequest(request, response);
+	}
+	
+	private void getRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// 1. Get parameters
+		// 2. Talk with the model
+		System.out.println("LOGIN");
+		request.setAttribute("pets", DAOFactory.getFactory().getPetDAO().getPetsByOwnerEmail("andres.lozano@epn.edu.ec"));
+		// 3. Send data to the view
+		getServletContext().getRequestDispatcher("/jsp/listPets.jsp").forward(request, response);
 	}
 
 }
