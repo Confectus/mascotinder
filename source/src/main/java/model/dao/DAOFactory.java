@@ -9,6 +9,8 @@ public abstract class DAOFactory {
 		return factory;
 	}
 	
-	//public abstract PersonaDAO getPersonaDAO();
+	public abstract PetDAO getPetDAO();
+	public abstract OwnerDAO getOwnerDAO();
+
 	
 }

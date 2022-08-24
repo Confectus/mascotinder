@@ -18,7 +18,8 @@ public class JPAOwnerDAO extends JPAGenericDAO<Owner, Integer> implements OwnerD
 		return new Owner(1,"Giancarlo","giancarlo.naranjo@epn.edu.ec","giancarlo123");
 	}
 	
-	/*@Override
+	/*Implement this method
+	@Override
 	public List<Owner> getAll() {
 		return null;
 	}*/

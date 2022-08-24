@@ -6,10 +6,6 @@ import model.dao.PetDAO;
 
 public class JPADAOFactory extends DAOFactory{
 
-	public OwnerDAO getPersonaDAO() {
-		return new JPAOwnerDAO();
-	}
-
 	@Override
 	public PetDAO getPetDAO() {
 		return new JPAPetDAO();

@@ -29,7 +29,9 @@ public class JPAPetDAO extends JPAGenericDAO<Pet, Integer> implements PetDAO {
 		// TODO Auto-generated method stub
 
 	}
-
+	
+	/*
+	Check this part!!
 	@Override
 	public Pet getById(Integer id) {
 		// TODO Auto-generated method stub
@@ -46,7 +48,7 @@ public class JPAPetDAO extends JPAGenericDAO<Pet, Integer> implements PetDAO {
 	public List<Pet> getAll() {
 		// TODO Auto-generated method stub
 		return null;
-	}
+	}*/
 
 
 }
