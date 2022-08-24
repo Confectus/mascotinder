@@ -1,6 +1,6 @@
 package model.dao;
 
-public class OwnerDAO {
+public interface OwnerDAO extends GenericDAO<Owner, Integer> {
 	
 	public Owner authorizeOwner(String email, String password);
 
