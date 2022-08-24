@@ -1,12 +1,14 @@
 package model.dao;
 
+import model.jpa.JPADAOFactory;
+
 public abstract class DAOFactory {
-	protected static DAOFactory factory = new JPADAOFactory;
+	protected static DAOFactory factory = new JPADAOFactory();
 	
 	public static DAOFactory getFactory () {
 		return factory;
 	}
 	
-	public abstract PersonaDAO getPersonaDAO();
+	//public abstract PersonaDAO getPersonaDAO();
 	
 }
