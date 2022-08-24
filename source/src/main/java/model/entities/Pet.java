@@ -8,9 +8,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-@Entity (name = "Owner")
-public class Owner implements Serializable {
-
+@Entity (name = "Pet")
+public class Pet implements Serializable {
+	
 	private static final long serialVersionUID = 1L;
 	
 	@Id
@@ -20,22 +20,24 @@ public class Owner implements Serializable {
 	@Column(name = "name")
 	private String name;
 	
-	@Column(name = "email")
-	private String email;
+	@Column(name = "type")
+	private String type;
 	
-	@Column(name = "password")
-	private String password;
+	@Column(name = "specie")
+	private String specie;
 	
-	public Owner() {
-		
-	}
+	@Column(name = "age")
+	private int age;
 
-	public Owner(Integer id, String name, String email, String password) {
+	public Pet() {}
+
+	public Pet(Integer id, String name, String type, String specie, int age) {
 		super();
 		this.id = id;
 		this.name = name;
-		this.email = email;
-		this.password = password;
+		this.type = type;
+		this.specie = specie;
+		this.age = age;
 	}
 	
 	/* Getters */
@@ -48,12 +50,16 @@ public class Owner implements Serializable {
 		return name;
 	}
 
-	public String getEmail() {
-		return email;
+	public String getType() {
+		return type;
 	}
 
-	public String getPassword() {
-		return password;
+	public String getSpecie() {
+		return specie;
+	}
+
+	public int getAge() {
+		return age;
 	}
 	
 	/* Setters */
@@ -66,12 +72,16 @@ public class Owner implements Serializable {
 		this.name = name;
 	}
 
-	public void setEmail(String email) {
-		this.email = email;
+	public void setType(String type) {
+		this.type = type;
 	}
 
-	public void setPassword(String password) {
-		this.password = password;
+	public void setSpecie(String specie) {
+		this.specie = specie;
 	}
 
+	public void setAge(int age) {
+		this.age = age;
+	}
+	
 }
