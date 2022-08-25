@@ -1,15 +1,9 @@
 package model.jpa;
 
-import java.util.List;
-
-import javax.persistence.EntityManager;
-import javax.persistence.Persistence;
 import javax.persistence.Query;
 
 import model.entities.Preference;
 import model.dao.PreferenceDAO;
-import model.entities.Owner;
-import model.entities.Pet;
 
 public class JPAPreferenceDAO extends JPAGenericDAO<Preference, Integer> implements PreferenceDAO {
 
