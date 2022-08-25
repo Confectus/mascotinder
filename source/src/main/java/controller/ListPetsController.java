@@ -10,7 +10,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import model.dao.DAOFactory;
-import model.entities.Owner;
 import model.entities.Pet;
 
 @WebServlet("/ListPetsController")
