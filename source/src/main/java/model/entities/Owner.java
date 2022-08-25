@@ -25,7 +25,7 @@ public class Owner implements Serializable{
 	private String password;
 	
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY,mappedBy = "owner")
-	private List<Pet> misMascotas;
+	private List<Pet> myPets;
 	
 	
 	public Owner() {}
@@ -38,21 +38,21 @@ public class Owner implements Serializable{
 		this.email = email;
 		this.name = name;
 		this.password = password;
-		this.misMascotas = misMascotas;
+		this.myPets = myPets;
 	}
 
 
 
 
 	public List<Pet> getMisMascotas() {
-		return misMascotas;
+		return myPets;
 	}
 
 
 
 
 	public void setMisMascotas(List<Pet> misMascotas) {
-		this.misMascotas = misMascotas;
+		this.myPets = myPets;
 	}
 
 
