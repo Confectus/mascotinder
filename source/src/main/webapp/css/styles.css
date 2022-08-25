@@ -1,0 +1,36 @@
+@charset "UTF-8";
+
+/* Wrapper class */
+.wrapper {
+	align-items: center;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	min-height: 100%;
+	padding: 20px;
+	width: 100%; 
+}
+
+/* Banner configuration */
+.banner-config {
+	background-color: #319EFF;
+	height: 80px;
+}
+
+/* Titles */
+.list-title {
+	color: #868686;
+	margin-top: 5%;
+	margin-left: 5%;
+}
+
+/* Links */
+.left-margin {
+	margin-left: 5%;	
+}
+
+/* Tables */
+.center-table {
+	margin-left: auto;
+	margin-right: auto;
+}

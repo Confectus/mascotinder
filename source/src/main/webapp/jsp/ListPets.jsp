@@ -7,32 +7,49 @@
 <meta charset="ISO-8859-1">
 <title>Pets List</title>
 
+<!-- Bootstrap -->
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx"
+	crossorigin="anonymous">
+
+<!-- CSS style sheet -->
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/styles.css">
 </head>
+
 <body>	
+	<%@include file="../templates/banner.html" %>
 	
-	<h1>Pets List</h1>
+	<h1 class="list-title">
+		My pets
+	</h1>
 	
-	<div><a href="">Add Pet</a></div>
+	<div class="left-margin">
+		<a href="" class="text-dark">
+			Add Pet
+		</a>
+	</div>
 	
-	<div>
-		<table>
-			<thead>
-				<tr>
+	<div class="wrapper">
+		<table class="center-table table">
+			<thead class="thead-dark">
+				<tr class="h6">
 					<td scope="col">ID</td>
 					<td scope="col">Name</td>
 					<td scope="col">Type</td>
-					<td scope="col">Specie</td>
+					<td scope="col">Species</td>
 					<td scope="col">Age</td>
 				</tr>
 			</thead>	
 			
-			<c:forEach items="${pets}" var="pets">
-				<tr>
-					<td>${pets.id}</td>
-					<td>${pets.name}</td>
-					<td>${pets.type}</td>
-					<td>${pets.specie}</td>
-					<td>${pets.age}</td>
+			<c:forEach items="${pets}" var="pet">
+				<tr class="text-muted">
+					<td>${pet.id}</td>
+					<td>${pet.name}</td>
+					<td>${pet.type}</td>
+					<td>${pet.specie}</td>
+					<td>${pet.age}</td>
 				</tr>
 			</c:forEach>
 		</table>
