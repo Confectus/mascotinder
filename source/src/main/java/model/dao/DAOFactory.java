@@ -14,4 +14,6 @@ public abstract class DAOFactory {
 
 	public abstract OwnerDAO getOwnerDAO();
 	
+	public abstract PreferenceDAO getPreferenceDAO();
+	
 }
