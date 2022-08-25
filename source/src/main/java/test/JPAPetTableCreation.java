@@ -3,7 +3,7 @@ package test;
 import model.dao.DAOFactory;
 import model.entities.Pet;
 
-public class TestJPA {
+public class JPAPetTableCreation {
 	
 	public static void main(String[] args) {
 		Pet pt = new Pet();
@@ -13,10 +13,10 @@ public class TestJPA {
 		pt.setType("y");
 		
 		Pet pt2 = new Pet();
-		pt.setName("Mope");
-		pt.setAge(2);
-		pt.setSpecie("x");
-		pt.setType("y1");
+		pt2.setName("Mope");
+		pt2.setAge(2);
+		pt2.setSpecie("x");
+		pt2.setType("y1");
 		
 		DAOFactory.getFactory().getPetDAO().create(pt);
 		DAOFactory.getFactory().getPetDAO().create(pt2);
