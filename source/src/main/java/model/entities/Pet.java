@@ -35,6 +35,8 @@ public class Pet implements Serializable {
 	@ManyToOne
 	private Owner owner;
 	
+	
+	
 	public Pet() {}
 
 	public Pet(Integer id, String name, String type, String specie, int age,Owner owner) {
