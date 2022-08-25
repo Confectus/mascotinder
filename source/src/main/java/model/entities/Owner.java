@@ -51,7 +51,7 @@ public class Owner implements Serializable{
 
 
 
-	public void setMisMascotas(List<Pet> misMascotas) {
+	public void setMisMascotas(List<Pet> myPets) {
 		this.myPets = myPets;
 	}
 
