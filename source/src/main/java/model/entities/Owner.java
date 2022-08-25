@@ -1,12 +1,16 @@
 package model.entities;
 
 import java.io.Serializable;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity (name = "Owner")
 public class Owner implements Serializable {
@@ -17,14 +21,19 @@ public class Owner implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	
-	@Column(name = "name")
+	@Column(name = "name", length = 20, nullable = false)
 	private String name;
 	
-	@Column(name = "email")
+	@Column(name = "email",length = 30, nullable = false)
 	private String email;
 	
-	@Column(name = "password")
+	@Column(name = "password",length = 20, nullable = false)
 	private String password;
+	
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY,mappedBy = "owner")
+	private List<Pet> misMascotas;
+	
+	
 	
 	public Owner() {
 		

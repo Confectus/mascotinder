@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 @Entity (name = "Pet")
 public class Pet implements Serializable {
@@ -29,6 +31,10 @@ public class Pet implements Serializable {
 	@Column(name = "age")
 	private int age;
 
+	@JoinColumn(name = "FK_Pet_Owner")
+	@ManyToOne
+	private Owner owner;
+	
 	public Pet() {}
 
 	public Pet(Integer id, String name, String type, String specie, int age) {
@@ -83,5 +89,13 @@ public class Pet implements Serializable {
 	public void setAge(int age) {
 		this.age = age;
 	}
+
+	@Override
+	public String toString() {
+		return "Pet [id=" + id + ", name=" + name + ", type=" + type + ", specie=" + specie + ", age=" + age
+				+ ", owner=" + owner + "]";
+	}
+	
+	
 	
 }
