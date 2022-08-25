@@ -8,6 +8,6 @@ public interface PetDAO extends GenericDAO<Pet, Integer>{
 	
 	public List<Pet> getPetsByOwnerEmail(String ownerEmail);
 
-	List<String> getTypes();
+	public List<String> getTypes();
 	
 }

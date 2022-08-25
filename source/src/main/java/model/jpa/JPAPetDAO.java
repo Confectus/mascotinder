@@ -41,8 +41,7 @@ public class JPAPetDAO extends JPAGenericDAO<Pet, Integer> implements PetDAO {
 			
 		}catch(Exception e) {
 			e.printStackTrace();
-		}
-		
+		}		
 		return types;
 	}
 
