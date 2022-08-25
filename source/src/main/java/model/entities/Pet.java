@@ -25,8 +25,8 @@ public class Pet implements Serializable {
 	@Column(name = "type")
 	private String type;
 	
-	@Column(name = "specie")
-	private String specie;
+	@Column(name = "sex")
+	private String sex;
 	
 	@Column(name = "age")
 	private int age;
@@ -39,12 +39,12 @@ public class Pet implements Serializable {
 	
 	public Pet() {}
 
-	public Pet(Integer id, String name, String type, String specie, int age,Owner owner) {
+	public Pet(Integer id, String name, String type, String sex, int age,Owner owner) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.type = type;
-		this.specie = specie;
+		this.sex = sex;
 		this.age = age;
 		this.owner=owner;
 	}
@@ -63,9 +63,7 @@ public class Pet implements Serializable {
 		return type;
 	}
 
-	public String getSpecie() {
-		return specie;
-	}
+	
 
 	public int getAge() {
 		return age;
@@ -74,6 +72,11 @@ public class Pet implements Serializable {
 	public Owner getOwner() {
 		return owner;
 	}
+	
+	public String getSex() {
+		return sex;
+	}
+
 	
 	/* Setters */
 	
@@ -94,19 +97,22 @@ public class Pet implements Serializable {
 		this.type = type;
 	}
 
-	public void setSpecie(String specie) {
-		this.specie = specie;
-	}
 
 	public void setAge(int age) {
 		this.age = age;
 	}
+	
+	public void setSex(String sex) {
+		this.sex = sex;
+	}
 
 	@Override
 	public String toString() {
-		return "Pet [id=" + id + ", name=" + name + ", type=" + type + ", specie=" + specie + ", age=" + age
+		return "Pet [id=" + id + ", name=" + name + ", type=" + type + ", specie=" + sex + ", age=" + age
 				+  "]";
 	}
+
+
 	
 	
 	

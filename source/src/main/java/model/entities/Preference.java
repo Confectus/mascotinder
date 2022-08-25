@@ -24,8 +24,8 @@ public class Preference implements Serializable{
 	@Column(name = "type")
 	private String type;
 	
-	@Column(name = "specie")
-	private String specie;
+	@Column(name = "sex")
+	private String sex;
 	
 	@Column(name = "minimunAge")
 	private Integer minimumAge;
@@ -41,11 +41,11 @@ public class Preference implements Serializable{
 	
 	
 	
-	public Preference(Integer id, String type, String specie, Integer minimumAge, Integer maximumAge, Pet pet) {
+	public Preference(Integer id, String type, String sex, Integer minimumAge, Integer maximumAge, Pet pet) {
 		super();
 		this.id = id;
 		this.type = type;
-		this.specie = specie;
+		this.sex = sex;
 		this.minimumAge = minimumAge;
 		this.maximumAge = maximumAge;
 		this.pet = pet;
@@ -65,11 +65,11 @@ public class Preference implements Serializable{
 	public void setType(String type) {
 		this.type = type;
 	}
-	public String getSpecie() {
-		return specie;
+	public String getSex() {
+		return sex;
 	}
-	public void setSpecie(String specie) {
-		this.specie = specie;
+	public void setSex(String sex) {
+		this.sex = sex;
 	}
 	public Integer getMinimumAge() {
 		return minimumAge;
@@ -92,7 +92,7 @@ public class Preference implements Serializable{
 
 	@Override
 	public String toString() {
-		return "Preference [id=" + id + ", type=" + type + ", specie=" + specie + ", minimumAge=" + minimumAge
+		return "Preference [id=" + id + ", type=" + type + ", specie=" + sex + ", minimumAge=" + minimumAge
 				+ ", maximumAge=" + maximumAge + ", pet=" + pet + "]";
 	}
 	
