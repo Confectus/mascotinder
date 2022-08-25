@@ -10,8 +10,7 @@ public abstract class DAOFactory {
 		return factory;
 	}
 	
-	public abstract PetDAO getPetDAO();
-
+	public abstract PetDAO getPetDAO();	
 	public abstract OwnerDAO getOwnerDAO();
 	
 	public abstract PreferenceDAO getPreferenceDAO();

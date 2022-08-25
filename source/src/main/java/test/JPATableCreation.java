@@ -14,14 +14,14 @@ public class JPATableCreation {
 		Pet pt = new Pet();
 		pt.setName("Alta");
 		pt.setAge(12);
-		pt.setSpecie("x");
+		pt.setSex("male");
 		pt.setType("y");
 		pt.setOwner(owner1);
 		
 		Pet pt2 = new Pet();
 		pt2.setName("Mope");
 		pt2.setAge(2);
-		pt2.setSpecie("x");
+		pt2.setSex("female");
 		pt2.setType("y1");
 		pt2.setOwner(owner1);
 		
