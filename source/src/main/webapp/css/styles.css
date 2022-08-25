@@ -11,6 +11,56 @@
 	width: 100%; 
 }
 
+/* Login form */
+.form-config {
+	border-radius: 10px 10px 10px 10px;
+	padding: 30px;
+	box-shadow: 0 30px 60px 0 rgba(0, 0, 0, 0.3);
+	text-align: center;
+	margin: 4.0rem auto 8.1rem auto;
+ 	width: 329px;
+}
+
+.underline-title {
+  background: #319EFF;
+  height: 2px;
+  margin: -1.1rem auto 0 auto;
+  width: 89px;
+}
+
+.form-border {
+  background: #319EFF;
+  height: 1px;
+  width: 100%;
+}
+
+.form-content {
+  background: #fbfbfb;
+  border: none;
+  outline: none;
+  padding-top: 14px;
+  width: 100%;
+}
+
+#submit-btn {
+  background: #319EFF;
+  border: none;
+  border-radius: 21px;
+  box-shadow: 0px 1px 8px #319EFF;
+  cursor: pointer;
+  color: white;
+  font-family: "Raleway SemiBold", sans-serif;
+  height: 42.3px;
+  margin: 0 auto;
+  margin-top: 50px;
+  transition: 0.25s;
+  width: 153px;
+}
+
+#submit-btn:hover {
+  box-shadow: 0px 1px 18px #319EFF;
+}
+
 /* Banner configuration */
 .banner-config {
 	background-color: #319EFF;
@@ -18,10 +68,19 @@
 }
 
 /* Titles */
+.app-title {
+	font-weight: bold;
+	font-size: 2rem;
+}
 .list-title {
 	color: #868686;
 	margin-top: 5%;
 	margin-left: 5%;
+}
+
+#login-title {
+  font-family: "Raleway Thin", sans-serif;
+  padding-top: 13px;
 }
 
 /* Links */
