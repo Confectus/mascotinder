@@ -2,13 +2,16 @@ package model.entities;
 
 import java.io.Serializable;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 
 @Entity (name = "Pet")
 public class Pet implements Serializable {
@@ -34,6 +37,11 @@ public class Pet implements Serializable {
 	@JoinColumn(name = "FK_Pet_Owner")
 	@ManyToOne
 	private Owner owner;
+	
+	@OneToOne(cascade = CascadeType.ALL,fetch = FetchType.LAZY,mappedBy = "pet")
+	private Preference preference;
+	
+	
 	
 	
 	
