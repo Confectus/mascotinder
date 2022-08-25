@@ -30,7 +30,10 @@ public class Pet implements Serializable {
 	
 	@Column(name = "age")
 	private int age;
-
+	
+	@JoinColumn(name = "FK_Pet_Owner")
+	@ManyToOne
+	private Owner owner;
 	
 	public Pet() {}
 
