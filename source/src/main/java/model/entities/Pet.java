@@ -31,9 +31,6 @@ public class Pet implements Serializable {
 	@Column(name = "age")
 	private int age;
 
-	@JoinColumn(name = "FK_Pet_Owner")
-	@ManyToOne
-	private Owner owner;
 	
 	public Pet() {}
 
@@ -93,7 +90,7 @@ public class Pet implements Serializable {
 	@Override
 	public String toString() {
 		return "Pet [id=" + id + ", name=" + name + ", type=" + type + ", specie=" + specie + ", age=" + age
-				+ ", owner=" + owner + "]";
+				+  "]";
 	}
 	
 	

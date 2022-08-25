@@ -11,10 +11,6 @@ public class JPADAOFactory extends DAOFactory{
 		return new JPAPetDAO();
 	}
 
-	@Override
-	public OwnerDAO getOwnerDAO() {
-		return new JPAOwnerDAO();
-	}
 
 }
 
