@@ -1,10 +1,14 @@
 package model.entities;
 
 import java.io.Serializable;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity (name = "Owner")
 public class Owner implements Serializable{
@@ -19,6 +23,9 @@ public class Owner implements Serializable{
 	
 	@Column(name = "password")
 	private String password;
+	
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY,mappedBy = "owner")
+	private List<Pet> misMascotas;
 	
 	
 	public Owner() {}
