@@ -30,4 +30,19 @@ public class JPAPetDAO extends JPAGenericDAO<Pet, Integer> implements PetDAO {
 		return pets;
 	}
 
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<String> getTypes() {
+		List<String> types = null;
+		String sentence = "SELECT distinct p.type from Pet p";
+		Query query = this.em.createQuery(sentence);
+		try {
+			types = (List<String>) query.getResultList();
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}		
+		return types;
+	}
+
 }
