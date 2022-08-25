@@ -8,8 +8,12 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import com.mysql.cj.Session;
 
 import model.dao.DAOFactory;
+import model.entities.Owner;
 import model.entities.Pet;
 
 @WebServlet("/ListPetsController")
@@ -42,8 +46,12 @@ public class ListPetsController extends HttpServlet {
 	
 	private void getRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// 1. Get parameters
+		HttpSession sessionOwner = request.getSession();
+		Owner loggedOwner = (Owner) sessionOwner.getAttribute("loggedOwner");
+		//sessionScope.loggedUser.getName()
+
 		// 2. Talk with the model
-		request.setAttribute("pets", DAOFactory.getFactory().getPetDAO().getPetsByOwnerEmail("daniel.garrido@epn.edu.ec"));
+		request.setAttribute("pets", DAOFactory.getFactory().getPetDAO().getPetsByOwnerEmail(loggedOwner.getEmail()));
 		// 3. Send data to the view
 		getServletContext().getRequestDispatcher("/jsp/ListPets.jsp").forward(request, response);
 	}

@@ -16,11 +16,20 @@ public class JPAOwnerDAO  extends JPAGenericDAO<Owner, Integer> implements Owner
 
 	@Override
 	public Owner authorizeOwner(String email, String password) {
-		String sentenceJPQL = "SELECT o FROM Owner o WHERE o.email =:p1 AND o.password =:p2";
+		Owner authorizedOwner = null;
+		
+		String sentenceJPQL = "SELECT o FROM Owner o WHERE o.email= :p1 AND o.password= :p2";
 		Query query = e.createQuery(sentenceJPQL);
 		query.setParameter("p1", email);
 		query.setParameter("p2", password);
-		Owner authorizedOwner = (Owner)query.getSingleResult();
+		System.out.println(email + "   " + password);
+		try {
+			authorizedOwner = (Owner) query.getSingleResult();
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+		}
+		
 		return authorizedOwner;	
 	}
 

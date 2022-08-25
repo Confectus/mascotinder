@@ -17,9 +17,9 @@ public class JPAPetDAO extends JPAGenericDAO<Pet, Integer> implements PetDAO {
 	@Override
 	public List<Pet> getPetsByOwnerEmail(String ownerEmail) {
 		List<Pet> pets = null;
-		String sentence = "SELECT p from Pet p WHERE p.name= :param_name";
+		String sentence = "SELECT p from Pet p WHERE p.owner.email= :param_email";
 		Query query = this.em.createQuery(sentence);
-		query.setParameter("param_owner_email", ownerEmail);
+		query.setParameter("param_email", ownerEmail);
 		try {
 			pets = (List<Pet>) query.getResultList();
 			
