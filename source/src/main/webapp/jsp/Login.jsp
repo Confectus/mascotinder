@@ -4,22 +4,39 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Login</title>
+<!-- Bootstrap -->
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx"
+	crossorigin="anonymous">
+
+<!-- CSS style sheet -->
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/styles.css">
+</head>
 </head>
 <body>
-
-	<div>
-		<div>		
+	<nav class="navbar navbar-dark banner-config">
+		<div class="container-fluid">
+			<span class="navbar-brand mb-0 h1 app-title">Mascotinder</span>
+		</div>
+	</nav>
+	<div class="wrapper">
+		<div class="form-config">	
 			<form method="post" action="../LoginController">
 				<fieldset>
-					<legend>Login</legend>
-				
+					<legend id="login-title">Login</legend>
+					<div class="underline-title"></div><br>
+					
 					<p>Email:</p>
-					<input type="email" name="txtEmail" placeholder="Enter your email" required><br>
+					<input type="email" name="txtEmail" placeholder="Enter your email" class="form-content" required>
+					<div class="form-border"></div><br><br>
 					
 					<p>Password:</p>
-					<input type="password" name="txtPassword" placeholder="Enter your password" required><br><br>
+					<input type="password" name="txtPassword" placeholder="Enter your password" class="form-content" required>
+					<div class="form-border"></div>
 					
-					<input type="submit" value="Log In">
+					<input type="submit" value="Log In" id="submit-btn">
 				</fieldset>
 			</form>
 		</div>		
