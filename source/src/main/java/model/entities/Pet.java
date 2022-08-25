@@ -68,8 +68,17 @@ public class Pet implements Serializable {
 		return age;
 	}
 	
+	public Owner getOwner() {
+		return owner;
+	}
+	
 	/* Setters */
 	
+
+	public void setOwner(Owner owner) {
+		this.owner = owner;
+	}
+
 	public void setId(Integer id) {
 		this.id = id;
 	}
