@@ -37,13 +37,14 @@ public class Pet implements Serializable {
 	
 	public Pet() {}
 
-	public Pet(Integer id, String name, String type, String specie, int age) {
+	public Pet(Integer id, String name, String type, String specie, int age,Owner owner) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.type = type;
 		this.specie = specie;
 		this.age = age;
+		this.owner=owner;
 	}
 	
 	/* Getters */

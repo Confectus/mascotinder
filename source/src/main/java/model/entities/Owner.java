@@ -31,12 +31,31 @@ public class Owner implements Serializable{
 	public Owner() {}
 
 
-	public Owner(String email, String name, String password) {
+	
+
+	public Owner(String email, String name, String password, List<Pet> misMascotas) {
 		super();
 		this.email = email;
 		this.name = name;
 		this.password = password;
+		this.misMascotas = misMascotas;
 	}
+
+
+
+
+	public List<Pet> getMisMascotas() {
+		return misMascotas;
+	}
+
+
+
+
+	public void setMisMascotas(List<Pet> misMascotas) {
+		this.misMascotas = misMascotas;
+	}
+
+
 
 
 	public String getEmail() {
