@@ -10,7 +10,6 @@
 			<property name="javax.persistence.jdbc.password" value=""/>
 			<property name="javax.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
 			<property name="eclipselink.ddl-generation" value="none" />
-		
 		</properties>
 	</persistence-unit>
 </persistence>

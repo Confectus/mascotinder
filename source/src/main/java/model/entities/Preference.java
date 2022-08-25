@@ -2,8 +2,10 @@ package model.entities;
 
 import java.io.Serializable;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -38,7 +40,6 @@ public class Preference implements Serializable{
 	private Pet pet;
 	
 	public Preference(){}
-	
 	
 	
 	public Preference(Integer id, String type, String sex, Integer minimumAge, Integer maximumAge, Pet pet) {

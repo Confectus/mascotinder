@@ -44,8 +44,9 @@
 						<td scope="col">ID</td>
 						<td scope="col">Name</td>
 						<td scope="col">Type</td>
-						<td scope="col">Species</td>
+						<td scope="col">Sex</td>
 						<td scope="col">Age</td>
+						<td scope="col">Actions</td>
 					</tr>
 				</thead>	
 			
@@ -54,8 +55,9 @@
 						<td>${pet.id}</td>
 						<td>${pet.name}</td>
 						<td>${pet.type}</td>
-						<td>${pet.specie}</td>
+						<td>${pet.sex}</td>
 						<td>${pet.age}</td>
+						<td><a href="PreferenceController?petId=${pet.id}">Set Preference</a></td>
 					</tr>
 				</c:forEach>
 			</table>

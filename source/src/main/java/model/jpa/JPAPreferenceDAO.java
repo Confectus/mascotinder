@@ -7,9 +7,8 @@ import model.dao.PreferenceDAO;
 
 public class JPAPreferenceDAO extends JPAGenericDAO<Preference, Integer> implements PreferenceDAO {
 
-	public JPAPreferenceDAO(Class<Preference> persistenceClass) {
-		super(persistenceClass);
-		// TODO Auto-generated constructor stub
+	public JPAPreferenceDAO() {
+		super(Preference.class);
 	}
 
 	
