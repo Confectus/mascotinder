@@ -4,6 +4,6 @@ import model.entities.Owner;
 
 public interface OwnerDAO extends GenericDAO<Owner, Integer> {
 	
-	public void authorizeOwner(String email, String password);
+	public Owner authorizeOwner(String email, String password);
 
 }

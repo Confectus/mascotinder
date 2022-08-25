@@ -12,5 +12,6 @@ public abstract class DAOFactory {
 	
 	public abstract PetDAO getPetDAO();
 	
+	public abstract OwnerDAO getOwnerDAO();
 	
 }
