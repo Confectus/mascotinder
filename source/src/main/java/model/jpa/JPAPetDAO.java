@@ -30,4 +30,9 @@ public class JPAPetDAO extends JPAGenericDAO<Pet, Integer> implements PetDAO {
 		return pets;
 	}
 
+	@Override
+	public List<String> getTypes() {
+		return null;
+	}
+
 }
