@@ -44,14 +44,19 @@ public class Owner implements Serializable{
 
 
 
-	public List<Pet> getMisMascotas() {
+	
+
+
+
+
+	public List<Pet> getMyPets() {
 		return myPets;
 	}
 
 
 
 
-	public void setMisMascotas(List<Pet> myPets) {
+	public void setMyPets(List<Pet> myPets) {
 		this.myPets = myPets;
 	}
 
