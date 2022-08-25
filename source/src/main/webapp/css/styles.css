@@ -7,7 +7,7 @@
 	flex-direction: column;
 	justify-content: center;
 	min-height: 100%;
-	padding: 20px;
+	padding-top: 20px;
 	width: 100%; 
 }
 
@@ -89,7 +89,60 @@
 }
 
 /* Tables */
+.table-container {
+	border: 1px solid black;
+	width: 90%;
+}
+
 .center-table {
 	margin-left: auto;
 	margin-right: auto;
+}
+
+/* List pets */
+.container-conf {
+	border: 1px solid black;
+	display: inline-flex;
+	flex-direction: row;
+	height: 100px;
+	width: 100%;
+}
+
+.list-title {
+	align-items: center;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	margin: auto 5% auto;
+	width: 10rem;
+	height: 50px;
+}
+
+.new-pet-text {
+	font-size: 1.5rem;
+	text-decoration: none;
+}
+
+.add-btn {
+	border-radius: 10px 10px 10px 10px;
+	background: #319EFF;
+	align-items: center;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	margin: auto 5% auto auto;
+	width: 10rem;
+	height: 50px;
+}
+
+/* Pets cards */
+.card-container {
+	height: 300px;
+	margin-top: 20px;	
+	margin: 5%;
+}
+
+.profile-pet-photo {
+	height: 300px;
+	background: #319EFF;
 }

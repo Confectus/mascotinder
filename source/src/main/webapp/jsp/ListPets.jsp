@@ -21,39 +21,66 @@
 <body>	
 	<%@include file="../templates/banner.html" %>
 	
-	<h1 class="list-title">
-		My pets
-	</h1>
-	
-	<div class="left-margin">
-		<a href="" class="text-dark">
-			Add Pet
-		</a>
+	<div class="container-conf">
+		<div class="list-title">
+			<p class="h1 text-dark">
+				My pets
+			</p>
+		</div>
+
+		<div class="add-btn">
+			<a href="" class="text-light new-pet-text">
+				New pet
+			</a>
+		</div>
 	</div>
+
 	
 	<div class="wrapper">
-		<table class="center-table table">
-			<thead class="thead-dark">
-				<tr class="h6">
-					<td scope="col">ID</td>
-					<td scope="col">Name</td>
-					<td scope="col">Type</td>
-					<td scope="col">Species</td>
-					<td scope="col">Age</td>
-				</tr>
-			</thead>	
+		<div class="table-container">
+			<table class="center-table table">
+				<thead class="thead-dark">
+					<tr class="h6">
+						<td scope="col">ID</td>
+						<td scope="col">Name</td>
+						<td scope="col">Type</td>
+						<td scope="col">Species</td>
+						<td scope="col">Age</td>
+					</tr>
+				</thead>	
 			
-			<c:forEach items="${pets}" var="pet">
-				<tr class="text-muted">
-					<td>${pet.id}</td>
-					<td>${pet.name}</td>
-					<td>${pet.type}</td>
-					<td>${pet.specie}</td>
-					<td>${pet.age}</td>
-				</tr>
-			</c:forEach>
-		</table>
+				<c:forEach items="${pets}" var="pet">
+					<tr class="text-muted">
+						<td>${pet.id}</td>
+						<td>${pet.name}</td>
+						<td>${pet.type}</td>
+						<td>${pet.specie}</td>
+						<td>${pet.age}</td>
+					</tr>
+				</c:forEach>
+			</table>
+		</div>
 	</div>
+	
+	<!-- Pets cards -->
+	<div class="container card-container">
+		<div class="row">
+			<div class="col-3">
+				<div class="profile-pet-photo">
+				</div>
+			</div>
+			<div class="col">
+				<div class="row">Firulais</div>
+				<div class="row">Owner description goes here</div>
+				<div class="row">
+					<div class="col">PREFERENCES</div>
+					<div class="col">MATCHS</div>
+					<div class="col">SEARCH</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
 
 </body>
 </html>
