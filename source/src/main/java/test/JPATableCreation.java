@@ -8,7 +8,7 @@ public class JPATableCreation {
 	
 	public static void main(String[] args) {
 		
-		Owner owner1 = new Owner("francisco.encalada01@epn.edu.ec", "Francisco", "rafa123123");
+		Owner owner1 = new Owner("francisco.encalada01@epn.edu.ec", "Francisco", "rafa123123",null);
 		
 		DAOFactory.getFactory().getOwnerDAO().create(owner1);
 		

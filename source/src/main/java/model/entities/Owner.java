@@ -33,7 +33,7 @@ public class Owner implements Serializable{
 
 	
 
-	public Owner(String email, String name, String password, List<Pet> misMascotas) {
+	public Owner(String email, String name, String password, List<Pet> myPets) {
 		super();
 		this.email = email;
 		this.name = name;
