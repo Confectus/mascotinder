@@ -250,3 +250,13 @@
 .show {
 	display: block;
 }
+
+/* Preferences */
+.form-table-config {
+	border-radius: 10px 10px 10px 10px;
+	padding: 30px;
+	box-shadow: 0 30px 60px 0 rgba(0, 0, 0, 0.3);
+	text-align: center;
+	margin: 4.0rem auto 8.1rem auto;
+ 	width: 329px;
+}
