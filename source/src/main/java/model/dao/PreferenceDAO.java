@@ -4,8 +4,8 @@ import model.entities.Preference;
 
 public interface PreferenceDAO extends GenericDAO<Preference, Integer> {
 	
-	public Preference getPreferenceByPetId(int id);
+	public Preference getPreferenceByPetId(Integer id);
 	
-	public void setPreferenceByPetId(int id,Preference preference);
+	public void setPreferenceByPetId(Integer id, Preference preference);
 	
 }

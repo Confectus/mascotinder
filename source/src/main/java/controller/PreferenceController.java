@@ -46,21 +46,10 @@ public class PreferenceController extends HttpServlet {
 		Integer petId = Integer.parseInt(request.getParameter("petId"));
 		
 		// 2. Talk with the model
-		Preference currentPreference = DAOFactory.getFactory().getPreferenceDAO().getPreferenceByPetId(petId);
+		Pet pet = DAOFactory.getFactory().getPetDAO().read(petId);
+		Preference updatedPreference = new Preference(0, preferenceType, preferenceSex, preferenceMinimumAge, preferenceMaximumAge, pet);	
 		
-		if (currentPreference != null) {
-			currentPreference.setType(preferenceType);
-			currentPreference.setSex(preferenceSex);
-			currentPreference.setMinimumAge(preferenceMinimumAge);
-			currentPreference.setMaximumAge(preferenceMaximumAge);
-			
-			DAOFactory.getFactory().getPreferenceDAO().update(currentPreference);
-		}
-		else {
-			Pet pet = DAOFactory.getFactory().getPetDAO().read(petId);
-			Preference newPreference = new Preference(0, preferenceType, preferenceSex, preferenceMinimumAge, preferenceMaximumAge, pet);			
-			DAOFactory.getFactory().getPreferenceDAO().create(newPreference);
-		}		
+		DAOFactory.getFactory().getPreferenceDAO().setPreferenceByPetId(petId, updatedPreference);	
 		
 		// 3. Send data to the view
 		getServletContext().getRequestDispatcher("/ListPetsController").forward(request, response);
