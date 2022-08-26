@@ -11,14 +11,19 @@
 	integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx"
 	crossorigin="anonymous">
 
+<!-- Font Awesome -->
+<script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+
 <!-- CSS style sheet -->
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/styles.css">
 </head>
 </head>
 <body>
-	<nav class="navbar navbar-dark banner-config">
+	<nav class="navbar navbar-dark banner-config rad-border">
 		<div class="container-fluid">
-			<span class="navbar-brand mb-0 h1 app-title">MascoTinder</span>
+			<span class="navbar-brand mb-0 h1  app-title">
+				MascoTinder <i class='fas fa-dog' style='font-size:34px'></i> 
+			</span>
 		</div>
 	</nav>
 	<div class="wrapper">

@@ -23,66 +23,57 @@
 	
 	<div class="container-conf">
 		<div class="list-title">
-			<p class="h1 text-dark">
+			<p class="h1 my-pets-text">
 				My pets
 			</p>
 		</div>
 
 		<div class="add-btn">
-			<a href="" class="text-light new-pet-text">
+			<a href="#" class="text-light new-pet-text">
 				New pet
 			</a>
 		</div>
 	</div>
 
-	
-	<div class="wrapper">
-		<div class="table-container">
-			<table class="center-table table">
-				<thead class="thead-dark">
-					<tr class="h6">
-						<td scope="col">ID</td>
-						<td scope="col">Name</td>
-						<td scope="col">Type</td>
-						<td scope="col">Sex</td>
-						<td scope="col">Age</td>
-						<td scope="col">Actions</td>
-					</tr>
-				</thead>	
-			
-				<c:forEach items="${pets}" var="pet">
-					<tr class="text-muted">
-						<td>${pet.id}</td>
-						<td>${pet.name}</td>
-						<td>${pet.type}</td>
-						<td>${pet.sex}</td>
-						<td>${pet.age}</td>
-						<td><a href="PreferenceController?petId=${pet.id}">Set Preference</a></td>
-					</tr>
-				</c:forEach>
-			</table>
-		</div>
-	</div>
-	
-	<!-- Pets cards -->
-	<div class="container card-container">
-		<div class="row">
-			<div class="col-3">
-				<div class="profile-pet-photo">
+	<div class="card-container" style="border: 0px solid black;">
+		<c:forEach items="${pets}" var="pet">
+			<!-- Pets cards -->
+				<div class="row card-container border-conf">
+					<!-- Pet profile photo -->
+					<div class="col-3 profile-pet-photo">
+						<h1 style="text-align: center; padding: 60px;" class="text-light">Photo goes here!</h1>
+					</div>
+					<!-- Pet description -->
+					<div class="col mh-100">
+						<div class="row mh-100 ht-100" style="border: 0px solid red;">
+							<h1 id="pet-title">${pet.name}</h1>
+						</div>
+						<div class="row mh-100 ht-100 color-blue" style="border: 0px solid red;">
+							<div class="center-description">
+								<p>My pet ${pet.name} is a ${pet.age} year old ${pet.sex}, looking for a match in Mascotinder.</p>
+							</div>
+						</div>
+						<div class="row mh-100 pet-options-row ht-100">
+							<div class="col" style="border: 0px solid red;">
+								<div class="preferences-text">
+									<a href="PreferenceController?petId=${pet.id}">
+										PREFERENCES
+									</a>
+								</div>
+							</div>
+							<div class="col color-blue" style="border: 0px solid red;">
+								<p class="center-text">
+									MATCHS <i class="bi bi-heart-fill"></i> 123
+								</p>
+							</div>
+							<div class="col color-blue" style="border: 0px solid red;">
+								<p class="center-text">SEARCH</p>
+							</div>
+						</div>
+					</div>
 				</div>
-			</div>
-			<div class="col">
-				<div class="row">Firulais</div>
-				<div class="row">Owner description goes here</div>
-				<div class="row">
-					<div class="col">PREFERENCES</div>
-					<div class="col">MATCHS</div>
-					<div class="col">SEARCH</div>
-				</div>
-			</div>
-		</div>
+		</c:forEach>
 	</div>
-
 
 </body>
 </html>
