@@ -44,6 +44,7 @@ public class CatalogueController extends HttpServlet {
 		Preference petPreference = DAOFactory.getFactory().getPreferenceDAO().getPreferenceByPetId(petId);
 		List<Pet> petApplicants = DAOFactory.getFactory().getPetDAO().getPetsByPreference(petPreference);
 		
+		
 		// 3. Send data to the view
 		request.setAttribute("catalogue", petApplicants);
 		getServletContext().getRequestDispatcher("/jsp/Catalogue.jsp").forward(request, response);

@@ -67,7 +67,7 @@
 								</p>
 							</div>
 							<div class="col color-blue">
-								<p class="center-text">SEARCH</p>
+								<p class="center-text"><a href="CatalogueController?petId=${pet.id}">SEARCH</a></p>
 							</div>
 						</div>
 					</div>
