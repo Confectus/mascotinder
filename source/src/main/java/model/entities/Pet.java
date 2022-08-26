@@ -1,6 +1,7 @@
 package model.entities;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -11,6 +12,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 @Entity (name = "Pet")
@@ -40,6 +42,9 @@ public class Pet implements Serializable {
 	
 	@OneToOne(cascade = CascadeType.ALL,fetch = FetchType.LAZY,mappedBy = "pet")
 	private Preference preference;
+	
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY,mappedBy = "pet")
+	private List<PetImage> images;
 		
 	public Pet() {
 		
@@ -101,6 +106,24 @@ public class Pet implements Serializable {
 	
 	public void setSex(String sex) {
 		this.sex = sex;
+	}
+
+	public Preference getPreference() {
+		return preference;
+	}
+
+	public void setPreference(Preference preference) {
+		this.preference = preference;
+	}
+
+	public List<PetImage> getImages() {
+		return images;
+	}
+
+	public void setImages(List<PetImage> images) {
+		this.images = images;
 	}	
+	
+	
 	
 }
