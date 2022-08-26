@@ -3,6 +3,7 @@ package model.jpa;
 import model.dao.DAOFactory;
 import model.dao.OwnerDAO;
 import model.dao.PetDAO;
+import model.dao.PetImageDAO;
 import model.dao.PreferenceDAO;
 
 public class JPADAOFactory extends DAOFactory {
@@ -20,6 +21,11 @@ public class JPADAOFactory extends DAOFactory {
 	@Override
 	public PreferenceDAO getPreferenceDAO() {
 		return new JPAPreferenceDAO();
+	}
+
+	@Override
+	public PetImageDAO getPetImageDAO() {
+		return new JPAPetImageDAO();
 	}
 
 }
