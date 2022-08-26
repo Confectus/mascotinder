@@ -151,7 +151,7 @@
 }
 
 .profile-pet-photo {
-	border-radius: 10px 0px 0px 10px;
+	border-radius: 10px 10px 10px 10px;
 	padding: 0;
 	background: #319EFF;
 	height: 300px;
@@ -159,8 +159,9 @@
 }
 
 .profile-pet-photo img{
-	border: 8px solid #319EFF;
-	border-radius: 20px 20px 20px 20px;
+	padding: 0;
+	margin: 0;
+	border-radius: 10px 10px 10px 10px;
 	box-shadow: 0 10px 30px 0 rgba(0, 0, 0, 0.2);
 	height: 300px;
 	width: 300px;
@@ -265,8 +266,37 @@
 .form-table-config {
 	border-radius: 10px 10px 10px 10px;
 	padding: 30px;
-	box-shadow: 0 30px 60px 0 rgba(0, 0, 0, 0.3);
+	box-shadow: 0 10px 30px 0 rgba(0, 0, 0, 0.3);
 	text-align: center;
 	margin: 4.0rem auto 8.1rem auto;
- 	width: 329px;
+	margin-top: 10px;
+ 	width: 70%;
+}
+
+.general-title {
+	font-size: 20px;
+	font-weight: bold;
+	text-align: left;
+}
+
+.save-btn {
+	border-radius: 10px 10px 10px 10px;
+	background: #319EFF;
+	align-items: center;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	margin: 3% 0% auto auto;
+	width: 10rem;
+	height: 50px;
+	border: none;
+}
+
+.save-text {
+	font-size: 1.5rem;
+	text-decoration: none;
+}
+
+.save-text:hover {
+	font-weight: bold;
 }
