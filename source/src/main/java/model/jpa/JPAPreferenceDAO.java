@@ -2,9 +2,7 @@ package model.jpa;
 
 import javax.persistence.Query;
 
-import model.entities.Pet;
 import model.entities.Preference;
-import model.dao.DAOFactory;
 import model.dao.PreferenceDAO;
 
 public class JPAPreferenceDAO extends JPAGenericDAO<Preference, Integer> implements PreferenceDAO {
@@ -36,23 +34,6 @@ public class JPAPreferenceDAO extends JPAGenericDAO<Preference, Integer> impleme
 		Preference oldPreference = getPreferenceByPetId(id);
 		delete(oldPreference);
 		create(preference);
-		
-		Preference currentPreference = getPreferenceByPetId(id);
-		
-		if (currentPreference != null) {
-			currentPreference.setType(preference.getType());
-			currentPreference.setSex(preference.getSex());
-			currentPreference.setMinimumAge(preference.getMinimumAge());
-			currentPreference.setMaximumAge(preference.getMaximumAge());
-			
-			update(currentPreference);
-		}
-		else {
-			Pet pet = DAOFactory.getFactory().getPetDAO().read(id);
-			Preference newPreference = new Preference(0, preference.getType(), preference.getSex(), preference.getMinimumAge(), preference.getMaximumAge(), pet);			
-			
-			create(newPreference);
-		}	
 	}
 
 }
