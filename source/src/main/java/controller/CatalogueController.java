@@ -1,49 +1,52 @@
 package controller;
 
 import java.io.IOException;
+import java.util.List;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import model.dao.DAOFactory;
-import model.entities.Owner;
+import model.entities.Preference;
+import model.entities.Pet;
 
-@WebServlet("/ListPetsController")
-public class ListPetsController extends HttpServlet {
-
+@WebServlet("/CatalogueController")
+public class CatalogueController extends HttpServlet {
+	
 	private static final long serialVersionUID = 1L;
 
-    public ListPetsController() {
-    	
+    public CatalogueController() {
+
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// 1. Get parameters
 		// 2. Talk with the model
 		// 3. Send data to the view
-		getRequest(request, response);
+		processRequest(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// 1. Get parameters
 		// 2. Talk with the model
 		// 3. Send data to the view
-		getRequest(request, response);
+		processRequest(request, response);
 	}
 	
-	private void getRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	private void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// 1. Get parameters
-		HttpSession sessionOwner = request.getSession();
-		Owner loggedOwner = (Owner) sessionOwner.getAttribute("loggedOwner");
-
+		Integer petId = Integer.parseInt(request.getParameter("petId"));
+		
 		// 2. Talk with the model
-		request.setAttribute("pets", DAOFactory.getFactory().getPetDAO().getPetsByOwnerEmail(loggedOwner.getEmail()));
+		Preference petPreference = DAOFactory.getFactory().getPreferenceDAO().getPreferenceByPetId(petId);
+		List<Pet> petApplicants = DAOFactory.getFactory().getPetDAO().getPetsByPreference(petPreference);
 		
 		// 3. Send data to the view
-		getServletContext().getRequestDispatcher("/jsp/ListPets.jsp").forward(request, response);
-	}	
+		request.setAttribute("catalogue", petApplicants);
+		getServletContext().getRequestDispatcher("/jsp/Catalogue.jsp").forward(request, response);
+	}
 
 }
