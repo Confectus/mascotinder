@@ -32,7 +32,7 @@ public class Preference implements Serializable {
 	private Integer maximumAge;
 	
 	@OneToOne
-	@JoinColumn
+	@JoinColumn(name = "FK_Preference_Pet")
 	private Pet pet;
 	
 	public Preference() {
