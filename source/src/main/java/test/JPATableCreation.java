@@ -36,7 +36,7 @@ public class JPATableCreation {
 		
 		String[] sex = {"male","female"};
 		for (int i=0;i<15;i++) {
-			Pet pet = new Pet(null, "mascota" + i, "a", "y", 12 + i, owners.get(i%2));
+			Pet pet = new Pet(null, "mascota" + i, "dog", sex[i % 2], 12 + i, owners.get(i%2));
 			DAOFactory.getFactory().getPetDAO().create(pet);
 			
 			PetImage image = new PetImage(null, fileToBase64String(files.get(i%3)), pet);
