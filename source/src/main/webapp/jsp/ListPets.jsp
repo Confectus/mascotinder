@@ -41,7 +41,9 @@
 				<div class="row card-container border-conf">
 					<!-- Pet profile photo -->
 					<div class="col-3 profile-pet-photo">
-						<h1 style="text-align: center; padding: 60px;" class="text-light">Photo goes here!</h1>
+						<h1 style="text-align: center; padding: 60px;" class="text-light">
+						<img src="data:image/png;base64,${pet.images[0].base64Image}" />
+						</h1>
 					</div>
 					<!-- Pet description -->
 					<div class="col mh-100">
