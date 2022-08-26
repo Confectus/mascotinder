@@ -8,9 +8,12 @@ public class JPATableCreation {
 	
 	public static void main(String[] args) {
 		
-		Owner owner1 = new Owner("francisco.encalada01@epn.edu.ec", "Francisco", "rafa123123", null);		
+		// owners creations
+		Owner owner1 = new Owner("francisco.encalada01@epn.edu.ec", "Francisco", "rafa123123");		
 		DAOFactory.getFactory().getOwnerDAO().create(owner1);
+		System.out.println("Owners creation was done!");
 		
+		// pets creations
 		Pet pt = new Pet();
 		pt.setName("Alta");
 		pt.setAge(12);
@@ -26,7 +29,8 @@ public class JPATableCreation {
 		pt2.setOwner(owner1);
 		
 		DAOFactory.getFactory().getPetDAO().create(pt);
-		DAOFactory.getFactory().getPetDAO().create(pt2);		
+		DAOFactory.getFactory().getPetDAO().create(pt2);
+		System.out.println("Pets creation was done!");
 	}
 	
 }

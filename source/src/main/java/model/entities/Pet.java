@@ -40,24 +40,20 @@ public class Pet implements Serializable {
 	
 	@OneToOne(cascade = CascadeType.ALL,fetch = FetchType.LAZY,mappedBy = "pet")
 	private Preference preference;
-	
-	
-	
-	
-	
-	public Pet() {}
+		
+	public Pet() {
+		
+	}
 
-	public Pet(Integer id, String name, String type, String sex, int age,Owner owner) {
+	public Pet(Integer id, String name, String type, String sex, int age, Owner owner) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.type = type;
 		this.sex = sex;
 		this.age = age;
-		this.owner=owner;
+		this.owner = owner;
 	}
-	
-	/* Getters */
 	
 	public Integer getId() {
 		return id;
@@ -69,9 +65,7 @@ public class Pet implements Serializable {
 
 	public String getType() {
 		return type;
-	}
-
-	
+	}	
 
 	public int getAge() {
 		return age;
@@ -83,11 +77,7 @@ public class Pet implements Serializable {
 	
 	public String getSex() {
 		return sex;
-	}
-
-	
-	/* Setters */
-	
+	}	
 
 	public void setOwner(Owner owner) {
 		this.owner = owner;
@@ -105,23 +95,12 @@ public class Pet implements Serializable {
 		this.type = type;
 	}
 
-
 	public void setAge(int age) {
 		this.age = age;
 	}
 	
 	public void setSex(String sex) {
 		this.sex = sex;
-	}
-
-	@Override
-	public String toString() {
-		return "Pet [id=" + id + ", name=" + name + ", type=" + type + ", specie=" + sex + ", age=" + age
-				+  "]";
-	}
-
-
-	
-	
+	}	
 	
 }

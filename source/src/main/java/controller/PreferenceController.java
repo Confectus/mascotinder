@@ -8,8 +8,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
 import model.dao.DAOFactory;
+import model.entities.Pet;
 import model.entities.Preference;
 
 @WebServlet("/PreferenceController")
@@ -32,11 +32,38 @@ public class PreferenceController extends HttpServlet {
 		// 3. Send data to the view
 		request.setAttribute("pet_preference", petPreference);
 		request.setAttribute("types", types);
+		request.setAttribute("petId", petId);
+		
 		getServletContext().getRequestDispatcher("/jsp/Preference.jsp").forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+		// 1. Get parameters
+		String preferenceType = request.getParameter("pet_type");
+		String preferenceSex = request.getParameter("pet_sex");
+		Integer preferenceMinimumAge = Integer.parseInt(request.getParameter("pet_minimum_age"));
+		Integer preferenceMaximumAge = Integer.parseInt(request.getParameter("pet_maximum_age"));
+		Integer petId = Integer.parseInt(request.getParameter("petId"));
+		
+		// 2. Talk with the model
+		Preference currentPreference = DAOFactory.getFactory().getPreferenceDAO().getPreferenceByPetId(petId);
+		
+		if (currentPreference != null) {
+			currentPreference.setType(preferenceType);
+			currentPreference.setSex(preferenceSex);
+			currentPreference.setMinimumAge(preferenceMinimumAge);
+			currentPreference.setMaximumAge(preferenceMaximumAge);
+			
+			DAOFactory.getFactory().getPreferenceDAO().update(currentPreference);
+		}
+		else {
+			Pet pet = DAOFactory.getFactory().getPetDAO().read(petId);
+			Preference newPreference = new Preference(0, preferenceType, preferenceSex, preferenceMinimumAge, preferenceMaximumAge, pet);			
+			DAOFactory.getFactory().getPreferenceDAO().create(newPreference);
+		}		
+		
+		// 3. Send data to the view
+		getServletContext().getRequestDispatcher("/ListPetsController").forward(request, response);
 	}
 
 }

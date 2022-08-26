@@ -18,7 +18,7 @@
 <body>
 	<nav class="navbar navbar-dark banner-config">
 		<div class="container-fluid">
-			<span class="navbar-brand mb-0 h1 app-title">Mascotinder</span>
+			<span class="navbar-brand mb-0 h1 app-title">MascoTinder</span>
 		</div>
 	</nav>
 	<div class="wrapper">

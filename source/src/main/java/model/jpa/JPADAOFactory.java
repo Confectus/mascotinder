@@ -5,7 +5,7 @@ import model.dao.OwnerDAO;
 import model.dao.PetDAO;
 import model.dao.PreferenceDAO;
 
-public class JPADAOFactory extends DAOFactory{
+public class JPADAOFactory extends DAOFactory {
 
 	@Override
 	public PetDAO getPetDAO() {

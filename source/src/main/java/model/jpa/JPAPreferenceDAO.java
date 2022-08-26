@@ -20,7 +20,7 @@ public class JPAPreferenceDAO extends JPAGenericDAO<Preference, Integer> impleme
 		Query query = this.em.createQuery(sentence);
 		query.setParameter("param_id", id);
 		try {
-			preference = (Preference) query.getResultList();
+			preference = (Preference) query.getSingleResult();
 		}catch(Exception e) {
 			e.printStackTrace();
 		}

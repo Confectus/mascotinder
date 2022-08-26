@@ -7,7 +7,8 @@ import javax.persistence.Query;
 import model.dao.OwnerDAO;
 import model.entities.Owner;
 
-public class JPAOwnerDAO  extends JPAGenericDAO<Owner, Integer> implements OwnerDAO{
+public class JPAOwnerDAO  extends JPAGenericDAO<Owner, Integer> implements OwnerDAO {
+	
 	EntityManager e = Persistence.createEntityManagerFactory("mascotinder").createEntityManager();
 	
 	public JPAOwnerDAO() {
@@ -22,7 +23,7 @@ public class JPAOwnerDAO  extends JPAGenericDAO<Owner, Integer> implements Owner
 		Query query = e.createQuery(sentenceJPQL);
 		query.setParameter("p1", email);
 		query.setParameter("p2", password);
-		System.out.println(email + "   " + password);
+
 		try {
 			authorizedOwner = (Owner) query.getSingleResult();
 		}
