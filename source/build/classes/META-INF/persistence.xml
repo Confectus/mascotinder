@@ -4,6 +4,7 @@
 	<class>model.entities.Pet</class>
 	<class>model.entities.Owner</class>
 	<class>model.entities.Preference</class>	
+	<class>model.entities.PetImage</class>	
 		<properties>
 			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/mascotinder"/>
 			<property name="javax.persistence.jdbc.user" value="root"/>

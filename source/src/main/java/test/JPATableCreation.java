@@ -17,9 +17,13 @@ public class JPATableCreation {
 	
 	public static void main(String[] args)  {
 		
-		File file1 = new File("../mascotinderConcept2/img/pelusin.jpg");
-		File file2 = new File("../mascotinderConcept2/img/pelusin2.jpg");
-		File file3 = new File("../mascotinderConcept2/img/pelusin3.jpg");
+		File file1 = new File("img/pelusin.jpg");
+		File file2 = new File("img/pelusin2.jpg");
+		File file3 = new File("img/pelusin3.jpg");
+		
+		System.out.println(file1.canRead());
+		
+		System.out.println(file1.getAbsolutePath());
 		
 		Owner owner1 = new Owner("francisco.encalada01@epn.edu.ec", "Francisco", "rafa123123");		
 		DAOFactory.getFactory().getOwnerDAO().create(owner1);
