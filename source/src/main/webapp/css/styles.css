@@ -141,6 +141,10 @@
 	margin: 5%;
 }
 
+.card-total-container {
+	margin: 0%;
+}
+
 .my-pets-text {
 	font-weight: bold;
 	color: #bcbbbc;

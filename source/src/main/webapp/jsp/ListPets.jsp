@@ -35,7 +35,7 @@
 		</div>
 	</div>
 
-	<div class="card-container" style="border: 0px solid black;">
+	<div class="card-total-container">
 		<c:forEach items="${pets}" var="pet">
 			<!-- Pets cards -->
 				<div class="row card-container border-conf">
@@ -45,28 +45,28 @@
 					</div>
 					<!-- Pet description -->
 					<div class="col mh-100">
-						<div class="row mh-100 ht-100" style="border: 0px solid red;">
+						<div class="row mh-100 ht-100">
 							<h1 id="pet-title">${pet.name}</h1>
 						</div>
-						<div class="row mh-100 ht-100 color-blue" style="border: 0px solid red;">
+						<div class="row mh-100 ht-100 color-blue">
 							<div class="center-description">
 								<p>My pet ${pet.name} is a ${pet.age} year old ${pet.sex}, looking for a match in Mascotinder.</p>
 							</div>
 						</div>
 						<div class="row mh-100 pet-options-row ht-100">
-							<div class="col" style="border: 0px solid red;">
+							<div class="col">
 								<div class="preferences-text">
 									<a href="PreferenceController?petId=${pet.id}">
 										PREFERENCES
 									</a>
 								</div>
 							</div>
-							<div class="col color-blue" style="border: 0px solid red;">
+							<div class="col color-blue">
 								<p class="center-text">
 									MATCHS <i class="bi bi-heart-fill"></i> 123
 								</p>
 							</div>
-							<div class="col color-blue" style="border: 0px solid red;">
+							<div class="col color-blue">
 								<p class="center-text">SEARCH</p>
 							</div>
 						</div>
