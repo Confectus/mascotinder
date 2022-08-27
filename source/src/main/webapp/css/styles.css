@@ -292,6 +292,9 @@
 	border: none;
 }
 
+
+
+/*Catalogue*/
 .save-text {
 	font-size: 1.5rem;
 	text-decoration: none;
@@ -300,3 +303,37 @@
 .save-text:hover {
 	font-weight: bold;
 }
+
+.carousel-control-next-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23319EFF' viewBox='0 0 8 8'%3E%3Cpath d='M2.75 0l-1.5 1.5 2.5 2.5-2.5 2.5 1.5 1.5 4-4-4-4z'/%3E%3C/svg%3E");
+}
+
+.carousel-control-prev-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23319EFF' viewBox='0 0 8 8'%3E%3Cpath d='M5.25 0l-4 4 4 4 1.5-1.5-2.5-2.5 2.5-2.5-1.5-1.5z'/%3E%3C/svg%3E");
+}
+
+.carousel .item {
+  height: 300px;
+}
+
+.catalogue-pet-photo img{
+	padding: 0;
+	margin: 0;
+	border-radius: 10px 10px 10px 10px;
+	box-shadow: 0 10px 30px 0 rgba(0, 0, 0, 0.2);
+	height: 300px;
+	width: 300px;
+}
+
+.carousel-text{
+	color:black;
+}
+
+.nav-like{
+	height: 12px;
+	width:auto;
+}
+
+.like{
+	margin: 0 10px;
+	}
