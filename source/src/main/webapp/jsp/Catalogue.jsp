@@ -30,23 +30,23 @@
 	
 	
 <!-- Carousel -->	
-<div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
-  <div class="carousel-inner">   
-    <c:forEach items="${catalogue[0].images}" var="img">
-    	<c:choose>
-    		<c:when test="${img.id == 1}">
-    			<div class="carousel-item active catalogue-pet-photo">
-			      <img class="rounded mx-auto d-block" height: 150px src="data:image/png;base64,${img.base64Image}" alt="First slide">
-			    </div>
-    		</c:when>
-    		<c:otherwise>
-    			<div class="carousel-item catalogue-pet-photo">
-			      <img class="rounded mx-auto d-block" height: 150px src="data:image/png;base64,${img.base64Image}" alt="Second slide">
-			    </div>
-    		</c:otherwise>
-    	</c:choose> 
-	  	
-	</c:forEach>
+		<div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+		  <div class="carousel-inner">   
+		    <c:forEach items="${catalogue[0].images}" var="img">
+		    	<c:choose>
+		    		<c:when test="${img.id == 1}">
+		    			<div class="carousel-item active catalogue-pet-photo">
+					      <img class="rounded mx-auto d-block" height: 150px src="data:image/png;base64,${img.base64Image}" alt="First slide">
+					    </div>
+		    		</c:when>
+		    		<c:otherwise>
+		    			<div class="carousel-item catalogue-pet-photo">
+					      <img class="rounded mx-auto d-block" height: 150px src="data:image/png;base64,${img.base64Image}" alt="Second slide">
+					    </div>
+		    		</c:otherwise>
+		    	</c:choose> 
+			  	
+			</c:forEach>
   
   </div>
   <a class="carousel-control-prev" href="#carouselExampleControls"  role="button" data-slide="prev">
@@ -61,7 +61,7 @@
 	
 	<div class="position-relative nav-like">
 	<!-- Like -->
-	<a class="btn btn-primary position-absolute top-100 end-50 like" style="background-color: #319EFF; border: none;" href="#!" role="button" id="like_btn">
+	<a class="btn btn-primary position-absolute top-100 end-50 like"  style="background-color: #319EFF; border: none;" href="#!" role="button" id="like_btn">
 	  <i class="fa fa-thumbs-up prueba" ></i>
 	</a>
 	<!-- DisLike -->
@@ -73,21 +73,6 @@
 	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-	
-	<script>
-	var lenghtCatalogue = Object.keys("$(catalogue)").length
-	$(document).ready(function(){ 
-		$(".like").click(function(){
-			const myJSON = JSON.stringify(${catalogue[1].name});
-			$("#namePet").text('${catalogue[1].name}');
-			console.log(myJSON);
-				
-				//${catalogue[0].name}
-	
-		})
-		
-	   
-	});
-	</script>
+
 </body>
 </html>

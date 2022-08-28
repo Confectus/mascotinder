@@ -124,11 +124,6 @@ public class Pet implements Serializable {
 		this.images = images;
 	}
 
-	@Override
-	public String toString() {
-		return "\"Pet id=" + id  + name + ", age=" + age  + "\" ";
-				
-	}	
 	
 	
 	
