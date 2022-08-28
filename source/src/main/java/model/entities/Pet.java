@@ -15,7 +15,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
-@Entity (name = "Pet")
+@Entity (name = "pet")
 public class Pet implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
@@ -36,21 +36,21 @@ public class Pet implements Serializable {
 	@Column(name = "age")
 	private int age;
 	
-	@JoinColumn(name = "FK_Pet_Owner")
+	@JoinColumn(name = "owner")
 	@ManyToOne
 	private Owner owner;
-	
-	@OneToOne(cascade = CascadeType.ALL,fetch = FetchType.LAZY, mappedBy = "pet")
-	private Preference preference;
 	
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "pet")
 	private List<PetImage> images;
 	
-	@OneToMany(mappedBy = "applicant")
+	@OneToOne(cascade = CascadeType.ALL,fetch = FetchType.LAZY, mappedBy = "pet")
+	private Preference preference;	
+	
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "requester")
 	private List<Match> matches;
 		
 	public Pet() {
-		
+		super();
 	}
 
 	public Pet(Integer id, String name, String type, String sex, int age, Owner owner) {
@@ -61,6 +61,42 @@ public class Pet implements Serializable {
 		this.sex = sex;
 		this.age = age;
 		this.owner = owner;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+	
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public void setType(String type) {
+		this.type = type;
+	}
+	
+	public void setSex(String sex) {
+		this.sex = sex;
+	}
+	
+	public void setAge(int age) {
+		this.age = age;
+	}
+	
+	public void setOwner(Owner owner) {
+		this.owner = owner;
+	}
+	
+	public void setImages(List<PetImage> images) {
+		this.images = images;
+	}
+	
+	public void setPreference(Preference preference) {
+		this.preference = preference;
+	}
+	
+	public void setMatches(List<Match> matches) {
+		this.matches = matches;
 	}
 	
 	public Integer getId() {
@@ -74,7 +110,11 @@ public class Pet implements Serializable {
 	public String getType() {
 		return type;
 	}	
-
+	
+	public String getSex() {
+		return sex;
+	}	
+	
 	public int getAge() {
 		return age;
 	}
@@ -83,59 +123,16 @@ public class Pet implements Serializable {
 		return owner;
 	}
 	
-	public String getSex() {
-		return sex;
-	}	
-
-	public List<Match> getMatches() {
-		return matches;
-	}
-
-	public void setOwner(Owner owner) {
-		this.owner = owner;
-	}
-
-	public void setId(Integer id) {
-		this.id = id;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public void setType(String type) {
-		this.type = type;
-	}
-
-	public void setAge(int age) {
-		this.age = age;
+	public List<PetImage> getImages() {
+		return images;
 	}
 	
-	public void setSex(String sex) {
-		this.sex = sex;
-	}
-
 	public Preference getPreference() {
 		return preference;
 	}
 
-	public void setPreference(Preference preference) {
-		this.preference = preference;
-	}
-
-	public List<PetImage> getImages() {
-		return images;
-	}
-
-	public void setImages(List<PetImage> images) {
-		this.images = images;
-	}
-
-	
-	
-	
-	public void setMatches(List<Match> matches) {
-		this.matches = matches;
-	}
+	public List<Match> getMatches() {
+		return matches;
+	}	
 	
 }

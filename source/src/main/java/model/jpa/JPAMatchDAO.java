@@ -15,12 +15,13 @@ public class JPAMatchDAO extends JPAGenericDAO<Match, Integer> implements MatchD
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<Match> getMatchesByPetId(Integer petId) {
+	public List<Match> getMatchesByPetId(Integer id) {
 		List<Match> matches = null;
 		
-		String sentence = "SELECT m from Match m WHERE (m.requester.id= :param_pet_id AND m.applicant IS NOT NULL) OR (m.applicant.id= :param_pet_id AND m.requester IS NOT NULL)";
+		String sentence = "SELECT m FROM petmatch m WHERE m.confirmation= :confirmation AND (m.requester.id= :pet_id OR m.applicant.id= :pet_id)";
 		Query query = this.em.createQuery(sentence);
-		query.setParameter("param_pet_id", petId);
+		query.setParameter("pet_id", id);
+		query.setParameter("confirmation", true);
 		
 		try {
 			matches = (List<Match>) query.getResultList();

@@ -1,11 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
+<c:set var="requester_pet" scope="request" value="${requester_pet}"/>
+
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Pets List</title>
+<title>Matches</title>
 
 <!-- Bootstrap -->
 <link
@@ -17,59 +19,39 @@
 <!-- CSS style sheet -->
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/styles.css">
 </head>
+<body>
 
-<body>	
 	<%@include file="../templates/banner.html" %>
 	
-	<div class="container-conf">
-		<div class="list-title">
-			<p class="h1 my-pets-text">
-				My pets
-			</p>
-		</div>
 
-		<div class="add-btn">
-			<a href="#" class="text-light new-pet-text">
-				New pet
-			</a>
-		</div>
-	</div>
-
+	<p class="h1 my-pets-text">
+		Matches of ${requester_pet.name}
+	</p>
+	
 	<div class="card-total-container">
-		<c:forEach items="${pets}" var="pet">
-			<!-- Pets cards -->
-				<div class="row card-container border-conf">
+		<c:forEach items="${pets}" var="applicant_pet">
+			<div class="row card-container border-conf">
 					<!-- Pet profile photo -->
 					<div class="col-3 profile-pet-photo">
-						<img src="data:image/png;base64,${pet.images[0].base64Image}" />
+						<img src="data:image/png;base64,${applicant_pet.images[0].base64Image}" />
 					</div>
 					<!-- Pet description -->
 					<div class="col mh-100">
 						<div class="row mh-100 ht-100">
-							<h1 id="pet-title">${pet.name}</h1>
+							<h1 id="pet-title">${applicant_pet.name}</h1>
 						</div>
 						<div class="row mh-100 ht-100 color-blue">
 							<div class="center-description">
-								<p>My pet ${pet.name} is a ${pet.age} year old ${pet.sex}, looking for a match in Mascotinder.</p>
+								<p>${requester_pet.name} has a match with ${applicant_pet.name}. It is ${applicant_pet.age} years old ${applicant_pet.sex}.</p>
 							</div>
 						</div>
 						<div class="row mh-100 pet-options-row ht-100">
 							<div class="col">
-								<div class="preferences-text">
-									<a href="PreferenceController?pet_id=${pet.id}">
-										PREFERENCES
+								<div>
+									<a href="">
+										MESSAGES
 									</a>
 								</div>
-							</div>
-							<div class="col color-blue">
-								<p class="center-text">
-									<a href="MatchesController?pet_id=${pet.id}">
-										MATCHES
-									</a><i class="bi bi-heart-fill"></i> ${pet.matches.size()}
-								</p>
-							</div>
-							<div class="col color-blue">
-								<p class="center-text"><a href="CatalogueController?pet_id=${pet.id}">SEARCH</a></p>
 							</div>
 						</div>
 					</div>

@@ -2,16 +2,15 @@ package model.entities;
 
 import java.io.Serializable;
 
-import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
-@Entity (name = "Match")
+@Entity (name = "petmatch")
 public class Match implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -20,15 +19,38 @@ public class Match implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	
-	@JoinColumn(name = "FK_Pet_Requester", referencedColumnName = "id")
-	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@Column(name = "confirmation")
+	private Boolean confirmation;
+	
+	@JoinColumn(name = "requester")
+	@ManyToOne
 	private Pet requester;
 	
+	@JoinColumn(name = "applicant")
 	@ManyToOne
 	private Pet applicant;
 	
 	public Match() {
-		
+		super();
+	}
+	
+	public Match(Boolean confirmation, Pet requester, Pet applicant) {
+		super();
+		this.confirmation = confirmation;
+		this.requester = requester;
+		this.applicant = applicant;
+	}
+	
+	public void setId(Integer id) {
+		this.id = id;
+	}	
+	
+	public void setRequester(Pet requester) {
+		this.requester = requester;
+	}	
+
+	public void setApplicant(Pet applicant) {
+		this.applicant = applicant;
 	}
 
 	public Integer getId() {
@@ -41,18 +63,6 @@ public class Match implements Serializable {
 	
 	public Pet getApplicant() {
 		return applicant;
-	}
-
-	public void setId(Integer id) {
-		this.id = id;
-	}	
-
-	public void setRequester(Pet requester) {
-		this.requester = requester;
-	}	
-
-	public void setApplicant(Pet applicant) {
-		this.applicant = applicant;
 	}
 	
 }

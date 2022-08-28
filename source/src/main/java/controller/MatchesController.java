@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import model.dao.DAOFactory;
 import model.entities.Match;
+import model.entities.Pet;
 
 @WebServlet("/MatchesController")
 public class MatchesController extends HttpServlet {
@@ -37,14 +38,18 @@ public class MatchesController extends HttpServlet {
 	
 	private void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// 1. Get parameters
-		Integer petId = Integer.parseInt(request.getParameter("petId"));
+		Integer petId = Integer.parseInt(request.getParameter("pet_id"));
 		
 		// 2. Talk with the model
-		List<Match> matches = DAOFactory.getFactory().getMatchDAO().getMatchesByPetId(petId);
+		Pet requesterPet = DAOFactory.getFactory().getPetDAO().read(petId);
+		List<Match> petMatches = DAOFactory.getFactory().getMatchDAO().getMatchesByPetId(petId);
+		List<Pet> pets = DAOFactory.getFactory().getPetDAO().getPetsFromConfirmedMatches(petId, petMatches);		
 		
 		// 3. Send data to the view
-		request.setAttribute("matches", matches);
-		getServletContext().getRequestDispatcher("/jsp/Matches.jsp").forward(request, response);
+		request.setAttribute("requester_pet", requesterPet);
+		request.setAttribute("pets", pets);
+		
+		getServletContext().getRequestDispatcher("/jsp/ListMatches.jsp").forward(request, response);
 	}
 
 }

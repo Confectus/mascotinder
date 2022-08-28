@@ -7,15 +7,13 @@ import model.dao.GenericDAO;
 
 public class JPAGenericDAO<T,ID> implements GenericDAO<T, ID> {
 	
-	private Class<T> persistenceClass;
-	
-	EntityManager em;
+	private Class<T> persistenceClass;	
+	protected EntityManager em;
 	
 	public JPAGenericDAO(Class<T> persistenceClass) {
 		this.persistenceClass = persistenceClass;
 		em = Persistence.createEntityManagerFactory("mascotinder").createEntityManager();
 	}
-
 	
 	@Override
 	public void create(T entity) {

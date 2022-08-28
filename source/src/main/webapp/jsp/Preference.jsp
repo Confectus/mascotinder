@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
-<c:set var="pet_preference" scope="request" value="${pet_preference}"/>
+<c:set var="pet_preference" scope="request" value="${preference}"/>
 
 <!DOCTYPE html>
 <html>
@@ -43,7 +43,7 @@
 			<div class="row-sm-12 custom-select center-select">
 				<select name="pet_type" id="pet_type">
 					<c:forEach items="${types}" var="types">
-						<option value="${types}" ${(pet_preference != null && pet_preference.type == types) ? 'selected' : ''}>${types}</option>
+						<option value="${types}" ${(preference != null && preference.type == types) ? 'selected' : ''}>${types}</option>
 					</c:forEach>	 
 				</select>
 			</div>
@@ -52,8 +52,8 @@
 			</div>
 			<div class="row-sm-12 custom-select center-select">
 				<select name="pet_sex" id="pet_sex">	
-					<option value="male" ${(pet_preference != null && pet_preference.sex == 'male') ? 'selected' : ''}>Male</option>	 
-					<option value="female" ${(pet_preference != null && pet_preference.sex == 'female') ? 'selected' : ''}>Female</option>
+					<option value="male" ${(preference != null && preference.sex == 'male') ? 'selected' : ''}>Male</option>	 
+					<option value="female" ${(preference != null && preference.sex == 'female') ? 'selected' : ''}>Female</option>
 				</select>
 			</div>
 			<div class="row general-title color-blue">
@@ -65,7 +65,7 @@
 					<div class="row custom-select center-select">
 						<select name="pet_minimum_age" id="pet_minimum_age">	
 							<c:forEach begin="1" end="20" varStatus="loop">
-							    <option value="${loop.index}" ${(pet_preference != null && pet_preference.minimumAge == loop.index) ? 'selected' : ''}>${loop.index}</option>
+							    <option value="${loop.index}" ${(preference != null && preference.minimumAge == loop.index) ? 'selected' : ''}>${loop.index}</option>
 							</c:forEach>
 						</select>
 					</div>
@@ -75,14 +75,14 @@
 					<div class=" row custom-select center-select">
 						<select name="pet_maximum_age" id="pet_maximum_age">	
 							<c:forEach begin="1" end="20" varStatus="loop">
-							    <option value="${loop.index}" ${(pet_preference != null && pet_preference.maximumAge == loop.index) ? 'selected' : ''}>${loop.index}</option>
+							    <option value="${loop.index}" ${(preference != null && preference.maximumAge == loop.index) ? 'selected' : ''}>${loop.index}</option>
 							</c:forEach>			
 						</select>
 					</div>
 				</div>
 			</div>
 		</div>
-		<input type="hidden" name="petId" value="${petId}">
+		<input type="hidden" name="pet_id" value="${pet_id}">
 		<input type="submit" value="Save" class="save-btn text-light save-text">
 	</form>
 	

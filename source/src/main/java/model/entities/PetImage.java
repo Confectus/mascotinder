@@ -10,7 +10,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 
-@Entity (name = "PetImage")
+@Entity (name = "petimage")
 public class PetImage implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
@@ -20,14 +20,12 @@ public class PetImage implements Serializable{
 	private Integer id;
 
 	@Lob
-	@Column(name = "base64Image")
+	@Column(name = "base64image")
 	private String base64Image;
 	
-	@JoinColumn(name = "FK_Image_Pet")
+	@JoinColumn(name = "pet")
 	@ManyToOne
-	private Pet pet;
-	
-	
+	private Pet pet;	
 
 	public PetImage() {
 		super();
@@ -39,26 +37,29 @@ public class PetImage implements Serializable{
 		this.base64Image = base64Image;
 		this.pet = pet;
 	}
-
-	public Integer getId() {
-		return id;
-	}
-
+	
 	public void setId(Integer id) {
 		this.id = id;
 	}
-
+	
+	public void setBase64Image(String base64Image) {
+		this.base64Image = base64Image;
+	}
+	
+	public void setPet(Pet pet) {
+		this.pet = pet;
+	}	
+	
+	public Integer getId() {
+		return id;
+	}	
+	
 	public String getBase64Image() {
 		return base64Image;
 	}
 
-	public void setBase64Image(String base64Image) {
-		this.base64Image = base64Image;
+	public Pet getPet() {
+		return pet;
 	}
-
-
-	
-	
-	
 	
 }

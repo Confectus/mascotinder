@@ -10,7 +10,7 @@ import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
-@Entity (name = "Owner")
+@Entity (name = "owner")
 public class Owner implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -24,12 +24,12 @@ public class Owner implements Serializable {
 	@Column(name = "password")
 	private String password;
 	
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY,mappedBy = "owner")
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "owner")
 	private List<Pet> myPets;	
 	
 	public Owner() {
-		
-	}	
+		super();
+	}
 
 	public Owner(String email, String name, String password) {
 		super();
@@ -37,37 +37,37 @@ public class Owner implements Serializable {
 		this.name = name;
 		this.password = password;
 	}
-
-	public List<Pet> getMyPets() {
-		return myPets;
+	
+	public void setEmail(String email) {
+		this.email = email;
 	}
-
+	
+	public void setName(String name) {
+		this.name = name;
+	}
+	
+	public void setPassword(String password) {
+		this.password = password;
+	}
+	
 	public void setMyPets(List<Pet> myPets) {
 		this.myPets = myPets;
-	}
+	}	
 
 	public String getEmail() {
 		return email;
 	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
+	
 	public String getName() {
 		return name;
 	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
+	
 	public String getPassword() {
 		return password;
 	}
 
-	public void setPassword(String password) {
-		this.password = password;
-	}
+	public List<Pet> getMyPets() {
+		return myPets;
+	}	
 	
 }

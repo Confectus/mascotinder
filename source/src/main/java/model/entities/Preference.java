@@ -10,7 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 
-@Entity(name = "Preference")
+@Entity(name = "preference")
 public class Preference implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -25,18 +25,18 @@ public class Preference implements Serializable {
 	@Column(name = "sex")
 	private String sex;
 	
-	@Column(name = "minimumAge")
+	@Column(name = "minimumage")
 	private Integer minimumAge;
 	
-	@Column(name = "maximumAge")
+	@Column(name = "maximumage")
 	private Integer maximumAge;
 	
 	@OneToOne
-	@JoinColumn(name = "FK_Preference_Pet")
+	@JoinColumn(name = "pet")
 	private Pet pet;
 	
 	public Preference() {
-		
+		super();
 	}	
 	
 	public Preference(Integer id, String type, String sex, Integer minimumAge, Integer maximumAge, Pet pet) {
@@ -49,52 +49,52 @@ public class Preference implements Serializable {
 		this.pet = pet;
 	}
 	
-	public Integer getId() {
-		return id;
-	}
-	
 	public void setId(Integer id) {
 		this.id = id;
-	}
-	
-	public String getType() {
-		return type;
 	}
 	
 	public void setType(String type) {
 		this.type = type;
 	}
 	
-	public String getSex() {
-		return sex;
-	}
-	
 	public void setSex(String sex) {
 		this.sex = sex;
-	}
-	
-	public Integer getMinimumAge() {
-		return minimumAge;
 	}
 	
 	public void setMinimumAge(Integer minimumAge) {
 		this.minimumAge = minimumAge;
 	}
 	
-	public Integer getMaximumAge() {
-		return maximumAge;
-	}
-	
 	public void setMaximumAge(Integer maximumAge) {
 		this.maximumAge = maximumAge;
 	}
 	
-	public Pet getPet() {
-		return pet;
-	}
-	
 	public void setPet(Pet pet) {
 		this.pet = pet;
+	}
+	
+	public Integer getId() {
+		return id;
+	}	
+
+	public String getType() {
+		return type;
+	}	
+	
+	public String getSex() {
+		return sex;
+	}
+	
+	public Integer getMinimumAge() {
+		return minimumAge;
+	}
+	
+	public Integer getMaximumAge() {
+		return maximumAge;
+	}
+	
+	public Pet getPet() {
+		return pet;
 	}
 
 }

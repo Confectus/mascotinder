@@ -1,6 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -23,8 +23,8 @@
 	%>
 	<div class="container-conf ">
 		<div class="d-block text-center" style="margin-left: auto; margin-right: auto" >
-			<p class="h2 my-pets-text " id="namePet">${catalogue[0].name}</p>
-			<p class="h3 my-pets-text " id="agePet">${catalogue[0].age}</p>
+			<p class="h2 my-pets-text " id="namePet">${pets[0].name}</p>
+			<p class="h3 my-pets-text " id="agePet">${pets[0].age}</p>
 		</div>
 	</div>
 	
@@ -32,7 +32,7 @@
 <!-- Carousel -->	
 		<div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
 		  <div class="carousel-inner">   
-		    <c:forEach items="${catalogue[0].images}" var="img">
+		    <c:forEach items="${pets[0].images}" var="img">
 		    	<c:choose>
 		    		<c:when test="${img.id == 1}">
 		    			<div class="carousel-item active catalogue-pet-photo">

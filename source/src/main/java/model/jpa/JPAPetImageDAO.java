@@ -1,26 +1,31 @@
 package model.jpa;
-import javax.persistence.EntityManager;
-import javax.persistence.Persistence;
+
 import javax.persistence.Query;
 import model.dao.PetImageDAO;
 import model.entities.PetImage;
 
 public class JPAPetImageDAO extends JPAGenericDAO<PetImage, Integer> implements PetImageDAO {
 
-	EntityManager e = Persistence.createEntityManagerFactory("mascotinder").createEntityManager();
-	
 	public JPAPetImageDAO() {
 		super(PetImage.class);
 	}
 
 	@Override
-	public PetImage getFirstPetImage(Integer petId) {
-		PetImage image;
-		String sentenceJPQL = "SELECT i FROM PetImage i WHERE i.pet.id= :p1 AND i.pet.petImage.id= :p2";
-		Query query = e.createQuery(sentenceJPQL);
-		query.setParameter("p1", petId);
-		query.setParameter("p2", 1);
-		image = (PetImage) query.getSingleResult();
+	public PetImage getFirstPetImage(Integer id) {
+		PetImage image = null;
+		
+		String sentenceJPQL = "SELECT i FROM pet_image i WHERE i.pet.id= :pet_id AND i.pet.petImage.id= :image_id";
+		Query query = em.createQuery(sentenceJPQL);
+		query.setParameter("pet_id", id);
+		query.setParameter("image_id", 1);
+		
+		try {
+			image = (PetImage) query.getSingleResult();
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+		}
+		
 		return image;
 	}
 

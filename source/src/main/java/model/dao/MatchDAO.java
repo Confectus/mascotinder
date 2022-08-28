@@ -6,6 +6,6 @@ import model.entities.Match;
 
 public interface MatchDAO extends GenericDAO<Match, Integer> {
 	
-	public List<Match> getMatchesByPetId(Integer petId);
+	public List<Match> getMatchesByPetId(Integer id);
 
 }

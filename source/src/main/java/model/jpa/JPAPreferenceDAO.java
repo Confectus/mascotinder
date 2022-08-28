@@ -15,9 +15,9 @@ public class JPAPreferenceDAO extends JPAGenericDAO<Preference, Integer> impleme
 	public Preference getPreferenceByPetId(Integer id) {
 		Preference preference = null;
 		
-		String sentence = "SELECT p from Preference p WHERE p.pet.id= :param_id";
+		String sentence = "SELECT p FROM preference p WHERE p.pet.id= :pet_id";
 		Query query = this.em.createQuery(sentence);
-		query.setParameter("param_id", id);
+		query.setParameter("pet_id", id);
 		
 		try {
 			preference = (Preference) query.getSingleResult();
