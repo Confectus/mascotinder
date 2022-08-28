@@ -165,6 +165,7 @@
 	box-shadow: 0 10px 30px 0 rgba(0, 0, 0, 0.2);
 	height: 300px;
 	width: 300px;
+	object-fit: cover;
 }
 
 .rad-border {
@@ -274,7 +275,7 @@
 }
 
 .general-title {
-	font-size: 20px;
+	font-size: 24px;
 	font-weight: bold;
 	text-align: left;
 }
@@ -288,10 +289,89 @@
 	justify-content: center;
 	margin: 3% 0% auto auto;
 	width: 10rem;
-	height: 50px;
+	height: 40px;
 	border: none;
 }
 
+.custom-select {
+	position: relative;
+}
+
+.custom-select select {
+  	display: none;
+}
+
+.select-selected {
+	background:
+	    linear-gradient(
+	    	to right,
+	      	#ffffff 0%, 
+	      	#ffffff 85%,
+	      	#319EFF 15%,
+	     	#319EFF 100%
+	    );
+	border: 1px solid transparent;
+  	border-color: #dddddd;
+  	color: #319EFF;
+  	font-weight: bold;
+  	padding: 8px 16px;
+  	cursor: pointer;
+}
+
+.center-select {
+	margin: 3% 15% 3% 15%;
+}
+
+/* Style the arrow inside the select element: */
+.select-selected:after {
+  	position: absolute;
+  	content: "";
+  	top: 14px;
+  	right: 10px;
+  	width: 0;
+  	height: 0;
+  	border: 6px solid transparent;
+  	border-color: #fff transparent transparent transparent;
+}
+
+/* Point the arrow upwards when the select box is open (active): */
+.select-selected.select-arrow-active:after {
+  	border-color: transparent transparent #fff transparent;
+  	top: 7px;
+}
+
+/* style the items (options), including the selected item: */
+.select-items div {
+  	color: #319EFF;
+  	font-weight: bold;
+  	padding: 8px 16px;
+  	border: 1px solid transparent;
+  	border-color: transparent transparent rgba(0, 0, 0, 0.1) transparent;
+  	cursor: pointer;
+  	color: #ffffff;
+}
+
+/* Style items (options): */
+.select-items {
+  	position: absolute;
+	background: #319EFF;
+	color: #000000;
+ 	top: 100%;
+  	left: 0;
+  	right: 0;
+  	z-index: 0;
+}
+
+/* Hide the items when the select box is closed: */
+.select-hide {
+  display: none;
+}
+
+.select-items div:hover, .same-as-selected {
+	background-color: rgba(0, 0, 0, 0.1);
+}
+
+/*Catalog*/
 .save-text {
 	font-size: 1.5rem;
 	text-decoration: none;
@@ -300,3 +380,37 @@
 .save-text:hover {
 	font-weight: bold;
 }
+
+.carousel-control-next-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23319EFF' viewBox='0 0 8 8'%3E%3Cpath d='M2.75 0l-1.5 1.5 2.5 2.5-2.5 2.5 1.5 1.5 4-4-4-4z'/%3E%3C/svg%3E");
+}
+
+.carousel-control-prev-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23319EFF' viewBox='0 0 8 8'%3E%3Cpath d='M5.25 0l-4 4 4 4 1.5-1.5-2.5-2.5 2.5-2.5-1.5-1.5z'/%3E%3C/svg%3E");
+}
+
+.carousel .item {
+  height: 300px;
+}
+
+.catalogue-pet-photo img{
+	padding: 0;
+	margin: 0;
+	border-radius: 10px 10px 10px 10px;
+	box-shadow: 0 10px 30px 0 rgba(0, 0, 0, 0.2);
+	height: 300px;
+	width: 300px;
+}
+
+.carousel-text{
+	color:black;
+}
+
+.nav-like{
+	height: 12px;
+	width:auto;
+}
+
+.like{
+	margin: 0 10px;
+	}
