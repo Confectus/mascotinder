@@ -45,7 +45,7 @@ public class JPATableCreation {
 			PetImage image2 = new PetImage(null, fileToBase64String(files.get(2)), pet);
 			DAOFactory.getFactory().getPetImageDAO().create(image2);
 			
-			Preference preference = new Preference(null, "dog", sex[i % 2], i % 3 + 5, i % 3 + 8, pet);
+			Preference preference = new Preference(null, "dog", sex[i % 2], i % 3 + 5, i % 3 + 12, pet);
 			DAOFactory.getFactory().getPreferenceDAO().create(preference);
 		}
 		
