@@ -5,12 +5,13 @@
 	<class>model.entities.Owner</class>
 	<class>model.entities.Preference</class>	
 	<class>model.entities.PetImage</class>	
+	<class>model.entities.Match</class>	
 		<properties>
 			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/mascotinder"/>
 			<property name="javax.persistence.jdbc.user" value="root"/>
 			<property name="javax.persistence.jdbc.password" value=""/>
 			<property name="javax.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
-			<property name="eclipselink.ddl-generation" value="none"/>
+			<property name="eclipselink.ddl-generation" value="drop-and-create-tables"/>
 		</properties>
 	</persistence-unit>
 </persistence>

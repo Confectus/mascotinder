@@ -40,11 +40,14 @@ public class Pet implements Serializable {
 	@ManyToOne
 	private Owner owner;
 	
-	@OneToOne(cascade = CascadeType.ALL,fetch = FetchType.LAZY,mappedBy = "pet")
+	@OneToOne(cascade = CascadeType.ALL,fetch = FetchType.LAZY, mappedBy = "pet")
 	private Preference preference;
 	
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY,mappedBy = "pet")
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "pet")
 	private List<PetImage> images;
+	
+	@OneToMany(mappedBy = "applicant")
+	private List<Match> matches;
 		
 	public Pet() {
 		
@@ -83,6 +86,10 @@ public class Pet implements Serializable {
 	public String getSex() {
 		return sex;
 	}	
+
+	public List<Match> getMatches() {
+		return matches;
+	}
 
 	public void setOwner(Owner owner) {
 		this.owner = owner;
@@ -124,6 +131,8 @@ public class Pet implements Serializable {
 		this.images = images;
 	}	
 	
-	
+	public void setMatches(List<Match> matches) {
+		this.matches = matches;
+	}
 	
 }

@@ -12,4 +12,5 @@ public interface PetDAO extends GenericDAO<Pet, Integer> {
 	public List<String> getTypes();
 	
 	public List<Pet> getPetsByPreference(Preference preference);
+	
 }

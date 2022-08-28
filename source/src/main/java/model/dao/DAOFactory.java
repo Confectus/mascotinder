@@ -18,4 +18,6 @@ public abstract class DAOFactory {
 	
 	public abstract PreferenceDAO getPreferenceDAO();
 	
+	public abstract MatchDAO getMatchDAO();
+	
 }
