@@ -264,6 +264,10 @@
 }
 
 /* Preferences */
+.center-select {
+	margin: 3% 15% 3% 15%;
+}
+
 .form-table-config {
 	border-radius: 10px 10px 10px 10px;
 	padding: 30px;
@@ -316,10 +320,6 @@
   	font-weight: bold;
   	padding: 8px 16px;
   	cursor: pointer;
-}
-
-.center-select {
-	margin: 3% 15% 3% 15%;
 }
 
 /* Style the arrow inside the select element: */
@@ -413,4 +413,4 @@
 
 .like{
 	margin: 0 10px;
-	}
+}

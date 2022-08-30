@@ -1,8 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
-<c:set var="pet_preference" scope="request" value="${preference}"/>
-
+<c:set var="pet_preference" scope="request" value="${preference}"/>s
 <!DOCTYPE html>
 <html>
 <head>
@@ -42,7 +41,8 @@
 			</div>
 			<div class="row-sm-12 custom-select center-select">
 				<select name="pet_type" id="pet_type">
-					<c:forEach items="${types}" var="types">
+					<option value="0">Select option:</option>
+					<c:forEach items="${types}" var="types">	
 						<option value="${types}" ${(preference != null && preference.type == types) ? 'selected' : ''}>${types}</option>
 					</c:forEach>	 
 				</select>
@@ -50,8 +50,9 @@
 			<div class="row general-title color-blue">
 				<p>Sex:</p>
 			</div>
-			<div class="row-sm-12 custom-select center-select">
-				<select name="pet_sex" id="pet_sex">	
+			<div class="row-sm-12 center-select custom-select">
+				<select name="pet_sex" id="pet_sex">
+					<option value="0">Select option:</option>	 	
 					<option value="male" ${(preference != null && preference.sex == 'male') ? 'selected' : ''}>Male</option>	 
 					<option value="female" ${(preference != null && preference.sex == 'female') ? 'selected' : ''}>Female</option>
 				</select>
@@ -63,7 +64,8 @@
 				<div class="col text-center">
 					<div class="text-center general-title color-blue">Min age</div>
 					<div class="row custom-select center-select">
-						<select name="pet_minimum_age" id="pet_minimum_age">	
+						<select name="pet_minimum_age" id="pet_minimum_age">
+							<option value="0">Select option:</option>	
 							<c:forEach begin="1" end="20" varStatus="loop">
 							    <option value="${loop.index}" ${(preference != null && preference.minimumAge == loop.index) ? 'selected' : ''}>${loop.index}</option>
 							</c:forEach>
@@ -74,6 +76,7 @@
 					<div class="text-center general-title color-blue">Max age</div>
 					<div class=" row custom-select center-select">
 						<select name="pet_maximum_age" id="pet_maximum_age">	
+							<option value="0">Select option:</option>
 							<c:forEach begin="1" end="20" varStatus="loop">
 							    <option value="${loop.index}" ${(preference != null && preference.maximumAge == loop.index) ? 'selected' : ''}>${loop.index}</option>
 							</c:forEach>			
@@ -107,43 +110,43 @@
 		  	/* For each element, create a new DIV that will contain the option list: */
 		  	b = document.createElement("DIV");
 		  	b.setAttribute("class", "select-items select-hide");
-		  	
-		for (j = 1; j < ll; j++) {
-		    /* For each option in the original select element, create a new DIV that will act as an option item: */
-		    c = document.createElement("DIV");
-		    c.innerHTML = selElmnt.options[j].innerHTML;
-		    
-		    c.addEventListener("click", function(e) {
-		    	/* When an item is clicked, update the original select box, and the selected item: */
-		        var y, i, k, s, h, sl, yl;
-		        s = this.parentNode.parentNode.getElementsByTagName("select")[0];
-		        sl = s.length;
-		        h = this.parentNode.previousSibling;
-		        for (i = 0; i < sl; i++) {
-		        	if (s.options[i].innerHTML == this.innerHTML) {
-		        		s.selectedIndex = i;
-		            	h.innerHTML = this.innerHTML;
-		            	y = this.parentNode.getElementsByClassName("same-as-selected");
-		            	yl = y.length;
-			            for (k = 0; k < yl; k++) {
-			            	y[k].removeAttribute("class");
-			            }
-			            this.setAttribute("class", "same-as-selected");
-			            break;
-		          }
-		        }
-		        h.click();
-		    });
-		    b.appendChild(c);
-		  }
-		  x[i].appendChild(b);
-		  a.addEventListener("click", function(e) {
-			  	/* Close any other select boxes, and open/close the current select box: */
-			  	e.stopPropagation();
-		    	closeAllSelect(this);
-		    	this.nextSibling.classList.toggle("select-hide");
-		    	this.classList.toggle("select-arrow-active");
-		  });
+		
+			for (j = 1; j < ll; j++) {
+			    /* For each option in the original select element, create a new DIV that will act as an option item: */
+			    c = document.createElement("DIV");
+			    c.innerHTML = selElmnt.options[j].innerHTML;
+			    
+			    c.addEventListener("click", function(e) {
+			    	/* When an item is clicked, update the original select box, and the selected item: */
+			        var y, i, k, s, h, sl, yl;
+			        s = this.parentNode.parentNode.getElementsByTagName("select")[0];
+			        sl = s.length;
+			        h = this.parentNode.previousSibling;
+			        for (i = 0; i < sl; i++) {
+			        	if (s.options[i].innerHTML == this.innerHTML) {
+			        		s.selectedIndex = i;
+			            	h.innerHTML = this.innerHTML;
+			            	y = this.parentNode.getElementsByClassName("same-as-selected");
+			            	yl = y.length;
+				            for (k = 0; k < yl; k++) {
+				            	y[k].removeAttribute("class");
+				            }
+				            this.setAttribute("class", "same-as-selected");
+				            break;
+			          }
+			        }
+			        h.click();
+			    });
+			    b.appendChild(c);
+			  }
+			  x[i].appendChild(b);
+			  a.addEventListener("click", function(e) {
+				  	/* Close any other select boxes, and open/close the current select box: */
+				  	e.stopPropagation();
+			    	closeAllSelect(this);
+			    	this.nextSibling.classList.toggle("select-hide");
+			    	this.classList.toggle("select-arrow-active");
+			  });
 		}
 		
 		/* Colse all selected boxes except the current one*/
