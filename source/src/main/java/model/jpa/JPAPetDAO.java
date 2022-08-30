@@ -106,4 +106,23 @@ public class JPAPetDAO extends JPAGenericDAO<Pet, Integer> implements PetDAO {
 		return pets;
 	}
 
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Pet> getCandidates(String ownerEmail) {
+		List<Pet> pets = new ArrayList<>();
+		String sentence = "SELECT p FROM pet p WHERE p.owner.email <> :email";
+		Query query = this.em.createQuery(sentence);
+		query.setParameter("email", ownerEmail);
+		
+		try {
+			pets = (List<Pet>) query.getResultList();
+			
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+		}
+		
+		return pets;
+	}
+
 }

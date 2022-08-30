@@ -16,4 +16,6 @@ public interface PetDAO extends GenericDAO<Pet, Integer> {
 	
 	public List<Pet> getPetsFromConfirmedMatches(Integer id, List<Match> matches);
 	
+	public List<Pet> getCandidates(String OwnerEmail);
+	
 }
