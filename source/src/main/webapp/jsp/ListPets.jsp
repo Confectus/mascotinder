@@ -50,7 +50,7 @@
 						</div>
 						<div class="row mh-100 ht-100 color-blue">
 							<div class="center-description">
-								<p>My pet ${pet.name} is a ${pet.age} year old ${pet.sex}, looking for a match in Mascotinder.</p>
+								<p>My pet ${pet.name} is a ${pet.age} year old ${pet.sex} looking for a partner in MascoTinder.</p>
 							</div>
 						</div>
 						<div class="row mh-100 pet-options-row ht-100">
