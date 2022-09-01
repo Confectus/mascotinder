@@ -53,12 +53,12 @@ public class CatalogueController extends HttpServlet {
 		// 2. Talk with the model
 		Preference petPreference = DAOFactory.getFactory().getPreferenceDAO().getPreferenceByPetId(petId);
 		List<Pet> petApplicants = DAOFactory.getFactory().getPetDAO().getPetsByPreference(petPreference);
-		System.out.println(petApplicants);				
-		
+		System.out.println(petApplicants);			
 		// 3. Send data to the view
 		request.setAttribute("pets", petApplicants);
 		
 		getServletContext().getRequestDispatcher("/jsp/Catalogue.jsp").forward(request, response);
+				
 	}
 
 }

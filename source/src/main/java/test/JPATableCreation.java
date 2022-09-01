@@ -6,14 +6,17 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Base64;
+import java.util.List;
 
 import javax.imageio.ImageIO;
 
+import controller.CatalogueController;
 import model.dao.DAOFactory;
 import model.entities.Owner;
 import model.entities.Pet;
 import model.entities.PetImage;
 import model.entities.Preference;
+import model.jpa.JPAPetDAO;
 
 public class JPATableCreation {
 	
