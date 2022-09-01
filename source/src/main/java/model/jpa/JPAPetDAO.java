@@ -58,15 +58,15 @@ public class JPAPetDAO extends JPAGenericDAO<Pet, Integer> implements PetDAO {
 	@Override
 	public List<Pet> getPetsByPreference(Preference preference) {
 		List<Pet> pets = null;
-		/*Get the email of the owner for not show their pets*/
-		String emailOwner = preference.getPet().getOwner().getEmail();	
-		String sentence = "SELECT p FROM pet p WHERE p.owner <>: pet_owner AND p.type= :pref_type AND p.sex= :pref_sex AND p.age BETWEEN :pref_minimum_age AND :pref_maximum_age"; 
+		
+		String sentence = "SELECT p FROM pet p WHERE p.owner.email<> :pet_owner AND  p.type= :pref_type AND p.sex= :pref_sex AND p.age BETWEEN :pref_minimum_age AND :pref_maximum_age"; 
 		Query query = this.em.createQuery(sentence);
 		query.setParameter("pref_type", preference.getType());
 		query.setParameter("pref_sex", preference.getSex());
 		query.setParameter("pref_minimum_age", preference.getMinimumAge());
 		query.setParameter("pref_maximum_age", preference.getMaximumAge());
-		query.setParameter("pet_owner", emailOwner);
+		query.setParameter("pet_owner", preference.getPet().getOwner().getEmail());
+		
 		try {
 			pets = (List<Pet>) query.getResultList();			
 		
