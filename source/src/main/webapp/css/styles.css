@@ -133,7 +133,7 @@
 }
 
 .add-btn:hover {
-	font-weight: bold;
+	box-shadow: 0px 1px 18px #319EFF;
 }
 
 /* Pets cards */
@@ -202,7 +202,7 @@
 .center-text {
 	font-size: 20px;
 	font-weight: bold;
-  	text-align: center;
+  	text-align: left;
   	margin-top: 12%;
 }
 
@@ -211,11 +211,6 @@
 	font-weight: bold;
 	text-align: left;
 	margin-top: 12%;
-}
-
-.preferences-text a {
-	text-decoration: none;
-	color: #319EFF;
 }
 
 .preferences-text a:hover {
@@ -297,6 +292,10 @@
 	border: none;
 }
 
+.save-btn:hover {
+	box-shadow: 0px 1px 18px #319EFF;
+}
+
 .custom-select {
 	position: relative;
 }
@@ -375,10 +374,6 @@
 .save-text {
 	font-size: 1.5rem;
 	text-decoration: none;
-}
-
-.save-text:hover {
-	font-weight: bold;
 }
 
 .carousel-control-next-icon {
