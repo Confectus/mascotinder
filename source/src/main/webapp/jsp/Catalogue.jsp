@@ -1,6 +1,7 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
+<c:set var="pet_id" scope="request" value="${pet_id}"/>
 
 <!DOCTYPE html>
 <html>
@@ -21,7 +22,8 @@
 <script type='text/javascript'
 	src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 
-
+<script
+    src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 
 
 </head>
@@ -29,13 +31,14 @@
 
 	<script>
 	
-		function addNode(name,age,image1,image2,image3) {
+		function addNode(id,name,age,image1,image2,image3) {
 			
 			var nodeHTML = document.createElement("div");
 			
 			nodeHTML.className = "carousel-item catalogue-pet-photo";
 			var stringHTML = "<div class='container-conf '><div class='d-block text-center'" +
 			" style='margin-left: auto; margin-right: auto'>"+
+			"<p style='display: none' id='requesterId'>"+id+"</p>"+
 			"<p style='display: none' id='imagePet1'>data:image/png;base64,"+image1+"</p>"+
 			"<p style='display: none' id='imagePet2'>data:image/png;base64,"+image2+"</p>"+
 			"<p style='display: none' id='imagePet3'>data:image/png;base64,"+image3+"</p>"+
@@ -108,6 +111,22 @@
 			
 		}
 		
+		function processLike() {						
+			var applicantId = document.querySelector("#requesterId").textContent;	
+			var requesterId = urlParams.get("pet_id");
+			
+			applicantId = Number(applicantId);
+			requesterId = Number(requesterId);
+			
+			$.ajax({
+	            type : "POST",
+	            data : {
+	                value: 1
+	            },
+	            url : "/mascotinder/MatchesController"
+	        });
+		}
+		
 	</script>
 		
 		
@@ -115,13 +134,8 @@
 
 	<!-- Nav -->
 	<%@include file="../templates/banner.html"%>
-	<%!public int count = 0;%>
 
-
-
-	<!-- Carousel -->
-	
-	
+	<!-- Carousel -->	
 	<div id="petCarousel" class="carousel slide" data-interval="false">
 		
 		
@@ -129,7 +143,7 @@
 			<c:forEach items="${pets}" var="pet" varStatus="vs">
 				<script>
 					var bodyHTML = document.getElementById("petCarouselInner");
-					var nodeHTML = addNode("${pet.name}","${pet.age}","${pet.images[0].base64Image}","${pet.images[1].base64Image}","${pet.images[2].base64Image}");
+					var nodeHTML = addNode("${pet.id}","${pet.name}","${pet.age}","${pet.images[0].base64Image}","${pet.images[1].base64Image}","${pet.images[2].base64Image}");
 					bodyHTML.appendChild(nodeHTML);
 				</script>
 			</c:forEach>
@@ -172,7 +186,7 @@
 		<!-- Like -->
 		<a class="btn btn-primary position-absolute top-100 end-50 like"
 			style="background-color: #319EFF; border: none;" href="#petCarousel"
-			role="button" data-slide="next"> <i
+			role="button" data-slide="next" onclick="processLike();"> <i
 			class="fa fa-thumbs-up prueba"></i>
 		</a>
 		<!-- DisLike -->

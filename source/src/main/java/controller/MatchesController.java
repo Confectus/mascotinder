@@ -8,6 +8,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.xml.crypto.Data;
+
+import com.mysql.cj.xdevapi.JsonParser;
 
 import model.dao.DAOFactory;
 import model.entities.Match;
@@ -29,11 +32,25 @@ public class MatchesController extends HttpServlet {
 		processRequest(request, response);
 	}
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {	
 		// 1. Get parameters
+		System.out.println(request.getParameter("data"));
+		
+		Integer requesterId = Integer.parseInt(request.getParameter("requester_id"));
+		Integer applicantId = Integer.parseInt(request.getParameter("applicant_id"));
+		Boolean isLike = Boolean.parseBoolean(request.getParameter("is_like"));
+		
+		System.out.println(requesterId + " " + applicantId + " " + isLike);
+		
 		// 2. Talk with the model
+		Pet requester = DAOFactory.getFactory().getPetDAO().read(requesterId);
+		Pet applicant = DAOFactory.getFactory().getPetDAO().read(applicantId);
+		
+		if (isLike) {
+			DAOFactory.getFactory().getMatchDAO().processLikeBetweenPets(requester, applicant);
+		}
+		
 		// 3. Send data to the view
-		processRequest(request, response);
 	}
 	
 	private void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

@@ -31,19 +31,9 @@ public class CatalogueController extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// 1. Get parameters
-		Integer requesterId = Integer.parseInt(request.getParameter("requester_id"));
-		Integer applicantId = Integer.parseInt(request.getParameter("applicant_id"));
-		Boolean isLike = Boolean.parseBoolean(request.getParameter("is_like"));
-		
 		// 2. Talk with the model
-		Pet requester = DAOFactory.getFactory().getPetDAO().read(requesterId);
-		Pet applicant = DAOFactory.getFactory().getPetDAO().read(applicantId);
-		
-		if (isLike) {
-			DAOFactory.getFactory().getMatchDAO().processLikeBetweenPets(requester, applicant);
-		}
-		
-		// 3. Send data to the view		
+		// 3. Send data to the view
+		processRequest(request, response);
 	}
 	
 	private void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
