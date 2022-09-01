@@ -52,9 +52,17 @@ public class Match implements Serializable {
 	public void setApplicant(Pet applicant) {
 		this.applicant = applicant;
 	}
+	
+	public void setConfirmation(Boolean confirmation) {
+		this.confirmation = confirmation;
+	}
 
 	public Integer getId() {
 		return id;
+	}
+	
+	public Boolean getConfirmation() {
+		return confirmation;
 	}
 	
 	public Pet getRequester() {
