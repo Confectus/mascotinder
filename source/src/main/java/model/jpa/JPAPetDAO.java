@@ -59,13 +59,16 @@ public class JPAPetDAO extends JPAGenericDAO<Pet, Integer> implements PetDAO {
 	public List<Pet> getPetsByPreference(Preference preference) {
 		List<Pet> pets = null;
 		
-		String sentence = "SELECT p FROM pet p WHERE p.owner.email<> :pet_owner AND  p.type= :pref_type AND p.sex= :pref_sex AND p.age BETWEEN :pref_minimum_age AND :pref_maximum_age"; 
-		Query query = this.em.createQuery(sentence);
-		query.setParameter("pref_type", preference.getType());
-		query.setParameter("pref_sex", preference.getSex());
-		query.setParameter("pref_minimum_age", preference.getMinimumAge());
-		query.setParameter("pref_maximum_age", preference.getMaximumAge());
-		query.setParameter("pet_owner", preference.getPet().getOwner().getEmail());
+		String sentence = "SELECT * FROM pet p WHERE p.owner<> '" + preference.getPet().getOwner().getEmail() +
+				"' AND p.type= '"+ preference.getType() + "' AND p.sex= '" + preference.getSex() + 
+				"' AND p.age BETWEEN " + preference.getMinimumAge() + " AND " + preference.getMaximumAge() + " AND p.id NOT IN " + 
+				"(SELECT oe.rejectedPets_ID FROM owner_pet oe WHERE oe.rejectedOwners_EMAIL= '" + preference.getPet().getOwner().getEmail() + "')" + 
+				" AND p.id NOT IN (SELECT pm.requester FROM petmatch pm WHERE (pm.requester= " + preference.getPet().getId() + 
+				" OR pm.applicant= " + preference.getPet().getId() + ") AND pm.requester<> " + preference.getPet().getId() + 
+				" UNION SELECT pm.applicant FROM petmatch pm WHERE (pm.requester= " + preference.getPet().getId() + 
+				" OR pm.applicant= " + preference.getPet().getId() + ") AND pm.applicant<>" + preference.getPet().getId() + ")";
+		
+		Query query = this.em.createNativeQuery(sentence, Pet.class);
 		
 		try {
 			pets = (List<Pet>) query.getResultList();			
@@ -74,6 +77,14 @@ public class JPAPetDAO extends JPAGenericDAO<Pet, Integer> implements PetDAO {
 		catch(Exception e) {
 			e.printStackTrace();
 		}		
+		
+		System.out.println(sentence);
+		System.out.println("PETS:");
+		
+		for (Pet pet : pets) {
+			System.out.println(pet.getName() + " - " + pet.getId());
+		}
+		
 		return pets;
 	}
 

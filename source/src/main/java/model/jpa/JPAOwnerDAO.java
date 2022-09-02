@@ -1,11 +1,14 @@
 package model.jpa;
 
+import java.util.List;
+
 import javax.persistence.Query;
 
 import model.dao.OwnerDAO;
 import model.entities.Owner;
+import model.entities.Pet;
 
-public class JPAOwnerDAO  extends JPAGenericDAO<Owner, Integer> implements OwnerDAO {
+public class JPAOwnerDAO extends JPAGenericDAO<Owner, String> implements OwnerDAO {
 	
 	public JPAOwnerDAO() {
 		super(Owner.class);
@@ -28,6 +31,17 @@ public class JPAOwnerDAO  extends JPAGenericDAO<Owner, Integer> implements Owner
 		}
 		
 		return authorizedOwner;	
+	}
+
+	@Override
+	public void addRejectedPet(String ownerEmail, Pet rejectedPet) {
+		Owner rejectedOwner = read(ownerEmail);
+		List<Pet> rejectedPets = rejectedOwner.getRejectedPets();
+		
+		rejectedPets.add(rejectedPet);
+		rejectedOwner.setRejectedPets(rejectedPets);
+		
+		update(rejectedOwner);	
 	}
 
 }

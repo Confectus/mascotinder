@@ -8,6 +8,8 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
 @Entity (name = "owner")
@@ -25,7 +27,12 @@ public class Owner implements Serializable {
 	private String password;
 	
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "owner")
-	private List<Pet> myPets;	
+	private List<Pet> myPets;
+	
+	//@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "rejectedOwners")
+	@JoinColumn(name = "rejectedPet")
+	@ManyToMany
+	private List<Pet> rejectedPets;
 	
 	public Owner() {
 		super();
@@ -52,7 +59,11 @@ public class Owner implements Serializable {
 	
 	public void setMyPets(List<Pet> myPets) {
 		this.myPets = myPets;
-	}	
+	}
+	
+	public void setRejectedPets(List<Pet> rejectedPets) {
+		this.rejectedPets = rejectedPets;
+	}
 
 	public String getEmail() {
 		return email;
@@ -68,6 +79,10 @@ public class Owner implements Serializable {
 
 	public List<Pet> getMyPets() {
 		return myPets;
-	}	
+	}
+	
+	public List<Pet> getRejectedPets() {
+		return rejectedPets;
+	}
 	
 }

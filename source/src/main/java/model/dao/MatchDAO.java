@@ -9,8 +9,10 @@ public interface MatchDAO extends GenericDAO<Match, Integer> {
 	
 	public List<Match> getMatchesByPetId(Integer id);
 	
+	public Match getMatchBetweenPets(Integer requesterId, Integer applicantId);
+	
 	public void processLikeBetweenPets(Pet requester, Pet applicant);
 	
-	public Match getMatchBetweenPets(Integer requesterId, Integer applicantId);
+	public void processDislikeBetweenPets(Pet requester, Pet applicant);
 
 }
