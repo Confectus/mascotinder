@@ -16,15 +16,18 @@ public class ChatController extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		getRequest(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doGet(request, response);
+		getRequest(request, response);
 	}
 	
 	private void getRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+		// 1. Get parameters
+		// 2. Talk with the model
+		// 3. Send data to the view
+		response.sendRedirect("jsp/Chat.jsp");
 	}
 
 }
