@@ -38,8 +38,6 @@ public class MatchesController extends HttpServlet {
 		Integer applicantId = Integer.parseInt(request.getParameter("applicant_id"));
 		Boolean isLike = Boolean.parseBoolean(request.getParameter("is_like"));
 		
-		System.out.println(requesterId + " " + applicantId + " " + isLike);
-		
 		// 2. Talk with the model
 		Pet requester = DAOFactory.getFactory().getPetDAO().read(requesterId);
 		Pet applicant = DAOFactory.getFactory().getPetDAO().read(applicantId);

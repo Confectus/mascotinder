@@ -46,6 +46,7 @@ public class JPAMatchDAO extends JPAGenericDAO<Match, Integer> implements MatchD
 		}
 		else {
 			match.setConfirmation(true);
+			update(match);
 		}
 	}
 
