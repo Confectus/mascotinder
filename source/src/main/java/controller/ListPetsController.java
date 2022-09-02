@@ -45,5 +45,4 @@ public class ListPetsController extends HttpServlet {
 		// 3. Send data to the view
 		getServletContext().getRequestDispatcher("/jsp/ListPets.jsp").forward(request, response);
 	}	
-
 }
