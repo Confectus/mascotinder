@@ -45,8 +45,11 @@
 			"<p style='display: none' id='imagePet3'>data:image/png;base64,"+image3+"</p>"+
 			"<p class='h2 my-pets-text' id='namePet'>"+name+"</p><p class='h3 my-pets-text '"+
 			"id='agePet'>"+age+"</p></div></div>" + 
-			"<img class='rounded mx-auto d-block' height: 150px" +
-			" src='data:image/png;base64,"+image1+"'> </div>";
+			"<div style=''><img class='rounded mx-auto d-block' height: 150px src='data:image/png;base64,"+image1+"'></div>"+
+			"<div style='display: none'><img class='rounded mx-auto d-block' height: 150px src='data:image/png;base64,"+image2+"'></div>"+
+			"<div style='display: none'><img class='rounded mx-auto d-block' height: 150px src='data:image/png;base64,"+image3+"'></div>"+
+			"</div>";
+			
 			stringHTML = stringHTML.trim();
 			nodeHTML.innerHTML = stringHTML;
 			
@@ -55,13 +58,11 @@
 		}
 		window.ready = addNode;
 		
-		let photos = [
-			"data:image/png;base64,${pets[id].images[0].base64Image}",
-			"data:image/png;base64,${pets[id].images[1].base64Image}",
-			"data:image/png;base64,${pets[id].images[2].base64Image}"]
 		
 		function prev(){
-			var petPhotoPath = document.querySelector("#petCarouselInner > div.carousel-item.active.catalogue-pet-photo > img");
+			var petPhoto1Path = document.querySelector("#petCarouselInner > div.carousel-item.catalogue-pet-photo.active > div:nth-child(2)");
+			var petPhoto2Path = document.querySelector("#petCarouselInner > div.carousel-item.catalogue-pet-photo.active > div:nth-child(3)");
+			var petPhoto3Path = document.querySelector("#petCarouselInner > div.carousel-item.catalogue-pet-photo.active > div:nth-child(4)");
 			var indexOfPhotos = document.querySelector("#actualPhoto").textContent;
 			
 			if(indexOfPhotos > 0){
@@ -73,23 +74,28 @@
 			
 			switch(indexOfPhotos){
 				case 0:
-					console.log(indexOfPhotos);
-					petPhotoPath.src=document.querySelector("#imagePet1").textContent;
+					petPhoto1Path.style = "";
+					petPhoto2Path.style = "display: none";
+					petPhoto3Path.style = "display: none";
 					break;
 				case 1:
-					console.log(indexOfPhotos);
-					petPhotoPath.src=document.querySelector("#imagePet2").textContent;
+					petPhoto1Path.style = "display: none";
+					petPhoto2Path.style = "";
+					petPhoto3Path.style = "display: none";
 					break;
 				case 2:
-					console.log(indexOfPhotos);
-					petPhotoPath.src=document.querySelector("#imagePet3").textContent;
+					petPhoto1Path.style = "display: none";
+					petPhoto2Path.style = "display: none";
+					petPhoto3Path.style = "";
 					break;
 			}
 		}
 		
 		
 		function next(){
-			var petPhotoPath = document.querySelector("#petCarouselInner > div.carousel-item.active.catalogue-pet-photo > img");
+			var petPhoto1Path = document.querySelector("#petCarouselInner > div.carousel-item.catalogue-pet-photo.active > div:nth-child(2)");
+			var petPhoto2Path = document.querySelector("#petCarouselInner > div.carousel-item.catalogue-pet-photo.active > div:nth-child(3)");
+			var petPhoto3Path = document.querySelector("#petCarouselInner > div.carousel-item.catalogue-pet-photo.active > div:nth-child(4)");
 			var indexOfPhotos = document.querySelector("#actualPhoto").textContent;
 			indexOfPhotos = Number(indexOfPhotos);
 			
@@ -103,11 +109,20 @@
 			
 			switch(indexOfPhotos){
 				case 0:
-					petPhotoPath.src=document.querySelector("#imagePet1").textContent;
+					petPhoto1Path.style = "";
+					petPhoto2Path.style = "display: none";
+					petPhoto3Path.style = "display: none";
+					break;
 				case 1:
-					petPhotoPath.src=document.querySelector("#imagePet2").textContent;
+					petPhoto1Path.style = "display: none";
+					petPhoto2Path.style = "";
+					petPhoto3Path.style = "display: none";
+					break;
 				case 2:
-					petPhotoPath.src=document.querySelector("#imagePet3").textContent;
+					petPhoto1Path.style = "display: none";
+					petPhoto2Path.style = "display: none";
+					petPhoto3Path.style = "";
+					break;
 			}
 			
 		}
@@ -150,6 +165,7 @@
 			</c:forEach>
 
 
+			
 			<div class="carousel-item active catalogue-pet-photo">
 
 				<div class="container-conf ">
@@ -166,7 +182,7 @@
 					alt="Second slide">
 
 			</div>
-
+			
 
 
 		</div>
