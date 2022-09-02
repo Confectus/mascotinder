@@ -62,14 +62,13 @@ public class JPAPetDAO extends JPAGenericDAO<Pet, Integer> implements PetDAO {
 		String sentence = "SELECT * FROM pet p WHERE p.owner<> '" + preference.getPet().getOwner().getEmail() +
 				"' AND p.type= '"+ preference.getType() + "' AND p.sex= '" + preference.getSex() + 
 				"' AND p.age BETWEEN " + preference.getMinimumAge() + " AND " + preference.getMaximumAge() + " AND p.id NOT IN " + 
-				"(SELECT oe.rejectedPets_ID FROM owner_pet oe WHERE oe.rejectedOwners_EMAIL= '" + preference.getPet().getOwner().getEmail() + "')";
+				"(SELECT oe.rejectedPets_ID FROM owner_pet oe WHERE oe.rejectedOwners_EMAIL= '" + preference.getPet().getOwner().getEmail() + "')" + 
+				" AND p.id NOT IN (SELECT pm.requester FROM petmatch pm WHERE (pm.requester= " + preference.getPet().getId() + 
+				" OR pm.applicant= " + preference.getPet().getId() + ") AND pm.requester<> " + preference.getPet().getId() + 
+				" UNION SELECT pm.applicant FROM petmatch pm WHERE (pm.requester= " + preference.getPet().getId() + 
+				" OR pm.applicant= " + preference.getPet().getId() + ") AND pm.applicant<>" + preference.getPet().getId() + ")";
 		
 		Query query = this.em.createNativeQuery(sentence, Pet.class);
-		query.setParameter("pref_type", preference.getType());
-		query.setParameter("pref_sex", preference.getSex());
-		query.setParameter("pref_minimum_age", preference.getMinimumAge());
-		query.setParameter("pref_maximum_age", preference.getMaximumAge());
-		query.setParameter("pet_owner", preference.getPet().getOwner().getEmail());
 		
 		try {
 			pets = (List<Pet>) query.getResultList();			
@@ -79,8 +78,11 @@ public class JPAPetDAO extends JPAGenericDAO<Pet, Integer> implements PetDAO {
 			e.printStackTrace();
 		}		
 		
+		System.out.println(sentence);
+		System.out.println("PETS:");
+		
 		for (Pet pet : pets) {
-			System.out.println(pet.getId() + "   " + pet.getName());
+			System.out.println(pet.getName() + " - " + pet.getId());
 		}
 		
 		return pets;
