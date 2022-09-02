@@ -150,19 +150,7 @@
 				console.log(applicantId);
 				console.log(requesterId);
 				
-				var data = { 
-						applicantIdData : applicantId
-						requesterIdData : requesterId
-						};
 				
-				  jQuery.noConflict(true).ajax({
-				    type: "POST",
-				    url: '/session/storeValue',
-				    data: data,
-				    success: function() {
-				      console.log("Value added");
-				    }
-				  })
 			}
 		}
 		
