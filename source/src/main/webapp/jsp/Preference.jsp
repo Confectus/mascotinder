@@ -53,14 +53,8 @@
 			<div class="row general-title color-blue">
 				<p>Sex:</p>
 			</div>
-			<div class="row-sm-12 center-select custom-select">
-				<select name="pet_sex" id="pet_sex">
-					<option value="0">Select option:</option>
-					<option value="male"
-						${(preference != null && preference.sex == 'male') ? 'selected' : ''}>Male</option>
-					<option value="female"
-						${(preference != null && preference.sex == 'female') ? 'selected' : ''}>Female</option>
-				</select>
+			<div class="row-sm-12 center-select">
+				<p ${(preference.pet.sex != null && preference.pet.sex == 'male') ? preference.setSex('female') :  preference.setSex('male')}>${preference.sex}</p>
 			</div>
 			<div class="row general-title color-blue">
 				<p>Age range:</p>
@@ -92,8 +86,8 @@
 				</div>
 			</div>
 		</div>
-		<input type="hidden" name="pet_id" value="${pet_id}"> <input
-			type="submit" value="Save" class="save-btn text-light save-text">
+		<input type="hidden" name="pet_id" value="${pet_id}">
+		<input type="submit" value="Save" class="save-btn text-light save-text">
 	</form>
 
 	<script>
@@ -156,7 +150,7 @@
 			  });
 		}
 		
-		/* Colse all selected boxes except the current one*/
+		/* Close all selected boxes except the current one*/
 		function closeAllSelect(elmnt) {
 			var x, y, i, xl, yl, arrNo = [];
 		  	x = document.getElementsByClassName("select-items");
