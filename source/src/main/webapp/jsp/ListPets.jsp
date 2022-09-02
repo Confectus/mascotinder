@@ -29,7 +29,7 @@
 		</div>
 
 		<div class="add-btn">
-			<a href="#" class="text-light new-pet-text"> New pet </a>
+			<a href="RegisterController" class="text-light new-pet-text"> New pet </a>
 		</div>
 	</div>
 
