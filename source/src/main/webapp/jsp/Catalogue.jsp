@@ -192,7 +192,7 @@
 		<a class="carousel-control-prev" href="#imageCarousel" role="button">
 			<span class="carousel-control-prev-icon" aria-hidden="true"
 			onclick="prev();"></span> <span class="sr-only">Previous</span>
-		</a> <a class="carousel-control-next " href="#imageCarousel" role="button">
+		</a> <a style="max-height: 180px; margin: auto 0px;" class="carousel-control-next" href="#imageCarousel" role="button">
 			<span class="carousel-control-next-icon" aria-hidden="true"
 			onclick="next();"></span> <span class="sr-only">Next</span>
 		</a>
