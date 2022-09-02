@@ -8,9 +8,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.xml.crypto.Data;
-
-import com.mysql.cj.xdevapi.JsonParser;
 
 import model.dao.DAOFactory;
 import model.entities.Match;
@@ -44,6 +41,11 @@ public class MatchesController extends HttpServlet {
 		
 		if (isLike) {
 			DAOFactory.getFactory().getMatchDAO().processLikeBetweenPets(requester, applicant);
+		}
+		else {
+			DAOFactory.getFactory().getMatchDAO().processDislikeBetweenPets(requester, applicant);
+			DAOFactory.getFactory().getOwnerDAO().addRejectedPet(requester.getOwner().getEmail(), applicant);
+			DAOFactory.getFactory().getOwnerDAO().addRejectedPet(applicant.getOwner().getEmail(), requester);
 		}
 		
 		// 3. Send data to the view

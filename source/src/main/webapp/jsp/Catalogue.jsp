@@ -121,16 +121,16 @@
 			
 		}
 		
-		function processLike() {
+		function processMatchOperation(isLike) {
 			const queryString = window.location.search;
 			const urlParams = new URLSearchParams(queryString);
-
+			
 			var requesterId = urlParams.get("pet_id");
 			var applicantId = document.querySelector("#petCarouselInner > div.carousel-item.catalogue-pet-photo.active > div.container-conf > div > p:nth-child(1)").textContent;	
 			
 			requesterId = Number(requesterId);
-			applicantId = Number(applicantId);			
-					
+			applicantId = Number(applicantId);
+			
 			var dom = {};
 			dom.query = jQuery.noConflict(true);
 			
@@ -140,10 +140,15 @@
 				data: {
 					requester_id: requesterId,
 					applicant_id: applicantId,
-					is_like: true,
+					is_like: isLike,
 				},
 				success: function(result) {
-					console.log("MatchesController received the data correctly!");
+					if (isLike) {
+						console.log("MatchesController received the data correctly while processing a LIKE!");
+					}
+					else {
+						console.log("MatchesController received the data correctly while processing a DISLIKE!");
+					}
 				}
 			});
 		}
@@ -203,13 +208,14 @@
 		<!-- Like -->
 		<a class="btn btn-primary position-absolute top-100 end-50 like"
 			style="background-color: #319EFF; border: none;" href="#petCarousel"
-			role="button" data-slide="next" onclick="processLike();"> <i
+			role="button" data-slide="next" onclick="processMatchOperation(true);"> <i
 			class="fa fa-thumbs-up prueba"></i>
 		</a>
 		<!-- DisLike -->
 		<a class="btn btn-primary position-absolute top-100 start-50 "
 			style="background-color: #319EFF; border: none;" href="#petCarousel"
-			role="button" data-slide="next"> <i class="fa fa-thumbs-down"></i>
+			role="button" data-slide="next" onclick="processMatchOperation(false);"> <i 
+			class="fa fa-thumbs-down"></i>
 		</a>
 	</div>
 	<div style="display: none" id="actualPhoto">0</div>

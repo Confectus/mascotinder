@@ -4,7 +4,6 @@ import java.util.List;
 
 import javax.persistence.Query;
 
-import model.dao.DAOFactory;
 import model.dao.MatchDAO;
 import model.entities.Match;
 import model.entities.Pet;
@@ -37,20 +36,6 @@ public class JPAMatchDAO extends JPAGenericDAO<Match, Integer> implements MatchD
 	}
 
 	@Override
-	public void processLikeBetweenPets(Pet requester, Pet applicant) {
-		Match match = getMatchBetweenPets(requester.getId(), applicant.getId());
-		
-		if (match == null) {
-			match = new Match(false, requester, applicant);			
-			create(match);
-		}
-		else {
-			match.setConfirmation(true);
-			update(match);
-		}
-	}
-
-	@Override
 	public Match getMatchBetweenPets(Integer requesterId, Integer applicantId) {
 		Match match = null;
 		
@@ -70,4 +55,27 @@ public class JPAMatchDAO extends JPAGenericDAO<Match, Integer> implements MatchD
 		return match;
 	}
 
+	@Override
+	public void processLikeBetweenPets(Pet requester, Pet applicant) {
+		Match match = getMatchBetweenPets(requester.getId(), applicant.getId());
+		
+		if (match == null) {
+			match = new Match(false, requester, applicant);			
+			create(match);
+		}
+		else {
+			match.setConfirmation(true);
+			update(match);
+		}
+	}
+
+	@Override
+	public void processDislikeBetweenPets(Pet requester, Pet applicant) {
+		Match match = getMatchBetweenPets(requester.getId(), applicant.getId());
+		
+		if (match != null) {
+			delete(match);
+		}
+	}
+	
 }
