@@ -116,11 +116,6 @@
 	height: 50px;
 }
 
-.new-pet-text {
-	font-size: 1.5rem;
-	text-decoration: none;
-}
-
 .add-btn {
 	border-radius: 10px 10px 10px 10px;
 	background: #319EFF;
@@ -406,4 +401,44 @@
 
 .like {
 	margin: 0 10px;
+}
+
+/*Register pet*/
+.principal-card{
+    width: 80%; 
+    margin-left: auto; 
+    margin-right: auto;
+}
+.upload-image{
+    background: #319EFF;
+	border: none;
+	border-radius: 21px;
+	box-shadow: 0px 1px 8px #319EFF;
+	cursor: pointer;
+	color: white;
+	font-family: "Raleway SemiBold", sans-serif;
+	height: 42.3px;
+	margin: 0 auto;
+	margin-top: 50px;
+	transition: 0.25s;
+	width: 153px;
+}
+
+.new-pet-text {
+	font-size: 1.5rem;
+	text-decoration: none;
+}
+
+.pet-margin{
+    margin-bottom: 1rem;
+}
+
+.color-titles-form{
+    color: #319EFF;
+    font-weight: bold;
+    margin-top: 3%;
+}
+
+.size-select-new-pet{
+    width: 10%;
 }

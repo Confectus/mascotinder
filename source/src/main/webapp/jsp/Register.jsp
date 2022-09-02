@@ -42,6 +42,7 @@
                             <option>3</option>
                             <option>4</option>
                         </select>
+                        
                     </div>
                     <!--Field type-->
                     <div class="col-6 size-select-new-pet">
