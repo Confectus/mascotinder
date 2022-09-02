@@ -63,10 +63,14 @@ public class JPAPetDAO extends JPAGenericDAO<Pet, Integer> implements PetDAO {
 				"' AND p.type= '"+ preference.getType() + "' AND p.sex= '" + preference.getSex() + 
 				"' AND p.age BETWEEN " + preference.getMinimumAge() + " AND " + preference.getMaximumAge() + " AND p.id NOT IN " + 
 				"(SELECT oe.rejectedPets_ID FROM owner_pet oe WHERE oe.rejectedOwners_EMAIL= '" + preference.getPet().getOwner().getEmail() + "')" + 
-				" AND p.id NOT IN (SELECT pm.requester FROM petmatch pm WHERE (pm.requester= " + preference.getPet().getId() + 
+				
+				" AND p.id NOT IN (SELECT pm.applicant FROM petmatch pm WHERE pm.requester= " + preference.getPet().getId() + 
+				" UNION (SELECT pm.requester FROM petmatch pm WHERE (pm.requester= " + preference.getPet().getId() + 
 				" OR pm.applicant= " + preference.getPet().getId() + ") AND pm.requester<> " + preference.getPet().getId() + 
+				" AND pm.confirmation= 1" + 
 				" UNION SELECT pm.applicant FROM petmatch pm WHERE (pm.requester= " + preference.getPet().getId() + 
-				" OR pm.applicant= " + preference.getPet().getId() + ") AND pm.applicant<>" + preference.getPet().getId() + ")";
+				" OR pm.applicant= " + preference.getPet().getId() + ") AND pm.applicant<> " + preference.getPet().getId() + 
+				" AND pm.confirmation= 1))";
 		
 		Query query = this.em.createNativeQuery(sentence, Pet.class);
 		
