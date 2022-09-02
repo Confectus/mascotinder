@@ -22,7 +22,7 @@ public class JPATableCreation {
 	
 	public static void main(String[] args)  {
 		
-		
+		/*
 		ArrayList<File> files = new ArrayList<>();
 		files.add(new File("img/pelusin.jpg"));
 		files.add(new File("img/pelusin2.jpg"));
@@ -51,6 +51,104 @@ public class JPATableCreation {
 			Preference preference = new Preference(null, "dog", sex[i % 2], i % 3 + 5, i % 3 + 12, pet);
 			DAOFactory.getFactory().getPreferenceDAO().create(preference);
 		}
+		*/
+		
+		File directory = new File("img/benjamin 4");
+		ArrayList<File> benjamin = getFiles(directory);
+		
+		directory = new File("img/cheems 8");
+		ArrayList<File> cheems = getFiles(directory);
+		
+		directory = new File("img/milanesa 2");
+		ArrayList<File> milanesa = getFiles(directory);
+		
+		directory = new File("img/pugzilla 6");
+		ArrayList<File> pugzilla = getFiles(directory);
+		
+		directory = new File("img/zoe 6");
+		ArrayList<File> zoe = getFiles(directory);
+		
+		
+		ArrayList<Owner> owners = new ArrayList<>();
+		//owners.add(new Owner("", "", ""));
+		owners.add(new Owner("francisco.encalada01@epn.edu.ec", "Francisco", "rafa123123"));
+		owners.add(new Owner("oscarin@gmail.com", "Oscar Polo", "oscar123"));
+		owners.add(new Owner("jahaziela@gmail.com", "Jahaziela", "jazi123"));
+		owners.add(new Owner("pollito@gmail.com", "Gaby", "gaby123"));
+		
+		for (Owner owner : owners) {
+			DAOFactory.getFactory().getOwnerDAO().create(owner);
+		}
+		
+		//BENJAMIN
+		Pet pet = new Pet(null, "Benjamin", "dog", "male", 4, owners.get(1));
+		DAOFactory.getFactory().getPetDAO().create(pet);
+		
+		PetImage image = new PetImage(null, fileToBase64String(benjamin.get(0)), pet);
+		DAOFactory.getFactory().getPetImageDAO().create(image);
+		
+		image = new PetImage(null, fileToBase64String(benjamin.get(1)), pet);
+		DAOFactory.getFactory().getPetImageDAO().create(image);
+		
+		image = new PetImage(null, fileToBase64String(benjamin.get(2)), pet);
+		DAOFactory.getFactory().getPetImageDAO().create(image);
+		
+		
+		//CHEEMS
+		pet = new Pet(null, "Cheems", "dog", "male", 8, owners.get(2));
+		DAOFactory.getFactory().getPetDAO().create(pet);
+		
+		image = new PetImage(null, fileToBase64String(cheems.get(0)), pet);
+		DAOFactory.getFactory().getPetImageDAO().create(image);
+		
+		image = new PetImage(null, fileToBase64String(cheems.get(1)), pet);
+		DAOFactory.getFactory().getPetImageDAO().create(image);
+		
+		image = new PetImage(null, fileToBase64String(cheems.get(2)), pet);
+		DAOFactory.getFactory().getPetImageDAO().create(image);
+		
+		
+		//PUGZILLA
+		pet = new Pet(null, "Pugzilla", "dog", "female", 6, owners.get(0));
+		DAOFactory.getFactory().getPetDAO().create(pet);
+		
+		image = new PetImage(null, fileToBase64String(pugzilla.get(0)), pet);
+		DAOFactory.getFactory().getPetImageDAO().create(image);
+		
+		image = new PetImage(null, fileToBase64String(pugzilla.get(1)), pet);
+		DAOFactory.getFactory().getPetImageDAO().create(image);
+		
+		image = new PetImage(null, fileToBase64String(pugzilla.get(2)), pet);
+		DAOFactory.getFactory().getPetImageDAO().create(image);
+		
+		
+		//MILANESA
+		pet = new Pet(null, "Milanesa", "dog", "female", 2, owners.get(3));
+		DAOFactory.getFactory().getPetDAO().create(pet);
+		
+		image = new PetImage(null, fileToBase64String(milanesa.get(0)), pet);
+		DAOFactory.getFactory().getPetImageDAO().create(image);
+		
+		image = new PetImage(null, fileToBase64String(milanesa.get(1)), pet);
+		DAOFactory.getFactory().getPetImageDAO().create(image);
+		
+		image = new PetImage(null, fileToBase64String(milanesa.get(2)), pet);
+		DAOFactory.getFactory().getPetImageDAO().create(image);
+		
+		
+		//ZOE
+		pet = new Pet(null, "Zoe", "dog", "female", 2, owners.get(3));
+		DAOFactory.getFactory().getPetDAO().create(pet);
+		
+		image = new PetImage(null, fileToBase64String(zoe.get(0)), pet);
+		DAOFactory.getFactory().getPetImageDAO().create(image);
+		
+		image = new PetImage(null, fileToBase64String(zoe.get(1)), pet);
+		DAOFactory.getFactory().getPetImageDAO().create(image);
+		
+		image = new PetImage(null, fileToBase64String(zoe.get(2)), pet);
+		DAOFactory.getFactory().getPetImageDAO().create(image);
+		
 		
 				
 	}
@@ -71,6 +169,14 @@ public class JPATableCreation {
 		
 		return null;
 		
+	}
+	
+	public static ArrayList<File> getFiles(final File directory) {
+		ArrayList<File> files = new ArrayList<>();
+	    for (final File fileEntry : directory.listFiles()) {
+            files.add(fileEntry);
+	    }
+	    return files;
 	}
 	
 }

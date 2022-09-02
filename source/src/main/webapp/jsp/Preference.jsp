@@ -1,7 +1,8 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
-<c:set var="pet_preference" scope="request" value="${preference}"/>
+<c:set var="pet_preference" scope="request" value="${preference}" />
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,23 +16,24 @@
 	crossorigin="anonymous">
 
 <!-- Font Awesome -->
-<script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+<script src='https://kit.fontawesome.com/a076d05399.js'
+	crossorigin='anonymous'></script>
 
 <!-- CSS style sheet -->
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/styles.css">
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/css/styles.css">
 </head>
 <body>
 
-	<%@include file="../templates/banner.html" %>
-	
+	<%@include file="../templates/banner.html"%>
+
 	<div class="container-conf">
 		<div class="list-title">
-			<p class="h1 my-pets-text">
-				Preferences
-			</p>
+			<p class="h1 my-pets-text">Preferences</p>
 		</div>
 	</div>
-	<form method="post" action="PreferenceController" class="form-table-config">
+	<form method="post" action="PreferenceController"
+		class="form-table-config">
 		<div class="container mw-90 w-90 flex-column">
 			<div class="row my-pets-text">
 				<h3 style="font-weight: bold;">My pet preferences</h3>
@@ -42,9 +44,10 @@
 			<div class="row-sm-12 custom-select center-select">
 				<select name="pet_type" id="pet_type">
 					<option value="0">Select option:</option>
-					<c:forEach items="${types}" var="types">	
-						<option value="${types}" ${(preference != null && preference.type == types) ? 'selected' : ''}>${types}</option>
-					</c:forEach>	 
+					<c:forEach items="${types}" var="types">
+						<option value="${types}"
+							${(preference != null && preference.type == types) ? 'selected' : ''}>${types}</option>
+					</c:forEach>
 				</select>
 			</div>
 			<div class="row general-title color-blue">
@@ -52,9 +55,11 @@
 			</div>
 			<div class="row-sm-12 center-select custom-select">
 				<select name="pet_sex" id="pet_sex">
-					<option value="0">Select option:</option>	 	
-					<option value="male" ${(preference != null && preference.sex == 'male') ? 'selected' : ''}>Male</option>	 
-					<option value="female" ${(preference != null && preference.sex == 'female') ? 'selected' : ''}>Female</option>
+					<option value="0">Select option:</option>
+					<option value="male"
+						${(preference != null && preference.sex == 'male') ? 'selected' : ''}>Male</option>
+					<option value="female"
+						${(preference != null && preference.sex == 'female') ? 'selected' : ''}>Female</option>
 				</select>
 			</div>
 			<div class="row general-title color-blue">
@@ -65,9 +70,10 @@
 					<div class="text-center general-title color-blue">Min age</div>
 					<div class="row custom-select center-select">
 						<select name="pet_minimum_age" id="pet_minimum_age">
-							<option value="0">Select option:</option>	
+							<option value="0">Select option:</option>
 							<c:forEach begin="1" end="20" varStatus="loop">
-							    <option value="${loop.index}" ${(preference != null && preference.minimumAge == loop.index) ? 'selected' : ''}>${loop.index}</option>
+								<option value="${loop.index}"
+									${(preference != null && preference.minimumAge == loop.index) ? 'selected' : ''}>${loop.index}</option>
 							</c:forEach>
 						</select>
 					</div>
@@ -75,20 +81,21 @@
 				<div class="col text-center">
 					<div class="text-center general-title color-blue">Max age</div>
 					<div class=" row custom-select center-select">
-						<select name="pet_maximum_age" id="pet_maximum_age">	
+						<select name="pet_maximum_age" id="pet_maximum_age">
 							<option value="0">Select option:</option>
 							<c:forEach begin="1" end="20" varStatus="loop">
-							    <option value="${loop.index}" ${(preference != null && preference.maximumAge == loop.index) ? 'selected' : ''}>${loop.index}</option>
-							</c:forEach>			
+								<option value="${loop.index}"
+									${(preference != null && preference.maximumAge == loop.index) ? 'selected' : ''}>${loop.index}</option>
+							</c:forEach>
 						</select>
 					</div>
 				</div>
 			</div>
 		</div>
-		<input type="hidden" name="pet_id" value="${pet_id}">
-		<input type="submit" value="Save" class="save-btn text-light save-text">
+		<input type="hidden" name="pet_id" value="${pet_id}"> <input
+			type="submit" value="Save" class="save-btn text-light save-text">
 	</form>
-	
+
 	<script>
 		/* Attributes */
 		var x, i, j, l, ll, selElmnt, a, b, c;

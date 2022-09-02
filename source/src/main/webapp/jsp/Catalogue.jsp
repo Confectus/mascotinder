@@ -1,7 +1,8 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
-<c:set var="pet_id" scope="request" value="${pet_id}"/>
+<c:set var="pet_id" scope="request" value="${pet_id}" />
 
 <!DOCTYPE html>
 <html>
@@ -23,7 +24,7 @@
 	src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 
 <script
-    src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 
 
 </head>
@@ -128,17 +129,17 @@
 		}
 		
 	</script>
-		
-		
-	
+
+
+
 
 	<!-- Nav -->
 	<%@include file="../templates/banner.html"%>
 
-	<!-- Carousel -->	
+	<!-- Carousel -->
 	<div id="petCarousel" class="carousel slide" data-interval="false">
-		
-		
+
+
 		<div id="petCarouselInner" class="carousel-inner">
 			<c:forEach items="${pets}" var="pet" varStatus="vs">
 				<script>
@@ -148,7 +149,7 @@
 				</script>
 			</c:forEach>
 
-			
+
 			<div class="carousel-item active catalogue-pet-photo">
 
 				<div class="container-conf ">
@@ -163,23 +164,21 @@
 				<img class="rounded mx-auto d-block" height: 150px
 					src="data:image/png;base64,${pets[0].images[0].base64Image}"
 					alt="Second slide">
-							
+
 			</div>
-			
-			
+
+
 
 		</div>
-		
-		<a class="carousel-control-prev" href="#imageCarousel" role="button"> 
-			<span class="carousel-control-prev-icon" aria-hidden="true" onclick="prev();"></span>
-			<span class="sr-only">Previous</span>
-		</a> 
-		
-		<a class="carousel-control-next " href="#imageCarousel" role="button"> 
-			<span class="carousel-control-next-icon" aria-hidden="true" onclick="next();"></span> 
-			<span class="sr-only">Next</span>
+
+		<a class="carousel-control-prev" href="#imageCarousel" role="button">
+			<span class="carousel-control-prev-icon" aria-hidden="true"
+			onclick="prev();"></span> <span class="sr-only">Previous</span>
+		</a> <a class="carousel-control-next " href="#imageCarousel" role="button">
+			<span class="carousel-control-next-icon" aria-hidden="true"
+			onclick="next();"></span> <span class="sr-only">Next</span>
 		</a>
-		
+
 	</div>
 
 	<div class="position-relative nav-like">
