@@ -29,11 +29,11 @@
 
 	<script>
 	
-		function addNode(id,name,age,image1,image2,image3) {
+		function addNode(active,id,name,age,image1,image2,image3) {
 			
 			var nodeHTML = document.createElement("div");
 			
-			nodeHTML.className = "carousel-item catalogue-pet-photo";
+			nodeHTML.className = "carousel-item" + active + "catalogue-pet-photo";
 			var stringHTML = "<div class='container-conf '><div class='d-block text-center'" +
 			" style='margin-left: auto; margin-right: auto'>"+
 			"<p style='display: none' name='requesterId'>"+id+"</p>"+
@@ -149,8 +149,11 @@
 					else {
 						console.log("MatchesController received the data correctly while processing a DISLIKE!");
 					}
+					var elementToDelete = document.querySelector("#petCarouselInner > div.carousel-item.catalogue-pet-photo.active");
+					elementToDelete.remove();
 				}
 			});
+			
 		}
 		
 	</script>
@@ -165,32 +168,21 @@
 		<div id="petCarouselInner" class="carousel-inner">
 			<c:forEach items="${pets}" var="pet" varStatus="vs">
 				<script>
+					var active = " ";
+					if("${vs.index}" == 0){
+						active = " active ";
+					}
 					var bodyHTML = document.getElementById("petCarouselInner");
-					var nodeHTML = addNode("${pet.id}","${pet.name}","${pet.age}","${pet.images[0].base64Image}","${pet.images[1].base64Image}","${pet.images[2].base64Image}");
+					var nodeHTML = addNode(active,"${pet.id}","${pet.name}","${pet.age}","${pet.images[0].base64Image}","${pet.images[1].base64Image}","${pet.images[2].base64Image}");
 					bodyHTML.appendChild(nodeHTML);
 				</script>
 			</c:forEach>
 
 
 			
-			<div class="carousel-item active catalogue-pet-photo">
-
-				<div class="container-conf ">
-					<div class="d-block text-center"
-						style="margin-left: auto; margin-right: auto">
-						<p style="display: none" id="idPet">${pets[0].id}</p>
-						<p class="h2 my-pets-text " id="namePet">${pets[0].name}</p>
-						<p class="h3 my-pets-text " id="agePet">${pets[0].age}</p>
-					</div>
-				</div>
-
-				<img class="rounded mx-auto d-block" height: 150px
-					src="data:image/png;base64,${pets[0].images[0].base64Image}"
-					alt="Second slide">
-
-			</div>
 			
-
+			
+			
 
 		</div>
 
