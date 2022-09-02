@@ -68,6 +68,9 @@ public class JPATableCreation {
 		directory = new File("img/zoe 6");
 		ArrayList<File> zoe = getFiles(directory);
 		
+		directory = new File("img/Simurdiera 4");
+		ArrayList<File> simurdiera = getFiles(directory);
+		
 		
 		ArrayList<Owner> owners = new ArrayList<>();
 		//owners.add(new Owner("", "", ""));
@@ -147,6 +150,20 @@ public class JPATableCreation {
 		DAOFactory.getFactory().getPetImageDAO().create(image);
 		
 		image = new PetImage(null, fileToBase64String(zoe.get(2)), pet);
+		DAOFactory.getFactory().getPetImageDAO().create(image);
+		
+		
+		//SIMURDIERA
+		pet = new Pet(null, "Simurdiera", "dog", "male", 4, owners.get(2));
+		DAOFactory.getFactory().getPetDAO().create(pet);
+		
+		image = new PetImage(null, fileToBase64String(simurdiera.get(0)), pet);
+		DAOFactory.getFactory().getPetImageDAO().create(image);
+		
+		image = new PetImage(null, fileToBase64String(simurdiera.get(1)), pet);
+		DAOFactory.getFactory().getPetImageDAO().create(image);
+		
+		image = new PetImage(null, fileToBase64String(simurdiera.get(2)), pet);
 		DAOFactory.getFactory().getPetImageDAO().create(image);
 		
 		
