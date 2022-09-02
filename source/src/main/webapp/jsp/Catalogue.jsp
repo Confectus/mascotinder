@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <c:set var="pet_id" scope="request" value="${pet_id}" />
@@ -20,11 +19,9 @@
 <!-- CSS style sheet -->
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/css/styles.css">
-<script type='text/javascript'
-	src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+<script type='text/javascript' src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
 
 
 </head>
@@ -127,37 +124,31 @@
 		function processLike() {
 			const queryString = window.location.search;
 			const urlParams = new URLSearchParams(queryString);
-			
-			var applicantId = document.querySelector("#petCarouselInner > div.carousel-item.catalogue-pet-photo.active > div.container-conf > div > p:nth-child(1)").textContent;	
+
 			var requesterId = urlParams.get("pet_id");
+			var applicantId = document.querySelector("#petCarouselInner > div.carousel-item.catalogue-pet-photo.active > div.container-conf > div > p:nth-child(1)").textContent;	
 			
-			applicantId = Number(applicantId);
 			requesterId = Number(requesterId);
+			applicantId = Number(applicantId);			
+					
+			var dom = {};
+			dom.query = jQuery.noConflict(true);
 			
-			console.log(applicantId);
-			console.log(requesterId);
-			
-			function processLike() {
-				const queryString = window.location.search;
-				const urlParams = new URLSearchParams(queryString);
-				
-				var applicantId = document.querySelector("#petCarouselInner > div.carousel-item.catalogue-pet-photo.active > div.container-conf > div > p:nth-child(1)").textContent;	
-				var requesterId = urlParams.get("pet_id");
-				
-				applicantId = Number(applicantId);
-				requesterId = Number(requesterId);
-				
-				console.log(applicantId);
-				console.log(requesterId);
-				
-				
-			}
+			$.ajax({
+				url: "/mascotinder/MatchesController",
+				type: "POST",
+				data: {
+					requester_id: requesterId,
+					applicant_id: applicantId,
+					is_like: true,
+				},
+				success: function(result) {
+					console.log("MatchesController received the data correctly!");
+				}
+			});
 		}
 		
 	</script>
-
-
-
 
 	<!-- Nav -->
 	<%@include file="../templates/banner.html"%>

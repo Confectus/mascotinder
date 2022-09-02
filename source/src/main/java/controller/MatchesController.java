@@ -34,8 +34,6 @@ public class MatchesController extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {	
 		// 1. Get parameters
-		System.out.println(request.getParameter("data"));
-		
 		Integer requesterId = Integer.parseInt(request.getParameter("requester_id"));
 		Integer applicantId = Integer.parseInt(request.getParameter("applicant_id"));
 		Boolean isLike = Boolean.parseBoolean(request.getParameter("is_like"));
