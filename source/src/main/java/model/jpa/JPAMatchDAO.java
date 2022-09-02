@@ -36,22 +36,10 @@ public class JPAMatchDAO extends JPAGenericDAO<Match, Integer> implements MatchD
 	}
 
 	@Override
-	public void processLikeBetweenPets(Pet requester, Pet applicant) {
-		Match match = getMatchBetweenPets(requester.getId(), applicant.getId());
-		
-		if (match == null) {
-			match = new Match(false, requester, applicant);
-		}
-		else {
-			match.setConfirmation(true);
-		}
-	}
-
-	@Override
 	public Match getMatchBetweenPets(Integer requesterId, Integer applicantId) {
 		Match match = null;
 		
-		String sentence = "SELECT m FROM petmatch m WHERE (m.applicant= :applicant_id AND m.requester= :requester_id) OR (m.applicant= :requester_id AND m.requester= :applicant_id)";		
+		String sentence = "SELECT m FROM petmatch m WHERE (m.applicant.id= :applicant_id AND m.requester.id= :requester_id) OR (m.applicant.id= :requester_id AND m.requester.id= :applicant_id)";		
 		Query query = this.em.createQuery(sentence);
 		query.setParameter("requester_id", requesterId);
 		query.setParameter("applicant_id", applicantId);
@@ -67,4 +55,27 @@ public class JPAMatchDAO extends JPAGenericDAO<Match, Integer> implements MatchD
 		return match;
 	}
 
+	@Override
+	public void processLikeBetweenPets(Pet requester, Pet applicant) {
+		Match match = getMatchBetweenPets(requester.getId(), applicant.getId());
+		
+		if (match == null) {
+			match = new Match(false, requester, applicant);			
+			create(match);
+		}
+		else {
+			match.setConfirmation(true);
+			update(match);
+		}
+	}
+
+	@Override
+	public void processDislikeBetweenPets(Pet requester, Pet applicant) {
+		Match match = getMatchBetweenPets(requester.getId(), applicant.getId());
+		
+		if (match != null) {
+			delete(match);
+		}
+	}
+	
 }

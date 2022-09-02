@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <c:set var="pet_id" scope="request" value="${pet_id}" />
@@ -20,11 +19,9 @@
 <!-- CSS style sheet -->
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/css/styles.css">
-<script type='text/javascript'
-	src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+<script type='text/javascript' src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
 
 
 </head>
@@ -39,14 +36,14 @@
 			nodeHTML.className = "carousel-item catalogue-pet-photo";
 			var stringHTML = "<div class='container-conf '><div class='d-block text-center'" +
 			" style='margin-left: auto; margin-right: auto'>"+
-			"<p style='display: none' id='requesterId'>"+id+"</p>"+
-			"<p style='display: none' id='imagePet1'>data:image/png;base64,"+image1+"</p>"+
-			"<p style='display: none' id='imagePet2'>data:image/png;base64,"+image2+"</p>"+
-			"<p style='display: none' id='imagePet3'>data:image/png;base64,"+image3+"</p>"+
+			"<p style='display: none' name='requesterId'>"+id+"</p>"+
 			"<p class='h2 my-pets-text' id='namePet'>"+name+"</p><p class='h3 my-pets-text '"+
 			"id='agePet'>"+age+"</p></div></div>" + 
-			"<img class='rounded mx-auto d-block' height: 150px" +
-			" src='data:image/png;base64,"+image1+"'> </div>";
+			"<div style=''><img class='rounded mx-auto d-block' height: 150px src='data:image/png;base64,"+image1+"'></div>"+
+			"<div style='display: none'><img class='rounded mx-auto d-block' height: 150px src='data:image/png;base64,"+image2+"'></div>"+
+			"<div style='display: none'><img class='rounded mx-auto d-block' height: 150px src='data:image/png;base64,"+image3+"'></div>"+
+			"</div>";
+			
 			stringHTML = stringHTML.trim();
 			nodeHTML.innerHTML = stringHTML;
 			
@@ -55,13 +52,11 @@
 		}
 		window.ready = addNode;
 		
-		let photos = [
-			"data:image/png;base64,${pets[id].images[0].base64Image}",
-			"data:image/png;base64,${pets[id].images[1].base64Image}",
-			"data:image/png;base64,${pets[id].images[2].base64Image}"]
 		
 		function prev(){
-			var petPhotoPath = document.querySelector("#petCarouselInner > div.carousel-item.active.catalogue-pet-photo > img");
+			var petPhoto1Path = document.querySelector("#petCarouselInner > div.carousel-item.catalogue-pet-photo.active > div:nth-child(2)");
+			var petPhoto2Path = document.querySelector("#petCarouselInner > div.carousel-item.catalogue-pet-photo.active > div:nth-child(3)");
+			var petPhoto3Path = document.querySelector("#petCarouselInner > div.carousel-item.catalogue-pet-photo.active > div:nth-child(4)");
 			var indexOfPhotos = document.querySelector("#actualPhoto").textContent;
 			
 			if(indexOfPhotos > 0){
@@ -73,23 +68,28 @@
 			
 			switch(indexOfPhotos){
 				case 0:
-					console.log(indexOfPhotos);
-					petPhotoPath.src=document.querySelector("#imagePet1").textContent;
+					petPhoto1Path.style = "";
+					petPhoto2Path.style = "display: none";
+					petPhoto3Path.style = "display: none";
 					break;
 				case 1:
-					console.log(indexOfPhotos);
-					petPhotoPath.src=document.querySelector("#imagePet2").textContent;
+					petPhoto1Path.style = "display: none";
+					petPhoto2Path.style = "";
+					petPhoto3Path.style = "display: none";
 					break;
 				case 2:
-					console.log(indexOfPhotos);
-					petPhotoPath.src=document.querySelector("#imagePet3").textContent;
+					petPhoto1Path.style = "display: none";
+					petPhoto2Path.style = "display: none";
+					petPhoto3Path.style = "";
 					break;
 			}
 		}
 		
 		
 		function next(){
-			var petPhotoPath = document.querySelector("#petCarouselInner > div.carousel-item.active.catalogue-pet-photo > img");
+			var petPhoto1Path = document.querySelector("#petCarouselInner > div.carousel-item.catalogue-pet-photo.active > div:nth-child(2)");
+			var petPhoto2Path = document.querySelector("#petCarouselInner > div.carousel-item.catalogue-pet-photo.active > div:nth-child(3)");
+			var petPhoto3Path = document.querySelector("#petCarouselInner > div.carousel-item.catalogue-pet-photo.active > div:nth-child(4)");
 			var indexOfPhotos = document.querySelector("#actualPhoto").textContent;
 			indexOfPhotos = Number(indexOfPhotos);
 			
@@ -103,35 +103,57 @@
 			
 			switch(indexOfPhotos){
 				case 0:
-					petPhotoPath.src=document.querySelector("#imagePet1").textContent;
+					petPhoto1Path.style = "";
+					petPhoto2Path.style = "display: none";
+					petPhoto3Path.style = "display: none";
+					break;
 				case 1:
-					petPhotoPath.src=document.querySelector("#imagePet2").textContent;
+					petPhoto1Path.style = "display: none";
+					petPhoto2Path.style = "";
+					petPhoto3Path.style = "display: none";
+					break;
 				case 2:
-					petPhotoPath.src=document.querySelector("#imagePet3").textContent;
+					petPhoto1Path.style = "display: none";
+					petPhoto2Path.style = "display: none";
+					petPhoto3Path.style = "";
+					break;
 			}
 			
 		}
 		
-		function processLike() {						
-			var applicantId = document.querySelector("#requesterId").textContent;	
-			var requesterId = urlParams.get("pet_id");
+		function processMatchOperation(isLike) {
+			const queryString = window.location.search;
+			const urlParams = new URLSearchParams(queryString);
 			
-			applicantId = Number(applicantId);
+			var requesterId = urlParams.get("pet_id");
+			var applicantId = document.querySelector("#petCarouselInner > div.carousel-item.catalogue-pet-photo.active > div.container-conf > div > p:nth-child(1)").textContent;	
+			
 			requesterId = Number(requesterId);
+			applicantId = Number(applicantId);
+			
+			var dom = {};
+			dom.query = jQuery.noConflict(true);
 			
 			$.ajax({
-	            type : "POST",
-	            data : {
-	                value: 1
-	            },
-	            url : "/mascotinder/MatchesController"
-	        });
+				url: "/mascotinder/MatchesController",
+				type: "POST",
+				data: {
+					requester_id: requesterId,
+					applicant_id: applicantId,
+					is_like: isLike,
+				},
+				success: function(result) {
+					if (isLike) {
+						console.log("MatchesController received the data correctly while processing a LIKE!");
+					}
+					else {
+						console.log("MatchesController received the data correctly while processing a DISLIKE!");
+					}
+				}
+			});
 		}
 		
 	</script>
-
-
-
 
 	<!-- Nav -->
 	<%@include file="../templates/banner.html"%>
@@ -150,6 +172,7 @@
 			</c:forEach>
 
 
+			
 			<div class="carousel-item active catalogue-pet-photo">
 
 				<div class="container-conf ">
@@ -166,7 +189,7 @@
 					alt="Second slide">
 
 			</div>
-
+			
 
 
 		</div>
@@ -174,7 +197,7 @@
 		<a class="carousel-control-prev" href="#imageCarousel" role="button">
 			<span class="carousel-control-prev-icon" aria-hidden="true"
 			onclick="prev();"></span> <span class="sr-only">Previous</span>
-		</a> <a class="carousel-control-next " href="#imageCarousel" role="button">
+		</a> <a style="max-height: 180px; margin: auto 0px;" class="carousel-control-next" href="#imageCarousel" role="button">
 			<span class="carousel-control-next-icon" aria-hidden="true"
 			onclick="next();"></span> <span class="sr-only">Next</span>
 		</a>
@@ -185,13 +208,14 @@
 		<!-- Like -->
 		<a class="btn btn-primary position-absolute top-100 end-50 like"
 			style="background-color: #319EFF; border: none;" href="#petCarousel"
-			role="button" data-slide="next" onclick="processLike();"> <i
+			role="button" data-slide="next" onclick="processMatchOperation(true);"> <i
 			class="fa fa-thumbs-up prueba"></i>
 		</a>
 		<!-- DisLike -->
 		<a class="btn btn-primary position-absolute top-100 start-50 "
 			style="background-color: #319EFF; border: none;" href="#petCarousel"
-			role="button" data-slide="next"> <i class="fa fa-thumbs-down"></i>
+			role="button" data-slide="next" onclick="processMatchOperation(false);"> <i 
+			class="fa fa-thumbs-down"></i>
 		</a>
 	</div>
 	<div style="display: none" id="actualPhoto">0</div>
