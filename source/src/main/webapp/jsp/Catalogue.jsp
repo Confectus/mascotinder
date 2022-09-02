@@ -39,10 +39,7 @@
 			nodeHTML.className = "carousel-item catalogue-pet-photo";
 			var stringHTML = "<div class='container-conf '><div class='d-block text-center'" +
 			" style='margin-left: auto; margin-right: auto'>"+
-			"<p style='display: none' id='requesterId'>"+id+"</p>"+
-			"<p style='display: none' id='imagePet1'>data:image/png;base64,"+image1+"</p>"+
-			"<p style='display: none' id='imagePet2'>data:image/png;base64,"+image2+"</p>"+
-			"<p style='display: none' id='imagePet3'>data:image/png;base64,"+image3+"</p>"+
+			"<p style='display: none' name='requesterId'>"+id+"</p>"+
 			"<p class='h2 my-pets-text' id='namePet'>"+name+"</p><p class='h3 my-pets-text '"+
 			"id='agePet'>"+age+"</p></div></div>" + 
 			"<div style=''><img class='rounded mx-auto d-block' height: 150px src='data:image/png;base64,"+image1+"'></div>"+
@@ -127,20 +124,46 @@
 			
 		}
 		
-		function processLike() {						
-			var applicantId = document.querySelector("#requesterId").textContent;	
+		function processLike() {
+			const queryString = window.location.search;
+			const urlParams = new URLSearchParams(queryString);
+			
+			var applicantId = document.querySelector("#petCarouselInner > div.carousel-item.catalogue-pet-photo.active > div.container-conf > div > p:nth-child(1)").textContent;	
 			var requesterId = urlParams.get("pet_id");
 			
 			applicantId = Number(applicantId);
 			requesterId = Number(requesterId);
 			
-			$.ajax({
-	            type : "POST",
-	            data : {
-	                value: 1
-	            },
-	            url : "/mascotinder/MatchesController"
-	        });
+			console.log(applicantId);
+			console.log(requesterId);
+			
+			function processLike() {
+				const queryString = window.location.search;
+				const urlParams = new URLSearchParams(queryString);
+				
+				var applicantId = document.querySelector("#petCarouselInner > div.carousel-item.catalogue-pet-photo.active > div.container-conf > div > p:nth-child(1)").textContent;	
+				var requesterId = urlParams.get("pet_id");
+				
+				applicantId = Number(applicantId);
+				requesterId = Number(requesterId);
+				
+				console.log(applicantId);
+				console.log(requesterId);
+				
+				var data = { 
+						applicantIdData : applicantId
+						requesterIdData : requesterId
+						};
+				
+				  jQuery.noConflict(true).ajax({
+				    type: "POST",
+				    url: '/session/storeValue',
+				    data: data,
+				    success: function() {
+				      console.log("Value added");
+				    }
+				  })
+			}
 		}
 		
 	</script>
