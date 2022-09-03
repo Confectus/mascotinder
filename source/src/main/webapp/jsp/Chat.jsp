@@ -41,7 +41,7 @@
 	
 	<div>
 		<input type="text" name="message_content" class="form-content-name" required>
-		<input type="submit" value="Send" id="submit-btn">
+		<input type="submit" value="Send" id="submit-btn" class="text-light save-text">
 	</div>
 
 </body>

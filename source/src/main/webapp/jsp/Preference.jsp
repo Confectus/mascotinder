@@ -80,7 +80,9 @@
 			</div>
 		</div>
 		<input type="hidden" name="pet_id" value="${pet_id}">
-		<input type="submit" value="Save" class="save-btn text-light save-text">
+		<div>
+			<input type="submit" value="Save" id="submit-btn" class="text-light save-text">
+		</div>
 	</form>
 
 	<script>

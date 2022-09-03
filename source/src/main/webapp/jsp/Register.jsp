@@ -123,7 +123,7 @@
 				</div>
 				
 				<div>
-					<input type="submit" value="Save" id="submit-btn">
+					<input type="submit" value="Save" id="submit-btn" class="text-light save-text">
 				</div>
 			</div>
 		</fieldset>
