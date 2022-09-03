@@ -47,9 +47,9 @@
 			"<p style='display: none' name='requesterId'>"+id+"</p>"+
 			"<p class='h2 my-pets-text' id='namePet'>"+name+"</p><p class='h3 my-pets-text '"+
 			"id='agePet'>"+age+"</p></div></div>" + 
-			"<div style=''><img class='rounded mx-auto d-block' height: 150px src='data:image/png;base64,"+image1+"'></div>"+
-			"<div style='display: none'><img class='rounded mx-auto d-block' height: 150px src='data:image/png;base64,"+image2+"'></div>"+
-			"<div style='display: none'><img class='rounded mx-auto d-block' height: 150px src='data:image/png;base64,"+image3+"'></div>"+
+			"<div style=''><img class='rounded mx-auto d-block pet-photo' height: 150px src='data:image/png;base64,"+image1+"'></div>"+
+			"<div style='display: none'><img class='rounded mx-auto d-block pet-photo' height: 150px src='data:image/png;base64,"+image2+"'></div>"+
+			"<div style='display: none'><img class='rounded mx-auto d-block pet-photo' height: 150px src='data:image/png;base64,"+image3+"'></div>"+
 			"</div>";
 			
 			stringHTML = stringHTML.trim();
@@ -174,9 +174,9 @@
 		function handleNoMoreElements() {
 			let message = document.createElement("span");
 			message.setAttribute("id", "last-element-message");
-			message.setAttribute("style", "ext-align: center; padding: 50px 0px; background-color: #319EFF; color: white; font-size: xx-large;");
+			message.setAttribute("class", "last-message");
 			
-			let text = document.createTextNode("Oops, it seems that we have no more recommendations for you.");
+			let text = document.createTextNode("Oops! It seems that we have no more recommendations for you.");
 			
 			message.appendChild(text);
 			document.getElementById("petCarouselInner").appendChild(message);
