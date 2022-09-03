@@ -39,34 +39,39 @@
 					<i class="bi bi-person-circle" style="font-size: 24px"></i>
 					${sessionScope.loggedOwner.getName()}
 				</button> <span id="myDropdown" class="dropdown-content"> <a
-					class="text-dark" href="ListPetsController"> My pets </a> <a
-					class="text-dark" href="LoginController"> Logout </a>
+					class="" href="ListPetsController"> My pets </a> <a
+					class="" href="LoginController"> Logout </a>
 			</span>
 			</span>
 		</div>
 	</nav>
+	<div class="container-conf">
+		<div class="list-title" style="width: 100%">
+			<p class="h1 my-pets-text" style="width: 100%">Register my Pet</p>
+		</div>
+	</div>
 	<form method="post" action="RegisterController"
 		class="form-table-config">
 		<fieldset>
 			<div class="container mw-90 w-90 flex-column">
 				<div class="row my-pets-text">
-					<h3 style="font-weight: bold;">New Pet</h3>
+					<h3 style="font-weight: bold;">About my Pet</h3>
 				</div>
 				<!--Name's pet-->
 				<div class="row general-title color-blue">
-					<p>Name</p>
+					<p>Name:</p>
 				</div>
 				<div class="row-sm-12 center-select">
-					<input type="text" name="pet_name" required style="width: 30%;"
-						class="form-content-name border-conf">
+					<input type="text" name="pet_name" class="form-content-name" required>
 				</div>
 				<!--Field of selection of age and type-->
 				<div class="row general-title color-blue">
 					<!--Field age-->
-					<p>Age</p>
+					<p>Age:</p>
 				</div>
-				<div class="row-sm-12 custom-select center-select border-conf">
-					<select name="pet_age" id="pet_age" class="select-selected">
+				<div class="row-sm-12 center-select custom-select">
+					<select name="pet_age" id="pet_age">
+						<option value="0">Select option:</option>
 						<c:forEach begin="1" end="20" varStatus="loop">
 							<option value="${loop.index}">${loop.index}</option>
 						</c:forEach>
@@ -74,10 +79,11 @@
 				</div>
 				<div class="row general-title color-blue">
 					<!--Field type-->
-					<p>Type</p>
+					<p>Type:</p>
 				</div>
-				<div class="row-sm-12 custom-select center-select border-conf">
-					<select name="pet_type" id="pet_type" class="select-selected">
+				<div class="row-sm-12 custom-select center-select">
+					<select name="pet_type" id="pet_type">
+						<option value="0">Select option:</option>
 						<c:forEach items="${types}" var="types">
 							<option value="${types}">${types}</option>
 						</c:forEach>
@@ -85,35 +91,33 @@
 				</div>
 				<div class="row general-title color-blue">
 					<!--Field sex-->
-					<p>Sex</p>
+					<p>Sex:</p>
 				</div>
-				<div class="row-sm-12 custom-select center-select border-conf">
-					<select name="pet_sex" id="pet_sex" class="select-selected">
+				<div class="row-sm-12 custom-select center-select">
+					<select name="pet_sex" id="pet_sex">
+						<option value="0">Select option:</option>
 						<option>female</option>
 						<option>male</option>
 					</select>
 				</div>
 				<div class="row general-title color-blue">
-					<p>Photos</p>
+					<p>Photos:</p>
 				</div>
 				<!--Field photos-->
 				<div>
 					<div>
 						<!--Upload photo-->
-						<div>
-							<div>
-								<input type="file" class="pet-margin" name="pet_image_1"
-									accept="image/png, image/jpeg">
+						<div class="container">
+							<div class="row file-container file-text center-select">
+								<input type="file" class="custom-file-input" name="pet_image_1" accept="image/png, image/jpeg">
 							</div>
 
-							<div>
-								<input type="file" class="pet-margin" name="pet_image_2"
-									accept="image/png, image/jpeg">
+							<div class="row file-container file-text center-select">
+								<input type="file" class="custom-file-input" name="pet_image_2"	accept="image/png, image/jpeg">
 							</div>
 
-							<div>
-								<input type="file" class="pet-margin" name="pet_image_3"
-									accept="image/png, image/jpeg">
+							<div class="row file-container file-text center-select">
+								<input type="file" class="custom-file-input" name="pet_image_3"	accept="image/png, image/jpeg">
 							</div>
 						</div>
 					</div>

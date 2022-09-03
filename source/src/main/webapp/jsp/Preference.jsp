@@ -66,8 +66,7 @@
 						<select name="pet_minimum_age" id="pet_minimum_age">
 							<option value="0">Select option:</option>
 							<c:forEach begin="1" end="20" varStatus="loop">
-								<option value="${loop.index}"
-									${(preference != null && preference.minimumAge == loop.index) ? 'selected' : ''}>${loop.index}</option>
+								<option value="${loop.index}" ${(preference != null && preference.minimumAge == loop.index) ? 'selected' : ''}>${loop.index}</option>
 							</c:forEach>
 						</select>
 					</div>
