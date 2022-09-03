@@ -5,5 +5,5 @@ import java.util.List;
 import model.entities.Message;
 
 public interface MessageDAO extends GenericDAO<Message, Integer>{
-	public List<Message> getMessagesByOwnersId(String ownerEmailA ,String ownerEmailB );
+	public List<Message> getMessagesByOwnersEmails(String ownerEmailA ,String ownerEmailB );
 }

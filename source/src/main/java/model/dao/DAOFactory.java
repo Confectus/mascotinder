@@ -20,4 +20,6 @@ public abstract class DAOFactory {
 	
 	public abstract MatchDAO getMatchDAO();
 	
+	public abstract MessageDAO getMessageDAO();
+	
 }
