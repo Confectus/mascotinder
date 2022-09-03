@@ -360,6 +360,22 @@
 	background-color: rgba(0, 0, 0, 0.1);
 }
 
+.custom-preference {
+	border: 1px solid transparent;
+  	border-color: rgba(0, 0, 0, 0.1);
+}
+
+.custom-preference p{
+	color:  #319EFF;
+	font-weight: bold;
+	margin-top: 2%;
+	margin-bottom: 2%;
+}
+
+.custom-preference:hover {
+  	border-color: #319EFF;
+}
+
 /*Catalog*/
 .save-text {
 	font-size: 1.5rem;
@@ -408,6 +424,7 @@
     margin-left: auto; 
     margin-right: auto;
 }
+
 .upload-image{
     background: #319EFF;
 	border: none;
