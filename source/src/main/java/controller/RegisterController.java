@@ -78,7 +78,6 @@ public class RegisterController extends HttpServlet {
 		List<File> images = getImages(pathsImages);
 		/* Create images of the pet */
 		for (int i = 0; i < images.size(); i++) {
-			System.out.println(fileToBase64String(images.get(i)));
 			PetImage image = new PetImage(null, fileToBase64String(images.get(i)), newPet);
 			DAOFactory.getFactory().getPetImageDAO().create(image);
 		}
