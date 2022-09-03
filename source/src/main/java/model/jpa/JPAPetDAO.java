@@ -80,14 +80,7 @@ public class JPAPetDAO extends JPAGenericDAO<Pet, Integer> implements PetDAO {
 		}
 		catch(Exception e) {
 			e.printStackTrace();
-		}		
-		
-		System.out.println(sentence);
-		System.out.println("PETS:");
-		
-		for (Pet pet : pets) {
-			System.out.println(pet.getName() + " - " + pet.getId());
-		}
+		}	
 		
 		return pets;
 	}
