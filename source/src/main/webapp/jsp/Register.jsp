@@ -50,8 +50,7 @@
 			<p class="h1 my-pets-text" style="width: 100%">Register my Pet</p>
 		</div>
 	</div>
-	<form method="post" action="RegisterController"
-		class="form-table-config">
+	<form method="post" action="RegisterController" class="form-table-config">
 		<fieldset>
 			<div class="container mw-90 w-90 flex-column">
 				<div class="row my-pets-text">
@@ -107,7 +106,6 @@
 				<div>
 					<div>
 						<!--Upload photo-->
-<<<<<<< HEAD
 						<div class="container">
 							<div class="row file-container file-text center-select">
 								<input type="file" class="custom-file-input" name="pet_image_1" accept="image/png, image/jpeg">
@@ -119,26 +117,11 @@
 
 							<div class="row file-container file-text center-select">
 								<input type="file" class="custom-file-input" name="pet_image_3"	accept="image/png, image/jpeg">
-=======
-						<div>
-							<div>
-								<input type="file" class="pet-margin" name="pet_image_1"
-									accept="image/png, image/jpeg" required>
-							</div>
-
-							<div>
-								<input type="file" class="pet-margin" name="pet_image_2"
-									accept="image/png, image/jpeg" required>
-							</div>
-
-							<div>
-								<input type="file" class="pet-margin" name="pet_image_3"
-									accept="image/png, image/jpeg" required>
->>>>>>> eda08e5286147c2d4280a1a8b1c29a96d7bc2468
 							</div>
 						</div>
 					</div>
 				</div>
+				
 				<div>
 					<input type="submit" value="Save" id="submit-btn">
 				</div>
