@@ -107,6 +107,7 @@
 				<div>
 					<div>
 						<!--Upload photo-->
+<<<<<<< HEAD
 						<div class="container">
 							<div class="row file-container file-text center-select">
 								<input type="file" class="custom-file-input" name="pet_image_1" accept="image/png, image/jpeg">
@@ -118,6 +119,22 @@
 
 							<div class="row file-container file-text center-select">
 								<input type="file" class="custom-file-input" name="pet_image_3"	accept="image/png, image/jpeg">
+=======
+						<div>
+							<div>
+								<input type="file" class="pet-margin" name="pet_image_1"
+									accept="image/png, image/jpeg" required>
+							</div>
+
+							<div>
+								<input type="file" class="pet-margin" name="pet_image_2"
+									accept="image/png, image/jpeg" required>
+							</div>
+
+							<div>
+								<input type="file" class="pet-margin" name="pet_image_3"
+									accept="image/png, image/jpeg" required>
+>>>>>>> eda08e5286147c2d4280a1a8b1c29a96d7bc2468
 							</div>
 						</div>
 					</div>
