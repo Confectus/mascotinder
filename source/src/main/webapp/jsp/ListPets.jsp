@@ -62,7 +62,15 @@
 						<div class="col color-blue">
 							<p class="center-text">
 								<a href="MatchesController?pet_id=${pet.id}"> MATCHES </a><i
-									class="bi bi-heart-fill"></i> ${pet.matches.size()}
+									class="bi bi-heart-fill"></i>
+									
+									<c:set var="counter" value="${0}"></c:set>
+									<c:forEach items="${pet.matches}" var="match">
+										<c:if test="${match.confirmation == true}">
+											<c:set var="counter" value="${counter + 1}"></c:set>
+										</c:if>
+									</c:forEach>
+									<c:out value="${counter}"></c:out>
 							</p>
 						</div>
 						<div class="col color-blue">

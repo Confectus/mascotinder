@@ -43,7 +43,7 @@
 					</div>
 					<div class="row mh-100 ht-100 color-blue">
 						<div class="center-description">
-							<p>${requester_pet.name}hasa match with
+							<p>${requester_pet.name}has a match with
 								${applicant_pet.name}. It is ${applicant_pet.age} years old
 								${applicant_pet.sex}.</p>
 						</div>

@@ -1,6 +1,8 @@
 package controller;
 
 import java.io.IOException;
+import java.util.List;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -9,7 +11,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import model.dao.DAOFactory;
+import model.entities.Match;
 import model.entities.Owner;
+import model.entities.Pet;
 
 @WebServlet("/ListPetsController")
 public class ListPetsController extends HttpServlet {
@@ -40,9 +44,15 @@ public class ListPetsController extends HttpServlet {
 		Owner loggedOwner = (Owner) sessionOwner.getAttribute("loggedOwner");
 
 		// 2. Talk with the model
-		request.setAttribute("pets", DAOFactory.getFactory().getPetDAO().getPetsByOwnerEmail(loggedOwner.getEmail()));
+		List<Pet> pets = DAOFactory.getFactory().getPetDAO().getPetsByOwnerEmail(loggedOwner.getEmail());
+		
+		for (Pet pet : pets) {
+			List<Match> petMatches = DAOFactory.getFactory().getMatchDAO().getMatchesByPetId(pet.getId());
+			pet.setMatches(petMatches);
+		}
 		
 		// 3. Send data to the view
+		request.setAttribute("pets", pets);
 		getServletContext().getRequestDispatcher("/jsp/ListPets.jsp").forward(request, response);
 	}	
 }
