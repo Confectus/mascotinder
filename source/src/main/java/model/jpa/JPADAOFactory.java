@@ -2,6 +2,7 @@ package model.jpa;
 
 import model.dao.DAOFactory;
 import model.dao.MatchDAO;
+import model.dao.MessageDAO;
 import model.dao.OwnerDAO;
 import model.dao.PetDAO;
 import model.dao.PetImageDAO;
@@ -32,6 +33,11 @@ public class JPADAOFactory extends DAOFactory {
 	@Override
 	public MatchDAO getMatchDAO() {
 		return new JPAMatchDAO();
+	}
+
+	@Override
+	public MessageDAO getMessageDAO() {
+		return new JPAMessageDAO();
 	}
 
 }

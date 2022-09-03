@@ -15,7 +15,7 @@ public class JPAMessageDAO extends JPAGenericDAO<Message, Integer> implements Me
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<Message> getMessagesByOwnersId(String ownerEmailA, String ownerEmailB) {
+	public List<Message> getMessagesByOwnersEmails(String ownerEmailA, String ownerEmailB) {
 		List<Message> messages = null;
 		
 		String sentence = "SELECT m FROM message m WHERE (m.sender.email= :emailA AND m.receiver.email= :emailB) OR (m.sender.email= :emailB AND m.receiver.email= :emailA)";
