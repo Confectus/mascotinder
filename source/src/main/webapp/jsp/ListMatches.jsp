@@ -25,9 +25,12 @@
 
 	<%@include file="../templates/banner.html"%>
 
-
-	<p class="h1 my-pets-text">Matches of ${requester_pet.name}</p>
-
+	<div class="container-conf">
+		<div class="list-title" style="width: 100%">
+			<p class="h1 my-pets-text" style="width: 100%">Matches of ${requester_pet.name}</p>
+		</div>
+	</div>
+	
 	<div class="card-total-container">
 		<c:forEach items="${pets}" var="applicant_pet">
 			<div class="row card-container border-conf">
@@ -43,16 +46,22 @@
 					</div>
 					<div class="row mh-100 ht-100 color-blue">
 						<div class="center-description">
-							<p>${requester_pet.name}has a match with
-								${applicant_pet.name}. It is ${applicant_pet.age} years old
+							<p>${requester_pet.name} has a match with
+								${applicant_pet.name}. Your future partner is a ${applicant_pet.age} year old
 								${applicant_pet.sex}.</p>
 						</div>
 					</div>
-					<div class="row mh-100 pet-options-row ht-100">
+				<div class="row mh-100 pet-options-row ht-100">
 						<div class="col">
-							<div>
-								<a href=""> MESSAGES </a>
+							<div class="preferences-text">
+								<a href=""> Contact ${applicant_pet.name}'s owner. </a>
 							</div>
+						</div>
+						<div class="col color-blue">
+							<p class="center-text">	</p>
+						</div>
+						<div class="col color-blue"> <p class="center-text">
+							</p>
 						</div>
 					</div>
 				</div>
