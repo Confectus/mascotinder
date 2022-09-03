@@ -103,17 +103,17 @@
 						<div>
 							<div>
 								<input type="file" class="pet-margin" name="pet_image_1"
-									accept="image/png, image/jpeg">
+									accept="image/png, image/jpeg" required>
 							</div>
 
 							<div>
 								<input type="file" class="pet-margin" name="pet_image_2"
-									accept="image/png, image/jpeg">
+									accept="image/png, image/jpeg" required>
 							</div>
 
 							<div>
 								<input type="file" class="pet-margin" name="pet_image_3"
-									accept="image/png, image/jpeg">
+									accept="image/png, image/jpeg" required>
 							</div>
 						</div>
 					</div>

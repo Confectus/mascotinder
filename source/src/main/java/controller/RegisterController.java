@@ -16,6 +16,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import model.dao.DAOFactory;
+import model.entities.Match;
 import model.entities.Owner;
 import model.entities.Pet;
 import model.entities.PetImage;
@@ -54,12 +55,11 @@ public class RegisterController extends HttpServlet {
 		String image2 = request.getParameter("pet_image_2");
 		String image3 = request.getParameter("pet_image_3");
 		Pet newPet = new Pet(0, name, type, sex, age, sessionOwner);
-		createImagesNewPet(image1, image2, image3, newPet);
 		// 2. Talk with the model
 		DAOFactory.getFactory().getPetDAO().create(newPet);
+		createImagesNewPet(image1, image2, image3, newPet);
 		// 3. Send data to the view
 		getServletContext().getRequestDispatcher("/ListPetsController").forward(request, response);
-
 	}
 
 	private void createImagesNewPet(String image1, String image2, String image3, Pet newPet) {
@@ -67,22 +67,34 @@ public class RegisterController extends HttpServlet {
 		 * Method that add images to directory "new_img_pet", create a new directory
 		 * with image1, image2, image3
 		 */
-		String path = "img_new_pets/";
+		String path = "C:\\proyectos\\mascotinder\\source\\img_new_pets\\";
 		String pathImage1 = path + image1;
 		String pathImage2 = path + image2;
 		String pathImage3 = path + image3;
 
-		ArrayList<File> allFiles = new ArrayList<>();
-		allFiles.add(new File(pathImage1));
-		allFiles.add(new File(pathImage2));
-		allFiles.add(new File(pathImage3));
-		System.out.println(pathImage1);
+		String[] pathsImages = { pathImage1, pathImage2, pathImage3 };
 
-		for (File file : allFiles) {
-			PetImage image = new PetImage(null, fileToBase64String(file), newPet);
+		/* Get files of "pathsImages" */
+		List<File> images = getImages(pathsImages);
+		/* Create images of the pet */
+		for (int i = 0; i < images.size(); i++) {
+			System.out.println(fileToBase64String(images.get(i)));
+			PetImage image = new PetImage(null, fileToBase64String(images.get(i)), newPet);
 			DAOFactory.getFactory().getPetImageDAO().create(image);
 		}
+	}
 
+	private List<File> getImages(String[] pathsImages) {
+		ArrayList<File> images = new ArrayList<File>();
+		for (int i = 0; i < pathsImages.length; i++) {
+			File image = new File(pathsImages[i]);
+			if (image.exists()) {
+				images.add(image);
+			} else {
+				System.out.println("The image doesn't exist");
+			}
+		}
+		return images;
 	}
 
 	private String fileToBase64String(File file) {
@@ -93,12 +105,12 @@ public class RegisterController extends HttpServlet {
 			ByteArrayOutputStream output = new ByteArrayOutputStream();
 			ImageIO.write(bi, "jpg", output);
 			String imageAsBase64 = Base64.getEncoder().encodeToString(output.toByteArray());
+			System.out.println(imageAsBase64);
 			return imageAsBase64;
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
 		return null;
 
 	}
