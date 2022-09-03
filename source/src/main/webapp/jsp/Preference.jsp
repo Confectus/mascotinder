@@ -41,19 +41,13 @@
 			<div class="row general-title color-blue">
 				<p>Type:</p>
 			</div>
-			<div class="row-sm-12 custom-select center-select">
-				<select name="pet_type" id="pet_type">
-					<option value="0">Select option:</option>
-					<c:forEach items="${types}" var="types">
-						<option value="${types}"
-							${(preference != null && preference.type == types) ? 'selected' : ''}>${types}</option>
-					</c:forEach>
-				</select>
+			<div class="row-sm-12 center-select custom-preference">
+				<p ${(preference.pet.type != null) ? preference.setType(preference.pet.type) :  preference.setType('Null')}>${preference.type}</p>
 			</div>
 			<div class="row general-title color-blue">
 				<p>Sex:</p>
 			</div>
-			<div class="row-sm-12 center-select">
+			<div class="row-sm-12 center-select custom-preference">
 				<p ${(preference.pet.sex != null && preference.pet.sex == 'male') ? preference.setSex('female') :  preference.setSex('male')}>${preference.sex}</p>
 			</div>
 			<div class="row general-title color-blue">
