@@ -8,6 +8,8 @@ import java.util.ArrayList;
 import java.util.Base64;
 import javax.imageio.ImageIO;
 import model.dao.DAOFactory;
+import model.entities.Match;
+import model.entities.Message;
 import model.entities.Owner;
 import model.entities.Pet;
 import model.entities.PetImage;
@@ -105,6 +107,14 @@ public class JPATableCreation {
 			}
 			i++;
 		}
+		
+		Match match = new Match(true, pets.get(2), pets.get(0));
+		DAOFactory.getFactory().getMatchDAO().create(match);
+		
+		Message message1 = new Message("Hi", owners.get(0), owners.get(1));
+		Message message2 = new Message("Hi :D", owners.get(1), owners.get(0));
+		DAOFactory.getFactory().getMessageDAO().create(message1);
+		DAOFactory.getFactory().getMessageDAO().create(message2);		
 
 	}
 

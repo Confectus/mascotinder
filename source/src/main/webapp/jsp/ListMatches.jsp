@@ -54,7 +54,7 @@
 				<div class="row mh-100 pet-options-row ht-100">
 						<div class="col">
 							<div class="preferences-text">
-								<a href="ChatController?receiver_owner_email=${{applicant_pet.owner.email}"> Contact ${applicant_pet.name}'s owner. </a>
+								<a href="ChatController?receiver_owner_email=${applicant_pet.owner.email}"> Contact ${applicant_pet.name}'s owner. </a>
 							</div>
 						</div>
 						<div class="col color-blue">
