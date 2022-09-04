@@ -23,14 +23,25 @@ public class ChatController extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		getRequest(request, response);
+		processRequest(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		getRequest(request, response);
+		// 1. Get parameters
+		String content = request.getParameter("content");
+		String senderEmail = request.getParameter("sender_email");
+		String receiverEmail = request.getParameter("receiver_email");
+		System.out.println(senderEmail);
+		// 2. Talk with the model
+		Owner sender = DAOFactory.getFactory().getOwnerDAO().read(senderEmail);
+		Owner receiver = DAOFactory.getFactory().getOwnerDAO().read(receiverEmail);
+		
+		Message message = new Message(content,sender,receiver);
+		DAOFactory.getFactory().getMessageDAO().create(message);
+		// 3. Send data to the view
 	}
 	
-	private void getRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	private void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// 1. Get parameters
 		String receiverOwnerEmail = request.getParameter("receiver_owner_email");
 		HttpSession sessionOwner = request.getSession();

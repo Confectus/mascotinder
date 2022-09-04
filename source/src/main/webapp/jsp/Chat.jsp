@@ -43,18 +43,16 @@
 	<script>
 		function processSendMessage() {
 			var content = document.querySelector("#input_value").value;
-			var senderEmail = document.querySelector("#senderEmail");
-			var receiverEmail = document.querySelector("#receiverEmail");
+			var senderEmail = document.querySelector("#senderEmail").textContent;
+			var receiverEmail = document.querySelector("#receiverEmail").textContent;
 			
 			$.ajax({
 				url: "/mascotinder/ChatController",
 				type: "POST",
-				processData: false,  // tell jQuery not to process the data
-				contentType: false,   // tell jQuery not to set contentType
 				data: {
 					content: content,
-					senderEmail: senderEmail,
-					receiverEmail: receiverEmail,
+					sender_email: senderEmail,
+					receiver_email: receiverEmail,
 				},
 				success: function(result) {
 					console.log("ChatController received the data correctly");	
