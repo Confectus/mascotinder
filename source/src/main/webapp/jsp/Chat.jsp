@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
+<meta charset="UTF-8" http-equiv="Refresh" content="5">
 <title>Chat</title>
 
 <!-- Bootstrap -->
@@ -41,20 +41,19 @@
 <body>
 	
 	<script>
-		function processSendMessage() {
+		function processMessage(sendFlag) {
 			var content = document.querySelector("#input_value").value;
-			var senderEmail = document.querySelector("#senderEmail");
-			var receiverEmail = document.querySelector("#receiverEmail");
+			var senderEmail = document.querySelector("#senderEmail").textContent;
+			var receiverEmail = document.querySelector("#receiverEmail").textContent;
 			
 			$.ajax({
 				url: "/mascotinder/ChatController",
 				type: "POST",
-				processData: false,  // tell jQuery not to process the data
-				contentType: false,   // tell jQuery not to set contentType
 				data: {
+					send_flag: sendFlag,
 					content: content,
-					senderEmail: senderEmail,
-					receiverEmail: receiverEmail,
+					sender_email: senderEmail,
+					receiver_email: receiverEmail,
 				},
 				success: function(result) {
 					console.log("ChatController received the data correctly");	
@@ -112,7 +111,7 @@
 		<input type="text" id="input_value" name="message_content" class="form-content-name" required>
 	</div>
 	<div class="col-1"> 
-		<input type="button" value="Send" id="submit-btn" class="text-light save-text" onclick="processSendMessage();">
+		<input type="button" value="Send" id="submit-btn" class="text-light save-text" onclick="processMessage(true);">
 	</div>
 
 	<script>
