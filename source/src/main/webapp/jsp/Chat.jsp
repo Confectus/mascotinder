@@ -44,7 +44,7 @@
 	</nav>
 	<div class="container-conf">
 		<div class="list-title" style="width: 100%">
-			<p class="h1 my-pets-text" style="width: 100%">Register my Pet</p>
+			<p class="h1 my-pets-text" style="width: 100%"></p>
 		</div>
 	</div>
 	
@@ -53,7 +53,7 @@
 			<div class="row card-container border-conf">
 			
 				<div>
-					<p>${message.sender}:</p>
+					<p>${message.sender.name}:</p>
 				</div>
 					
 				<div>
@@ -65,8 +65,10 @@
 		
 	</div>
 	
-	<div>
-		<input type="text" name="message_content" class="form-content-name" required>
+	<div class="col-5"> 
+		<input type="text" name="message_content"  class="form-content-name" required>
+	</div>
+	<div class="col mh-100"> 
 		<input type="submit" value="Send" id="submit-btn" class="text-light save-text">
 	</div>
 
