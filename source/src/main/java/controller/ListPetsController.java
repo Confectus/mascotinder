@@ -17,31 +17,36 @@ import model.entities.Pet;
 
 @WebServlet("/ListPetsController")
 public class ListPetsController extends HttpServlet {
-
+	/* Attributes */
 	private static final long serialVersionUID = 1L;
-
+	
+	/* Constructor */
 	public ListPetsController() {
 
 	}
-
+	
+	/* Methods */
+	/* doGet method */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// 1. Get parameters
 		// 2. Talk with the model
 		// 3. Send data to the view
-		getRequest(request, response);
+		processRequest(request, response);
 
 	}
-
+	
+	/* doPost method */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// 1. Get parameters
 		// 2. Talk with the model
 		// 3. Send data to the view
-		getRequest(request, response);
+		processRequest(request, response);
 	}
 
-	private void getRequest(HttpServletRequest request, HttpServletResponse response)
+	/* Get the request */
+	private void processRequest(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// 1. Get parameters
 		HttpSession sessionOwner = request.getSession();

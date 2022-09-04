@@ -32,8 +32,7 @@
 			<p class="h1 my-pets-text">Preferences</p>
 		</div>
 	</div>
-	<form method="post" action="PreferenceController"
-		class="form-table-config">
+	<form method="post" action="PreferenceController" class="form-table-config">
 		<div class="container mw-90 w-90 flex-column">
 			<div class="row my-pets-text">
 				<h3 style="font-weight: bold;">My pet preferences</h3>
@@ -67,7 +66,7 @@
 				</div>
 				<div class="col text-center">
 					<div class="text-center general-title color-blue">Max age</div>
-					<div class=" row custom-select center-select">
+					<div class="row custom-select center-select">
 						<select name="pet_maximum_age" id="pet_maximum_age">
 							<option value="0">Select option:</option>
 							<c:forEach begin="1" end="20" varStatus="loop">

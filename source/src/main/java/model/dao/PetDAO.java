@@ -7,7 +7,7 @@ import model.entities.Pet;
 import model.entities.Preference;
 
 public interface PetDAO extends GenericDAO<Pet, Integer> {
-	
+	/* Methods */
 	public List<Pet> getPetsByOwnerEmail(String ownerEmail);
 
 	public List<String> getTypes();

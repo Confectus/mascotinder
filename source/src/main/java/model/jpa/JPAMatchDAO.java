@@ -20,7 +20,7 @@ public class JPAMatchDAO extends JPAGenericDAO<Match, Integer> implements MatchD
 		List<Match> matches = null;
 		
 		String sentence = "SELECT m FROM petmatch m WHERE m.confirmation= :confirmation AND (m.requester.id= :pet_id OR m.applicant.id= :pet_id)";
-		Query query = this.em.createQuery(sentence);
+		Query query = this.entityManager.createQuery(sentence);
 		query.setParameter("pet_id", id);
 		query.setParameter("confirmation", true);
 		
@@ -40,7 +40,7 @@ public class JPAMatchDAO extends JPAGenericDAO<Match, Integer> implements MatchD
 		Match match = null;
 		
 		String sentence = "SELECT m FROM petmatch m WHERE (m.applicant.id= :applicant_id AND m.requester.id= :requester_id) OR (m.applicant.id= :requester_id AND m.requester.id= :applicant_id)";		
-		Query query = this.em.createQuery(sentence);
+		Query query = this.entityManager.createQuery(sentence);
 		query.setParameter("requester_id", requesterId);
 		query.setParameter("applicant_id", applicantId);
 		

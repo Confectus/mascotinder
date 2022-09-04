@@ -13,13 +13,17 @@ import model.entities.Owner;
 
 @WebServlet("/LoginController")
 public class LoginController extends HttpServlet {
-	
+	/* Attributes */
 	private static final long serialVersionUID = 1L;
-
+	
+	/* Constructor */
     public LoginController() {
 
     }
-
+    
+    /* Methods */
+    
+    /* doGet method */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// 1. Get parameters
 		// 2. Talk with the model
@@ -27,6 +31,7 @@ public class LoginController extends HttpServlet {
 		response.sendRedirect("jsp/Login.jsp");
 	}
 
+    /* doPost method */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		Owner authorizedOwner = null;
 		

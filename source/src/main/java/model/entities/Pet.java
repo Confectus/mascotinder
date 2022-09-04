@@ -18,7 +18,7 @@ import javax.persistence.OneToOne;
 
 @Entity (name = "pet")
 public class Pet implements Serializable {
-	
+	/* Attributes */
 	private static final long serialVersionUID = 1L;
 	
 	@Id
@@ -54,7 +54,8 @@ public class Pet implements Serializable {
 	//@ManyToMany
 	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "rejectedPets")
 	private List<Owner> rejectedOwners;
-		
+	
+	/* Constructor */
 	public Pet() {
 		super();
 	}
@@ -69,6 +70,20 @@ public class Pet implements Serializable {
 		this.owner = owner;
 	}
 
+	/* Methods */
+	public List<PetImage> getImages() {
+		return images;
+	}
+	
+	public Preference getPreference() {
+		return preference;
+	}
+
+	public List<Match> getMatches() {
+		return matches;
+	}	
+	
+	/* Set */
 	public void setId(Integer id) {
 		this.id = id;
 	}
@@ -104,7 +119,12 @@ public class Pet implements Serializable {
 	public void setMatches(List<Match> matches) {
 		this.matches = matches;
 	}
-	
+
+	public void setRejectedOwners(List<Owner> rejectedOwners) {
+		this.rejectedOwners = rejectedOwners;
+	}
+
+	/* Get */
 	public Integer getId() {
 		return id;
 	}
@@ -129,16 +149,7 @@ public class Pet implements Serializable {
 		return owner;
 	}
 	
-	public List<PetImage> getImages() {
-		return images;
+	public List<Owner> getRejectedOwners() {
+		return rejectedOwners;
 	}
-	
-	public Preference getPreference() {
-		return preference;
-	}
-
-	public List<Match> getMatches() {
-		return matches;
-	}	
-	
 }

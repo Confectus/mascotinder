@@ -14,7 +14,7 @@ import javax.persistence.OneToMany;
 
 @Entity (name = "owner")
 public class Owner implements Serializable {
-
+	/* Attributes */
 	private static final long serialVersionUID = 1L;
 	
 	@Id
@@ -34,6 +34,7 @@ public class Owner implements Serializable {
 	@ManyToMany
 	private List<Pet> rejectedPets;
 	
+	/* Constructor */
 	public Owner() {
 		super();
 	}
@@ -45,6 +46,9 @@ public class Owner implements Serializable {
 		this.password = password;
 	}
 	
+	/* Methods */
+	
+	/* Set */
 	public void setEmail(String email) {
 		this.email = email;
 	}
@@ -65,6 +69,7 @@ public class Owner implements Serializable {
 		this.rejectedPets = rejectedPets;
 	}
 
+	/* Get */
 	public String getEmail() {
 		return email;
 	}

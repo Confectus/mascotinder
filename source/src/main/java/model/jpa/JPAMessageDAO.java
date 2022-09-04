@@ -19,7 +19,7 @@ public class JPAMessageDAO extends JPAGenericDAO<Message, Integer> implements Me
 		List<Message> messages = null;
 		
 		String sentence = "SELECT m FROM message m WHERE (m.sender.email= :emailA AND m.receiver.email= :emailB) OR (m.sender.email= :emailB AND m.receiver.email= :emailA)";
-		Query query = this.em.createQuery(sentence);
+		Query query = this.entityManager.createQuery(sentence);
 		query.setParameter("emailA", ownerEmailA);
 		query.setParameter("emailB", ownerEmailB);
 		

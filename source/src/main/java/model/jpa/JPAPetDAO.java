@@ -11,18 +11,19 @@ import model.entities.Pet;
 import model.entities.Preference;
 
 public class JPAPetDAO extends JPAGenericDAO<Pet, Integer> implements PetDAO {
-
+	/* Constructor */
 	public JPAPetDAO() {
 		super(Pet.class);
 	}
-
+	
+	/* Methods */
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Pet> getPetsByOwnerEmail(String ownerEmail) {
 		List<Pet> pets = null;
 		
 		String sentence = "SELECT p FROM pet p WHERE p.owner.email= :email";
-		Query query = this.em.createQuery(sentence);
+		Query query = this.entityManager.createQuery(sentence);
 		query.setParameter("email", ownerEmail);
 		
 		try {
@@ -42,7 +43,7 @@ public class JPAPetDAO extends JPAGenericDAO<Pet, Integer> implements PetDAO {
 		List<String> types = null;
 		
 		String sentence = "SELECT DISTINCT p.type FROM pet p";
-		Query query = this.em.createQuery(sentence);
+		Query query = this.entityManager.createQuery(sentence);
 		
 		try {
 			types = (List<String>) query.getResultList();			
@@ -72,7 +73,7 @@ public class JPAPetDAO extends JPAGenericDAO<Pet, Integer> implements PetDAO {
 				" OR pm.applicant= " + preference.getPet().getId() + ") AND pm.applicant<> " + preference.getPet().getId() + 
 				" AND pm.confirmation= 1))";
 		
-		Query query = this.em.createNativeQuery(sentence, Pet.class);
+		Query query = this.entityManager.createNativeQuery(sentence, Pet.class);
 		
 		try {
 			pets = (List<Pet>) query.getResultList();			
@@ -101,7 +102,7 @@ public class JPAPetDAO extends JPAGenericDAO<Pet, Integer> implements PetDAO {
 		
 		for (Integer petId : petsIds) {
 			String sentence = "SELECT p FROM pet p WHERE p.id= :pet_id";
-			Query query = this.em.createQuery(sentence);
+			Query query = this.entityManager.createQuery(sentence);
 			query.setParameter("pet_id", petId);
 			
 			try {

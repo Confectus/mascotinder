@@ -9,7 +9,7 @@ import model.dao.PetImageDAO;
 import model.dao.PreferenceDAO;
 
 public class JPADAOFactory extends DAOFactory {
-
+	/* Methods */
 	@Override
 	public PetDAO getPetDAO() {
 		return new JPAPetDAO();

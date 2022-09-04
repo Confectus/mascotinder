@@ -80,9 +80,10 @@
 			</span>
 		</div>
 	</nav>
+	
 	<div class="container-conf">
 		<div class="list-title" style="width: 100%">
-			<p class="h1 my-pets-text" style="width: 100%"></p>
+			<p class="h1 my-pets-text" style="width: 100%"> Messages </p>
 		</div>
 	</div>
 	
@@ -90,29 +91,32 @@
 	<p style='display: none' id='senderEmail'>${sender_owner_email}</p>
 	<p style='display: none' id='receiverEmail'>${receiver_owner_email}</p>
 	
-	<div class="card-total-container">
-		<c:forEach items="${messages}" var="message">
-			<div class="row card-container border-conf">
-			
-				<div class="col-1">
-					<p>${message.sender.name}:</p>
-				</div>
-					
-				<div class="col-5">
-					<p>${message.content}</p>
-				</div>
-				
+	<!-- Messages container -->
+	<div class="form-table-config">
+		<div class="container mw-90 w-90 flex-column">
+			<div class="row my-pets-text">
+				<h3 style="font-weight: bold;">Inbox</h3>
 			</div>
-		</c:forEach>
-		
+			<div class="row-sm-12 center-select">
+				<c:forEach items="${messages}" var="message">
+					<div class="row message-container border-conf custom-message">
+						<p id="owner-text">${message.sender.name}: </p>
+						<p id="message-text">${message.content}</p>
+					</div>
+				</c:forEach>
+			</div>
+			<div class="row send-container">
+				<div class="col">
+					<input type="text" id="input_value" name="message_content" class="message-content" required>
+				</div>
+				<div class="col-2">
+					<input type="button" value="Send" id="send-btn" class="text-light" onclick="processMessage(true);">
+				</div>
+			</div>
+		</div>
 	</div>
 	
-	<div class="col-5"> 
-		<input type="text" id="input_value" name="message_content" class="form-content-name" required>
-	</div>
-	<div class="col-1"> 
-		<input type="button" value="Send" id="submit-btn" class="text-light save-text" onclick="processMessage(true);">
-	</div>
+
 
 	<script>
 		/* Toggle between hiding and showing the dropdown content */
