@@ -69,7 +69,7 @@
 					<p>Age:</p>
 				</div>
 				<div class="row-sm-12 center-select custom-select">
-					<select name="pet_age" id="pet_age">
+					<select name="pet_age" id="pet_age" required>
 						<option value="0">Select option:</option>
 						<c:forEach begin="1" end="20" varStatus="loop">
 							<option value="${loop.index}">${loop.index}</option>
@@ -81,7 +81,7 @@
 					<p>Type:</p>
 				</div>
 				<div class="row-sm-12 custom-select center-select">
-					<select name="pet_type" id="pet_type">
+					<select name="pet_type" id="pet_type" required>
 						<option value="0">Select option:</option>
 						<c:forEach items="${types}" var="types">
 							<option value="${types}">${types}</option>
@@ -93,7 +93,7 @@
 					<p>Sex:</p>
 				</div>
 				<div class="row-sm-12 custom-select center-select">
-					<select name="pet_sex" id="pet_sex">
+					<select name="pet_sex" id="pet_sex" required>
 						<option value="0">Select option:</option>
 						<option>female</option>
 						<option>male</option>

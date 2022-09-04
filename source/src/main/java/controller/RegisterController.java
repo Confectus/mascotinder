@@ -16,10 +16,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import model.dao.DAOFactory;
-import model.entities.Match;
 import model.entities.Owner;
 import model.entities.Pet;
 import model.entities.PetImage;
+import model.entities.Preference;
 
 @WebServlet("/RegisterController")
 
@@ -57,10 +57,23 @@ public class RegisterController extends HttpServlet {
 		Pet newPet = new Pet(0, name, type, sex, age, sessionOwner);
 		// 2. Talk with the model
 		DAOFactory.getFactory().getPetDAO().create(newPet);
+		/*Creation of the preference of the new pet*/
+		newPet.setPreference(new Preference(null, type, changeSex(sex), 1, 20, newPet));
+		Preference preferencePet = newPet.getPreference();
+		DAOFactory.getFactory().getPreferenceDAO().create(preferencePet);
+		/*Creating of the images of the new pet*/
 		createImagesNewPet(image1, image2, image3, newPet);
-		
+
 		// 3. Send data to the view
 		getServletContext().getRequestDispatcher("/ListPetsController").forward(request, response);
+	}
+
+	private String changeSex(String sex) {
+		if (sex == "male") {
+			return "female";
+		} else {
+			return "male";
+		}
 	}
 
 	private void createImagesNewPet(String image1, String image2, String image3, Pet newPet) {
@@ -105,7 +118,6 @@ public class RegisterController extends HttpServlet {
 			ByteArrayOutputStream output = new ByteArrayOutputStream();
 			ImageIO.write(bi, "jpg", output);
 			String imageAsBase64 = Base64.getEncoder().encodeToString(output.toByteArray());
-			System.out.println(imageAsBase64);
 			return imageAsBase64;
 		} catch (IOException e) {
 			// TODO Auto-generated catch block

@@ -25,35 +25,14 @@ public class PreferenceController extends HttpServlet {
 			throws ServletException, IOException {
 		// 1. Get parameters
 		Integer petId = Integer.parseInt(request.getParameter("pet_id"));
-		System.out.println(petId);
 		// 2. Talk with the model
-		Pet pet = DAOFactory.getFactory().getPetDAO().read(petId);		
-		if (pet.getPreference() == null) {
-			Preference preference = new Preference(null, pet.getType(), changeSex(pet.getSex()), 1, 20, pet);
-			DAOFactory.getFactory().getPreferenceDAO().create(preference);
-			Preference petPreference = DAOFactory.getFactory().getPreferenceDAO().getPreferenceByPetId(petId);	
-			request.setAttribute("preference", petPreference);
-		}else {
-			Preference petPreference = DAOFactory.getFactory().getPreferenceDAO().getPreferenceByPetId(petId);	
-			request.setAttribute("preference", petPreference);
-		}
-		
+		Preference petPreference = DAOFactory.getFactory().getPreferenceDAO().getPreferenceByPetId(petId);
+		request.setAttribute("preference", petPreference);
 		List<String> types = DAOFactory.getFactory().getPetDAO().getTypes();
-
 		// 3. Send data to the view
-		//request.setAttribute("preference", petPreference);
 		request.setAttribute("types", types);
 		request.setAttribute("pet_id", petId);
-		System.out.println("HEREEEE");
 		getServletContext().getRequestDispatcher("/jsp/Preference.jsp").forward(request, response);
-	}
-
-	private String changeSex(String sex) {
-		if (sex == "male") {
-			return "female";
-		} else {
-			return "male";
-		}
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)

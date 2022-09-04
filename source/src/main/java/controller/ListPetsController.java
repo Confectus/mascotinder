@@ -30,6 +30,7 @@ public class ListPetsController extends HttpServlet {
 		// 2. Talk with the model
 		// 3. Send data to the view
 		getRequest(request, response);
+
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
