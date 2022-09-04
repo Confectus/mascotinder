@@ -11,11 +11,12 @@ import model.entities.Pet;
 import model.entities.Preference;
 
 public class JPAPetDAO extends JPAGenericDAO<Pet, Integer> implements PetDAO {
-
+	/* Constructor */
 	public JPAPetDAO() {
 		super(Pet.class);
 	}
-
+	
+	/* Methods */
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Pet> getPetsByOwnerEmail(String ownerEmail) {

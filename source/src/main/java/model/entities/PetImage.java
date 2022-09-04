@@ -12,7 +12,7 @@ import javax.persistence.ManyToOne;
 
 @Entity (name = "petimage")
 public class PetImage implements Serializable{
-	
+	/* Attributes */
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -26,7 +26,8 @@ public class PetImage implements Serializable{
 	@JoinColumn(name = "pet")
 	@ManyToOne
 	private Pet pet;	
-
+	
+	/* Constructor */
 	public PetImage() {
 		super();
 	}
@@ -38,6 +39,8 @@ public class PetImage implements Serializable{
 		this.pet = pet;
 	}
 	
+	/* Methods */
+	/* Set */
 	public void setId(Integer id) {
 		this.id = id;
 	}
@@ -50,6 +53,7 @@ public class PetImage implements Serializable{
 		this.pet = pet;
 	}	
 	
+	/* Get */
 	public Integer getId() {
 		return id;
 	}	
