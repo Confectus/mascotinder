@@ -18,6 +18,18 @@
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/css/styles.css">
 	
+<script src="https://code.jquery.com/jquery-3.6.1.min.js" 
+	    integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" 
+	    crossorigin="anonymous"></script>
+
+<script	src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+		integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+		crossorigin="anonymous"></script>
+		
+<script	src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+		integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+		crossorigin="anonymous"></script>	
+
 <!-- Font Awesome -->
 <script src='https://kit.fontawesome.com/a076d05399.js'
 	crossorigin='anonymous'></script>
@@ -27,6 +39,33 @@
 
 </head>
 <body>
+	
+	<script>
+		function processSendMessage() {
+			var content = document.querySelector("#input_value").value;
+			var senderEmail = document.querySelector("#senderEmail");
+			var receiverEmail = document.querySelector("#receiverEmail");
+			
+			$.ajax({
+				url: "/mascotinder/ChatController",
+				type: "POST",
+				processData: false,  // tell jQuery not to process the data
+				contentType: false,   // tell jQuery not to set contentType
+				data: {
+					content: content,
+					senderEmail: senderEmail,
+					receiverEmail: receiverEmail,
+				},
+				success: function(result) {
+					console.log("ChatController received the data correctly");	
+					content.value = "";
+				}
+			});	
+			
+			
+		}
+	</script>
+
 	<nav class="navbar navbar-dark banner-config rad-border">
 		<div class="container-fluid">
 			<span class="navbar-brand mb-0 h1  app-title"> MascoTinder <i
@@ -48,15 +87,19 @@
 		</div>
 	</div>
 	
+	<!-- HIDDEN DATA TO HANDLE THE MESSAGES -->
+	<p style='display: none' id='senderEmail'>${sender_owner_email}</p>
+	<p style='display: none' id='receiverEmail'>${receiver_owner_email}</p>
+	
 	<div class="card-total-container">
 		<c:forEach items="${messages}" var="message">
 			<div class="row card-container border-conf">
 			
-				<div>
+				<div class="col-1">
 					<p>${message.sender.name}:</p>
 				</div>
 					
-				<div>
+				<div class="col-5">
 					<p>${message.content}</p>
 				</div>
 				
@@ -66,10 +109,10 @@
 	</div>
 	
 	<div class="col-5"> 
-		<input type="text" name="message_content"  class="form-content-name" required>
+		<input type="text" id="input_value" name="message_content" class="form-content-name" required>
 	</div>
-	<div class="col mh-100"> 
-		<input type="submit" value="Send" id="submit-btn" class="text-light save-text">
+	<div class="col-1"> 
+		<input type="button" value="Send" id="submit-btn" class="text-light save-text" onclick="processSendMessage();">
 	</div>
 
 	<script>

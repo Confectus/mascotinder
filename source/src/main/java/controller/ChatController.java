@@ -38,10 +38,9 @@ public class ChatController extends HttpServlet {
 		
 		// 2. Talk with the model
 		List<Message> messages = DAOFactory.getFactory().getMessageDAO().getMessagesByOwnersEmails(receiverOwnerEmail, loggedOwner.getEmail());
-		System.out.println(messages);
-		System.out.println(loggedOwner.getEmail());
-		System.out.println(receiverOwnerEmail);
+		
 		// 3. Send data to the view
+		request.setAttribute("sender_owner_email", loggedOwner.getEmail());
 		request.setAttribute("receiver_owner_email", receiverOwnerEmail);
 		request.setAttribute("messages", messages);
 		getServletContext().getRequestDispatcher("/jsp/Chat.jsp").forward(request, response);
