@@ -24,16 +24,16 @@ public class ChatController extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// 1. Get parameters
-		String receiverOwnerEmail = request.getParameter("receiver_owner_email");
+		String receiverEmail = request.getParameter("receiver_owner_email");
 		HttpSession sessionOwner = request.getSession();
 		Owner loggedOwner = (Owner) sessionOwner.getAttribute("loggedOwner");
-		
+		String senderEmail = loggedOwner.getEmail();
 		// 2. Talk with the model
-		List<Message> messages = DAOFactory.getFactory().getMessageDAO().getMessagesByOwnersEmails(receiverOwnerEmail, loggedOwner.getEmail());
+		List<Message> messages = DAOFactory.getFactory().getMessageDAO().getMessagesByOwnersEmails(senderEmail, receiverEmail);
 		
 		// 3. Send data to the view
-		request.setAttribute("sender_owner_email", loggedOwner.getEmail());
-		request.setAttribute("receiver_owner_email", receiverOwnerEmail);
+		request.setAttribute("sender_owner_email", senderEmail);
+		request.setAttribute("receiver_owner_email", receiverEmail);
 		request.setAttribute("messages", messages);
 		getServletContext().getRequestDispatcher("/jsp/Chat.jsp").forward(request, response);
 	}
