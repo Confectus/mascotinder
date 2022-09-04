@@ -105,11 +105,11 @@
 					</div>
 				</c:forEach>
 			</div>
-			<div class="row">
+			<div class="row send-container">
 				<div class="col">
 					<input type="text" id="input_value" name="message_content" class="message-content" required>
 				</div>
-				<div class="col">
+				<div class="col-2">
 					<input type="button" value="Send" id="send-btn" class="text-light" onclick="processMessage(true);">
 				</div>
 			</div>

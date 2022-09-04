@@ -572,7 +572,7 @@
 	font-weight: bold;
 	color: #319EFF;
 	width: 100%;
-	height: 40px;
+	height: 42.3px;
 	border: 1px solid transparent;
   	border-color: rgba(0, 0, 0, 0.1);
 }
@@ -597,7 +597,8 @@
 	height: 42.3px;
 	margin: 0;
 	transition: 0.25s;
-	width: 100px;
+	width: 100%;
+	text-align: center;
 }
 
 #send-btn:hover {
@@ -608,4 +609,10 @@
 	margin: 5%;
 	margin-left: auto;
 	margin-right: auto;
+}
+
+.send-container {
+	margin: 5%;
+	margin-left: 14%;
+	margin-right: 14%;
 }
