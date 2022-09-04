@@ -28,17 +28,24 @@ public class ChatController extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// 1. Get parameters
+		Boolean sendFlag = Boolean.parseBoolean(request.getParameter("send_flag"));
 		String content = request.getParameter("content");
-		String senderEmail = request.getParameter("sender_email");
-		String receiverEmail = request.getParameter("receiver_email");
-		System.out.println(senderEmail);
-		// 2. Talk with the model
-		Owner sender = DAOFactory.getFactory().getOwnerDAO().read(senderEmail);
-		Owner receiver = DAOFactory.getFactory().getOwnerDAO().read(receiverEmail);
+		String senderOwnerEmail = request.getParameter("sender_email");
+		String receiverOwnerEmail = request.getParameter("receiver_email");
 		
-		Message message = new Message(content,sender,receiver);
-		DAOFactory.getFactory().getMessageDAO().create(message);
+		// 2. Talk with the model
+		if (sendFlag) {
+			Owner sender = DAOFactory.getFactory().getOwnerDAO().read(senderOwnerEmail);
+			Owner receiver = DAOFactory.getFactory().getOwnerDAO().read(receiverOwnerEmail);
+			Message message = new Message(content,sender,receiver);
+			DAOFactory.getFactory().getMessageDAO().create(message);
+		}
+		
+		List<Message> messages = DAOFactory.getFactory().getMessageDAO().getMessagesByOwnersEmails(senderOwnerEmail, receiverOwnerEmail);
+		
 		// 3. Send data to the view
+		request.setAttribute("messages", messages);
+		getServletContext().getRequestDispatcher("/jsp/Chat.jsp").forward(request, response);
 	}
 	
 	private void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

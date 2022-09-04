@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
+<meta charset="UTF-8" http-equiv="Refresh" content="5">
 <title>Chat</title>
 
 <!-- Bootstrap -->
@@ -41,7 +41,7 @@
 <body>
 	
 	<script>
-		function processSendMessage() {
+		function processMessage(sendFlag) {
 			var content = document.querySelector("#input_value").value;
 			var senderEmail = document.querySelector("#senderEmail").textContent;
 			var receiverEmail = document.querySelector("#receiverEmail").textContent;
@@ -50,6 +50,7 @@
 				url: "/mascotinder/ChatController",
 				type: "POST",
 				data: {
+					send_flag: sendFlag,
 					content: content,
 					sender_email: senderEmail,
 					receiver_email: receiverEmail,
@@ -110,7 +111,7 @@
 		<input type="text" id="input_value" name="message_content" class="form-content-name" required>
 	</div>
 	<div class="col-1"> 
-		<input type="button" value="Send" id="submit-btn" class="text-light save-text" onclick="processSendMessage();">
+		<input type="button" value="Send" id="submit-btn" class="text-light save-text" onclick="processMessage(true);">
 	</div>
 
 	<script>
