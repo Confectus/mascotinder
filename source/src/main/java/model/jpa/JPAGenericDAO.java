@@ -6,61 +6,65 @@ import javax.persistence.Persistence;
 import model.dao.GenericDAO;
 
 public class JPAGenericDAO<T,ID> implements GenericDAO<T, ID> {
-	
+	/* Attributes */
 	private Class<T> persistenceClass;	
-	protected EntityManager em;
+	protected EntityManager entityManager;
 	
+	/* Constructor */
 	public JPAGenericDAO(Class<T> persistenceClass) {
 		this.persistenceClass = persistenceClass;
-		em = Persistence.createEntityManagerFactory("mascotinder").createEntityManager();
+		entityManager = Persistence.createEntityManagerFactory("mascotinder").createEntityManager();
 	}
 	
+	/* Methods */
+	
+	/* CRUD methods */
 	@Override
 	public void create(T entity) {
-		em.getTransaction().begin();
+		entityManager.getTransaction().begin();
 		
 		try {
-			em.persist(entity);
-			em.getTransaction().commit();
+			entityManager.persist(entity);
+			entityManager.getTransaction().commit();
 		}
 		catch (Exception ex) {
-			if (em.getTransaction().isActive()) {
-				em.getTransaction().rollback();
+			if (entityManager.getTransaction().isActive()) {
+				entityManager.getTransaction().rollback();
 			}
 		}
 	}
 	
 	@Override
 	public T read(ID id) {
-		return em.find(persistenceClass, id);
+		return entityManager.find(persistenceClass, id);
 	}
 
 	@Override
 	public void update(T entity) {
-		em.getTransaction().begin();
+		entityManager.getTransaction().begin();
 		
 		try {
-			em.merge(entity);
-			em.getTransaction().commit();
+			entityManager.merge(entity);
+			entityManager.getTransaction().commit();
 		}
 		catch (Exception ex) {
-			if (em.getTransaction().isActive()) {
-				em.getTransaction().rollback();
+			if (entityManager.getTransaction().isActive()) {
+				entityManager.getTransaction().rollback();
 			}
 		}
 	}
 
 	@Override
 	public void delete(T entity) {
-		em.getTransaction().begin();
+		entityManager.getTransaction().begin();
 		
 		try {
-			em.remove(entity);
-			em.getTransaction().commit();
+			entityManager.remove(entity);
+			entityManager.getTransaction().commit();
 		}
 		catch (Exception ex) {
-			if (em.getTransaction().isActive()) {
-				em.getTransaction().rollback();
+			if (entityManager.getTransaction().isActive()) {
+				entityManager.getTransaction().rollback();
 			}
 		}
 	}

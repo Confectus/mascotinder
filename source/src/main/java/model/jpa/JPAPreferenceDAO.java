@@ -17,7 +17,7 @@ public class JPAPreferenceDAO extends JPAGenericDAO<Preference, Integer> impleme
 		Preference preference = null;
 
 		String sentence = "SELECT p FROM preference p WHERE p.pet.id= :pet_id";
-		Query query = this.em.createQuery(sentence);
+		Query query = this.entityManager.createQuery(sentence);
 		query.setParameter("pet_id", id);
 
 		try {

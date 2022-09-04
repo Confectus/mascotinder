@@ -9,17 +9,20 @@ import model.entities.Owner;
 import model.entities.Pet;
 
 public class JPAOwnerDAO extends JPAGenericDAO<Owner, String> implements OwnerDAO {
-	
+	/* Constructor */
 	public JPAOwnerDAO() {
 		super(Owner.class);
 	}
-
+	
+	/* Methods */
+	
+	/* Returns the authorized Owner */
 	@Override
 	public Owner authorizeOwner(String email, String password) {
 		Owner authorizedOwner = null;
 		
 		String sentence = "SELECT o FROM owner o WHERE o.email= :p1 AND o.password= :p2";
-		Query query = em.createQuery(sentence);
+		Query query = entityManager.createQuery(sentence);
 		query.setParameter("p1", email);
 		query.setParameter("p2", password);
 
@@ -32,7 +35,8 @@ public class JPAOwnerDAO extends JPAGenericDAO<Owner, String> implements OwnerDA
 		
 		return authorizedOwner;	
 	}
-
+	
+	/* Adds a rejected pet based on its owner */
 	@Override
 	public void addRejectedPet(String ownerEmail, Pet rejectedPet) {
 		Owner rejectedOwner = read(ownerEmail);

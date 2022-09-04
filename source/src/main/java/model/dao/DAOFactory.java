@@ -3,9 +3,10 @@ package model.dao;
 import model.jpa.JPADAOFactory;
 
 public abstract class DAOFactory {
-	
+	/* Attributes */
 	protected static DAOFactory factory = new JPADAOFactory();
 	
+	/* Methods */
 	public static DAOFactory getFactory () {
 		return factory;
 	}

@@ -26,7 +26,7 @@ public class JPAPetImageDAO extends JPAGenericDAO<PetImage, Integer> implements 
 		PetImage image = null;
 
 		String sentenceJPQL = "SELECT i FROM pet_image i WHERE i.pet.id= :pet_id AND i.pet.petImage.id= :image_id";
-		Query query = em.createQuery(sentenceJPQL);
+		Query query = entityManager.createQuery(sentenceJPQL);
 		query.setParameter("pet_id", id);
 		query.setParameter("image_id", 1);
 
