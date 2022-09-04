@@ -108,15 +108,15 @@
 						<!--Upload photo-->
 						<div class="container">
 							<div class="row file-container file-text center-select">
-								<input type="file" class="custom-file-input" name="pet_image_1" accept="image/png, image/jpeg">
+								<input type="file" class="custom-file-input" name="pet_image_1" accept="image/png, image/jpeg" required>
 							</div>
 
 							<div class="row file-container file-text center-select">
-								<input type="file" class="custom-file-input" name="pet_image_2"	accept="image/png, image/jpeg">
+								<input type="file" class="custom-file-input" name="pet_image_2"	accept="image/png, image/jpeg" required>
 							</div>
 
 							<div class="row file-container file-text center-select">
-								<input type="file" class="custom-file-input" name="pet_image_3"	accept="image/png, image/jpeg">
+								<input type="file" class="custom-file-input" name="pet_image_3"	accept="image/png, image/jpeg" required>
 							</div>
 						</div>
 					</div>

@@ -58,6 +58,7 @@ public class RegisterController extends HttpServlet {
 		// 2. Talk with the model
 		DAOFactory.getFactory().getPetDAO().create(newPet);
 		createImagesNewPet(image1, image2, image3, newPet);
+		
 		// 3. Send data to the view
 		getServletContext().getRequestDispatcher("/ListPetsController").forward(request, response);
 	}
