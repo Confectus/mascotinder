@@ -47,11 +47,11 @@ public class JPAPreferenceDAO extends JPAGenericDAO<Preference, Integer> impleme
 	}
 
 	private String changeSex(String sex) {
-		if (sex == "male") {
+		if (sex.equalsIgnoreCase("male")) {
 			return "female";
-		} else {
-			return "male";
-		}
+		} 
+			
+		return "male";
 	}
 
 }
