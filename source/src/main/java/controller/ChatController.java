@@ -23,7 +23,19 @@ public class ChatController extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		processRequest(request, response);
+		// 1. Get parameters
+		String receiverOwnerEmail = request.getParameter("receiver_owner_email");
+		HttpSession sessionOwner = request.getSession();
+		Owner loggedOwner = (Owner) sessionOwner.getAttribute("loggedOwner");
+		
+		// 2. Talk with the model
+		List<Message> messages = DAOFactory.getFactory().getMessageDAO().getMessagesByOwnersEmails(receiverOwnerEmail, loggedOwner.getEmail());
+		
+		// 3. Send data to the view
+		request.setAttribute("sender_owner_email", loggedOwner.getEmail());
+		request.setAttribute("receiver_owner_email", receiverOwnerEmail);
+		request.setAttribute("messages", messages);
+		getServletContext().getRequestDispatcher("/jsp/Chat.jsp").forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -48,20 +60,6 @@ public class ChatController extends HttpServlet {
 		getServletContext().getRequestDispatcher("/jsp/Chat.jsp").forward(request, response);
 	}
 	
-	private void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// 1. Get parameters
-		String receiverOwnerEmail = request.getParameter("receiver_owner_email");
-		HttpSession sessionOwner = request.getSession();
-		Owner loggedOwner = (Owner) sessionOwner.getAttribute("loggedOwner");
-		
-		// 2. Talk with the model
-		List<Message> messages = DAOFactory.getFactory().getMessageDAO().getMessagesByOwnersEmails(receiverOwnerEmail, loggedOwner.getEmail());
-		
-		// 3. Send data to the view
-		request.setAttribute("sender_owner_email", loggedOwner.getEmail());
-		request.setAttribute("receiver_owner_email", receiverOwnerEmail);
-		request.setAttribute("messages", messages);
-		getServletContext().getRequestDispatcher("/jsp/Chat.jsp").forward(request, response);
-	}
+	
 
 }
