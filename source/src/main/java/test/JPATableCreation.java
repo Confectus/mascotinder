@@ -51,6 +51,9 @@ public class JPATableCreation {
 		directory = new File("img/Zanahoria 1");
 		allFiles.add(getFiles(directory));
 		
+		directory = new File("img/CamelCase");
+		allFiles.add(getFiles(directory));
+		
 		ArrayList<Owner> owners = new ArrayList<>();
 
 		// owners.add(new Owner("", "", ""));
@@ -88,6 +91,11 @@ public class JPATableCreation {
 		pets.add(new Pet(null, "Zanahoria", "rabbit", "Female", 1, owners.get(4)));
 		DAOFactory.getFactory().getPetDAO().create(pets.get(9));
 		Preference preference = new Preference(null, "rabbit", "Male", 1, 20, pets.get(9));
+		DAOFactory.getFactory().getPreferenceDAO().create(preference);
+		
+		pets.add(new Pet(null, "CamelCase", "camel", "Male", 3, owners.get(4)));
+		DAOFactory.getFactory().getPetDAO().create(pets.get(10));
+		preference = new Preference(null, "camel", "Female", 1, 20, pets.get(10));
 		DAOFactory.getFactory().getPreferenceDAO().create(preference);
 
 		// Adding the images
