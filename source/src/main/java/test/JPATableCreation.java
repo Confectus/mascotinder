@@ -87,7 +87,7 @@ public class JPATableCreation {
 		
 		pets.add(new Pet(null, "Zanahoria", "rabbit", "Female", 1, owners.get(4)));
 		DAOFactory.getFactory().getPetDAO().create(pets.get(9));
-		Preference preference = new Preference(null, "rabbit", "Male", 1, 20, pets.get(8));
+		Preference preference = new Preference(null, "rabbit", "Male", 1, 20, pets.get(9));
 		DAOFactory.getFactory().getPreferenceDAO().create(preference);
 
 		// Adding the images
