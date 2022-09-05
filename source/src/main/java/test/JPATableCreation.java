@@ -45,12 +45,12 @@ public class JPATableCreation {
 		directory = new File("img/Zeus 4");
 		allFiles.add(getFiles(directory));
 		
+		directory = new File("img/Negra 11");
+		allFiles.add(getFiles(directory));
+		
 		directory = new File("img/Zanahoria 1");
 		allFiles.add(getFiles(directory));
 		
-		directory = new File("img/Negra 11");
-		allFiles.add(getFiles(directory));
-
 		ArrayList<Owner> owners = new ArrayList<>();
 
 		// owners.add(new Owner("", "", ""));
