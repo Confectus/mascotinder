@@ -70,24 +70,25 @@ public class JPATableCreation {
 		// pets.add(new Pet(null, "", "dog", "", , owners.get()));
 		pets.add(new Pet(null, "Benjamin", "dog", "male", 4, owners.get(4)));
 		pets.add(new Pet(null, "Cheems", "dog", "male", 8, owners.get(2)));
-		pets.add(new Pet(null, "Pugsinea", "dog", "female", 6, owners.get(0)));
+		pets.add(new Pet(null, "Ojitos", "dog", "female", 6, owners.get(0)));
 		pets.add(new Pet(null, "Milanesa", "dog", "female", 2, owners.get(3)));
 		pets.add(new Pet(null, "Zoe", "dog", "female", 2, owners.get(3)));
 		pets.add(new Pet(null, "Simurdiera", "dog", "male", 4, owners.get(2)));
 		pets.add(new Pet(null, "Chester", "dog", "male", 3, owners.get(1)));
 		pets.add(new Pet(null, "Zeus", "dog", "male", 4, owners.get(1)));
-		pets.add(new Pet(null, "Zanahoria", "rabbit", "Female", 1, owners.get(4)));
-		Preference preference = new Preference(null, "rabbit", "Male", 1, 20, pets.get(8));
-		DAOFactory.getFactory().getPreferenceDAO().create(preference);
 		pets.add(new Pet(null, "Negra", "dog", "Female", 11, owners.get(2)));
 		
 		// Auto setting the preferences
 		for (Pet pet : pets) {
 			DAOFactory.getFactory().getPetDAO().create(pet);
-			preference = new Preference(null, "dog", changeSex(pet.getSex()), 1, 20, pet);
+			Preference preference = new Preference(null, "dog", changeSex(pet.getSex()), 1, 20, pet);
 			DAOFactory.getFactory().getPreferenceDAO().create(preference);
 		}
-		preference = new Preference(null, "rabbit", "Male", 1, 20, pets.get(8));
+		
+		pets.add(new Pet(null, "Zanahoria", "rabbit", "Female", 1, owners.get(4)));
+		DAOFactory.getFactory().getPetDAO().create(pets.get(9));
+		Preference preference = new Preference(null, "rabbit", "Male", 1, 20, pets.get(8));
+		DAOFactory.getFactory().getPreferenceDAO().create(preference);
 
 		// Adding the images
 
