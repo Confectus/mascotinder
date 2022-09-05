@@ -46,7 +46,7 @@ public class JPAPetImageDAO extends JPAGenericDAO<PetImage, Integer> implements 
 		 * Method that adds images to directory "new_img_pet", creates a new directory
 		 * with image1, image2, image3
 		 */
-		String path = "../img_new_pets";
+		String path = "C:\\Users\\Confectus\\git\\mascotinder\\source\\img_new_pets\\";
 		String pathImage1 = path + image1;
 		String pathImage2 = path + image2;
 		String pathImage3 = path + image3;

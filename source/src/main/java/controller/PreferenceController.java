@@ -38,15 +38,13 @@ public class PreferenceController extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// 1. Get parameters
-		String preferenceType = request.getParameter("pet_type");
-		String preferenceSex = request.getParameter("pet_sex");
 		Integer preferenceMinimumAge = Integer.parseInt(request.getParameter("pet_minimum_age"));
 		Integer preferenceMaximumAge = Integer.parseInt(request.getParameter("pet_maximum_age"));
 		Integer petId = Integer.parseInt(request.getParameter("pet_id"));
 
 		// 2. Talk with the model
 		Pet pet = DAOFactory.getFactory().getPetDAO().read(petId);
-		Preference updatedPreference = new Preference(0, preferenceType, preferenceSex, preferenceMinimumAge,
+		Preference updatedPreference = new Preference(0, pet.getPreference().getType(), pet.getPreference().getSex(), preferenceMinimumAge,
 				preferenceMaximumAge, pet);
 
 		DAOFactory.getFactory().getPreferenceDAO().setPreferenceByPetId(petId, updatedPreference);
