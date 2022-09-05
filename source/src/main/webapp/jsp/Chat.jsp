@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8" http-equiv="Refresh" content="5">
+<meta charset="UTF-8" http-equiv="Refresh" content="30">
 <title>Chat</title>
 
 <!-- Bootstrap -->
