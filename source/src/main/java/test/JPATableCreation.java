@@ -19,34 +19,6 @@ public class JPATableCreation {
 
 	public static void main(String[] args) {
 
-		/*
-		 * ArrayList<File> files = new ArrayList<>(); files.add(new
-		 * File("img/pelusin.jpg")); files.add(new File("img/pelusin2.jpg"));
-		 * files.add(new File("img/pelusin3.jpg"));
-		 * 
-		 * ArrayList<Owner> owners = new ArrayList<>(); owners.add(new
-		 * Owner("francisco.encalada01@epn.edu.ec", "Francisco", "rafa123123"));
-		 * owners.add(new Owner("ejemplo@gmail.com", "Carlos Iñiguez", "123"));
-		 * 
-		 * for (Owner owner : owners) {
-		 * DAOFactory.getFactory().getOwnerDAO().create(owner); }
-		 * 
-		 * 
-		 * String[] sex = {"male","female"}; for (int i=0;i<15;i++) { Pet pet = new
-		 * Pet(null, "mascota" + i, "dog", sex[i % 2], 12 + i, owners.get(i%2));
-		 * DAOFactory.getFactory().getPetDAO().create(pet);
-		 * 
-		 * PetImage image = new PetImage(null, fileToBase64String(files.get(i%3)), pet);
-		 * DAOFactory.getFactory().getPetImageDAO().create(image);
-		 * 
-		 * PetImage image2 = new PetImage(null, fileToBase64String(files.get(2)), pet);
-		 * DAOFactory.getFactory().getPetImageDAO().create(image2);
-		 * 
-		 * Preference preference = new Preference(null, "dog", sex[i % 2], i % 3 + 5, i
-		 * % 3 + 12, pet);
-		 * DAOFactory.getFactory().getPreferenceDAO().create(preference); }
-		 */
-		
 		ArrayList<ArrayList<File>> allFiles = new ArrayList<ArrayList<File>>();
 
 		File directory = new File("img/benjamin 4");
@@ -66,6 +38,18 @@ public class JPATableCreation {
 		
 		directory = new File("img/Simurdiera 4");
 		allFiles.add(getFiles(directory));
+		
+		directory = new File("img/Chester 3");
+		allFiles.add(getFiles(directory));
+		
+		directory = new File("img/Zeus 4");
+		allFiles.add(getFiles(directory));
+		
+		directory = new File("img/Zanahoria 1");
+		allFiles.add(getFiles(directory));
+		
+		directory = new File("img/Negra 11");
+		allFiles.add(getFiles(directory));
 
 		ArrayList<Owner> owners = new ArrayList<>();
 
@@ -74,6 +58,7 @@ public class JPATableCreation {
 		owners.add(new Owner("jonathan.puglla@epn.edu.ec", "Jonathan", "jonathan123"));
 		owners.add(new Owner("andres.lozano@epn.edu.ec", "Andrés", "andres123"));
 		owners.add(new Owner("pollito@gmail.com", "Gaby", "gaby123"));
+		owners.add(new Owner("carlosiniguez@epn.edu.ec", "Carlos", "carlos123"));
 
 		for (Owner owner : owners) {
 			DAOFactory.getFactory().getOwnerDAO().create(owner);
@@ -83,19 +68,26 @@ public class JPATableCreation {
 
 		// PETS
 		// pets.add(new Pet(null, "", "dog", "", , owners.get()));
-		pets.add(new Pet(null, "Benjamin", "dog", "male", 4, owners.get(1)));
+		pets.add(new Pet(null, "Benjamin", "dog", "male", 4, owners.get(4)));
 		pets.add(new Pet(null, "Cheems", "dog", "male", 8, owners.get(2)));
-		pets.add(new Pet(null, "Pugzilla", "dog", "female", 6, owners.get(0)));
+		pets.add(new Pet(null, "Pugsinea", "dog", "female", 6, owners.get(0)));
 		pets.add(new Pet(null, "Milanesa", "dog", "female", 2, owners.get(3)));
 		pets.add(new Pet(null, "Zoe", "dog", "female", 2, owners.get(3)));
 		pets.add(new Pet(null, "Simurdiera", "dog", "male", 4, owners.get(2)));
-
+		pets.add(new Pet(null, "Chester", "dog", "male", 3, owners.get(1)));
+		pets.add(new Pet(null, "Zeus", "dog", "male", 4, owners.get(1)));
+		pets.add(new Pet(null, "Zanahoria", "rabbit", "Female", 1, owners.get(4)));
+		Preference preference = new Preference(null, "rabbit", "Male", 1, 20, pets.get(8));
+		DAOFactory.getFactory().getPreferenceDAO().create(preference);
+		pets.add(new Pet(null, "Negra", "dog", "Female", 11, owners.get(2)));
+		
 		// Auto setting the preferences
 		for (Pet pet : pets) {
 			DAOFactory.getFactory().getPetDAO().create(pet);
-			Preference preference = new Preference(null, "dog", changeSex(pet.getSex()), 1, 20, pet);
+			preference = new Preference(null, "dog", changeSex(pet.getSex()), 1, 20, pet);
 			DAOFactory.getFactory().getPreferenceDAO().create(preference);
 		}
+		preference = new Preference(null, "rabbit", "Male", 1, 20, pets.get(8));
 
 		// Adding the images
 
