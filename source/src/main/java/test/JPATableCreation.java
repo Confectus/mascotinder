@@ -103,8 +103,8 @@ public class JPATableCreation {
 		Match match = new Match(true, pets.get(2), pets.get(0));
 		DAOFactory.getFactory().getMatchDAO().create(match);
 		
-		Message message1 = new Message("Hi", owners.get(0), owners.get(1));
-		Message message2 = new Message("Hi :D", owners.get(1), owners.get(0));
+		Message message1 = new Message("Hi", owners.get(0), owners.get(4));
+		Message message2 = new Message("Hi :D", owners.get(4), owners.get(0));
 		DAOFactory.getFactory().getMessageDAO().create(message1);
 		DAOFactory.getFactory().getMessageDAO().create(message2);		
 
