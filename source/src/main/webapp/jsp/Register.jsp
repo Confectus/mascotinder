@@ -86,6 +86,11 @@
 						<c:forEach items="${types}" var="types">
 							<option value="${types}">${types}</option>
 						</c:forEach>
+						<option value="cat">cat</option>
+						<option value="bird">bird</option>
+						<option value="gorilla">gorilla</option>
+						<option value="wombat">wombat</option>
+						<option value="camel">camel</option>
 					</select>
 				</div>
 				<div class="row general-title color-blue">
